@@ -182,6 +182,7 @@ body{
    overflow: hidden;
 }
 
+
 .sue-container{
    max-width: 1170px;
    margin-left: auto;
@@ -227,6 +228,106 @@ body{
    column-gap: 75px;
 }
 
+/* =========================================
+   Blog Articles Style
+========================================= */
+.mb {
+   margin-bottom: 1rem
+}
+
+.mBmP {
+   margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.listStyle {
+   display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.ulStyle {
+   list-style: disc !important;
+   text-decoration: underline;
+   
+}
+
+.blanc{
+   color: white;
+}
+
+.ulList {
+   display: flex;
+   flex-direction: column;
+   gap:5px
+}
+
+.article-section{
+   display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+    height: 100%;
+}
+
+.img {
+   width: 100%;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.infoButton {
+   color: hsl(0 0% 100%);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 35px;
+    cursor: pointer;
+    margin-top: 1rem;
+    
+}
+
+.straightDiv {
+   display: flex;
+    flex-direction: column;
+}
+
+.headerBlog {
+   display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.textCenter {
+   text-align: center;
+}
+
+.returnButton {
+   font-size: large;
+   color: var(--color-01);
+   display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 1rem;
+   animation: right-left 1.5s linear infinite; /* Animation horizontale */
+   animation-delay: 1.85s;
+}
+
+@keyframes right-left {
+   0%, 100% {
+       transform: translateX(0); /* Position initiale */
+   }
+   50% {
+       transform: translateX(-10px); /* Déplacement vers la gauche */
+   }
+}
+.center {
+   justify-content: center;
+}
 /* =========================================
    Components
 ========================================= */
