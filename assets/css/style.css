@@ -244,6 +244,7 @@ body{
    display: flex;
     justify-content: space-around;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
 }
 
 .ulStyle {
@@ -2025,6 +2026,7 @@ body{
 
    .swiper-slide .client-details {
       text-align: center;
+      align-items: center;
    }
 
    .contact-container {
