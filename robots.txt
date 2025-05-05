@@ -1,6 +1,6 @@
 # Autorise tous les robots à explorer toutes les pages de ce site
 User-agent: *
-Disallow:
+Disallow: /pages/        
 
 #sitemap
 
