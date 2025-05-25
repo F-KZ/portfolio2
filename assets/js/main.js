@@ -33,35 +33,37 @@ resumePortfolioTabBtns.forEach((resumePortfolioTabBtn, i) => {
 /* =====================================================
    Service modal open/close function
 ===================================================== */
-const serviceCardWithModals = document.querySelectorAll(".service-container .card-with-modal");
+document.addEventListener("DOMContentLoaded", () => {
+   const serviceCardWithModals = document.querySelectorAll(".service-container .card-with-modal");
 
-serviceCardWithModals.forEach((serviceCardWithModal) => {
-   const serviceCard = serviceCardWithModal.querySelector(".service-card");
-   const serviceBackDrop = serviceCardWithModal.querySelector(".service-modal-backdrop");
-   const serviceModal = serviceCardWithModal.querySelector(".service-modal");
-   const modalCloseBtn = serviceCardWithModal.querySelector(".modal-close-btn");
+   serviceCardWithModals.forEach((serviceCardWithModal) => {
+      const serviceCard = serviceCardWithModal.querySelector(".service-card");
+      const serviceBackDrop = serviceCardWithModal.querySelector(".service-modal-backdrop");
+      const serviceModal = serviceCardWithModal.querySelector(".service-modal");
+      const modalCloseBtn = serviceCardWithModal.querySelector(".modal-close-btn");
 
-   serviceCard.addEventListener("click", () => {
-      serviceBackDrop.style.display = "flex";
+      serviceCard.addEventListener("click", () => {
+         serviceBackDrop.style.display = "flex";
 
-      setTimeout(() => {
-         serviceBackDrop.classList.add("active");
-      }, 100);
+         setTimeout(() => {
+            serviceBackDrop.classList.add("active");
+         }, 100);
 
-      setTimeout(() => {
-         serviceModal.classList.add("active");
-      }, 300);
-   });
+         setTimeout(() => {
+            serviceModal.classList.add("active");
+         }, 300);
+      });
 
-   modalCloseBtn.addEventListener("click", () => {
-      setTimeout(() => {
-         serviceBackDrop.style.display = "none";
-      }, 500);
+      modalCloseBtn.addEventListener("click", () => {
+         setTimeout(() => {
+            serviceBackDrop.style.display = "none";
+         }, 500);
 
-      setTimeout(() => {
-         serviceBackDrop.classList.remove("active");
-         serviceModal.classList.remove("active");
-      }, 100);
+         setTimeout(() => {
+            serviceBackDrop.classList.remove("active");
+            serviceModal.classList.remove("active");
+         }, 100);
+      });
    });
 });
 
@@ -140,18 +142,20 @@ portfolioCardsWithModals.forEach((portfolioCardWithModal) => {
 /* =====================================================
    Testimonial Swiper
 ===================================================== */
-var swiper = new Swiper(".sue-client-swiper", {
-   slidesPerView: 1,
-   spaceBetween: 30,
-   loop: true,
-   pagination: {
-     el: ".swiper-pagination",
-     clickable: true,
-   },
-   navigation: {
-     nextEl: ".swiper-button-next",
-     prevEl: ".swiper-button-prev",
-   },
+document.addEventListener("DOMContentLoaded", () => {
+   var swiper = new Swiper(".sue-client-swiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+   });
 });
 
 /* =====================================================
