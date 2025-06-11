@@ -187,6 +187,9 @@ body{
    max-width: 1170px;
    margin-left: auto;
    margin-right: auto;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .sue-sub-container{
@@ -1878,6 +1881,35 @@ body{
    row-gap: 40px;
 }
 
+.sue-logo-footer {
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+   align-items: center;
+   justify-content: center;
+}
+
+.sue-logo-footer img{
+   width:200px;
+}
+
+.background-logo{
+   background-color: white;
+   border-radius: 100%;
+}
+
+.sue-footer-contact{
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+}
+
+.sue-footer-contact li{
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+}
+
 .footer-menu{
    display: flex;
    justify-content: center;
@@ -1919,6 +1951,10 @@ body{
 @media screen and (max-width: 1600px){
    .cursor {
       display: none;
+   }
+
+   .sue-logo img {
+      width: 100px;
    }
 
    .sue-container {
@@ -2070,10 +2106,23 @@ body{
    .sue-container {
       margin-left: 25px;
       margin-right: 25px;
+      flex-direction: column;
+      gap: 2rem;
    }
 
-   .sue-logo a {
-      font-size: 2.35rem;
+   .sue-logo-footer img{
+      width:170px;
+   }
+
+   .sue-footer-contact{
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .sue-logo img {
+      width:80px;
    }
 
    .lets-talk-btn{
@@ -2207,6 +2256,13 @@ body{
 
    .sue-header {
       padding: 20px 0;
+   }
+
+   .sue-logo img {
+      width: 60px;
+   }
+   .sue-logo-footer img{
+      width:130px;
    }
 
    .header-btns {
