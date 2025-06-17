@@ -392,3 +392,22 @@ ScrollReveal().reveal('#resume .section-content', { delay: 700, origin: 'bottom'
 ScrollReveal().reveal('.service-card, .portfolio-card, .contact-item, .contact-social-links li, .footer-menu .menu-item', { delay: 300, origin: 'bottom', interval: 300 });
 ScrollReveal().reveal('.sue-client-swiper, .contact-form-body', { delay: 700, origin: 'right' });
 ScrollReveal().reveal('.contact-info h3', { delay: 100, origin: 'bottom', interval: 300 });
+
+/* =====================================================
+   Splash Screen
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+   const splashScreen = document.querySelector(".splash-screen");
+   
+   // Attendre que la page soit complètement chargée
+   window.addEventListener("load", () => {
+      // Attendre que l'animation de la barre de chargement soit terminée
+      setTimeout(() => {
+         splashScreen.classList.add("fade-out");
+         // Supprimer complètement le splash screen après la transition
+         setTimeout(() => {
+            splashScreen.remove();
+         }, 500);
+      }, 2000);
+   });
+});

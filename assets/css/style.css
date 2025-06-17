@@ -1246,6 +1246,7 @@ body{
 .service-icon{
    color: var(--primary-color);
    font-size: 4.15rem;
+   animation: pulse 2s ease-in-out infinite;
 }
 
 .service-info h4{
@@ -2468,5 +2469,93 @@ body{
 
    .to-top-btn {
       display: none;
+  }
+}
+
+/* =====================================================
+   Splash Screen
+===================================================== */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-content {
+  text-align: center;
+}
+
+.splash-content h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  animation: fadeIn 1s ease-in;
+}
+
+.loading-bar {
+  width: 200px;
+  height: 4px;
+  background-color: var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--primary-color);
+  animation: loading 2s ease-in-out forwards;
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   Animations
+===================================================== */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
   }
 }
