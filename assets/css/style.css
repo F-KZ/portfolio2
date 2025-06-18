@@ -190,6 +190,12 @@ body{
    display: flex;
    justify-content: space-between;
    align-items: center;
+
+}
+
+.sue-column{
+   flex-direction: column;
+
 }
 
 .sue-sub-container{
