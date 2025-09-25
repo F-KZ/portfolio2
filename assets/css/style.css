@@ -193,6 +193,13 @@ body{
 
 }
 
+.sue-container-center{
+  
+   justify-content: center;
+   
+
+}
+
 .sue-column{
    flex-direction: column;
 
