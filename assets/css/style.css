@@ -154,6 +154,17 @@
     text-align: center;
     padding-bottom: 2rem;
   }
+  
+}
+
+@media screen and (max-width: 500px) {
+
+  .home-hero-text h2 {
+    font-size: 1rem;
+  }
+  .home-hero-text h1 {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 1024px) {
