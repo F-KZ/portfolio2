@@ -127,16 +127,7 @@ portfolioCardsWithModals.forEach((portfolioCardWithModal) => {
       }, 300);
    });
 
-   modalCloseBtn.addEventListener("click", () => {
-      setTimeout(() => {
-         portfolioBackdrop.style.display = "none";
-      }, 500);
-      
-      setTimeout(() => {
-         portfolioBackdrop.classList.remove("active");
-         portfolioModal.classList.remove("active");
-      }, 100);
-   });
+   
 });
 
 /* =====================================================

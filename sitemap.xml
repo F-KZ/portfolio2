@@ -30,5 +30,45 @@
      <changefreq>yearly</changefreq>
      <priority>0.7</priority>
    </url>
+   <url>
+     <loc>https://www.franck-kanza.fr/portfolio/delice-burger.html</loc>
+     <changefreq>yearly</changefreq>
+     <priority>0.6</priority>
+   </url>
+   <url>
+     <loc>https://www.franck-kanza.fr/portfolio/odelice-burger.html</loc>
+     <changefreq>yearly</changefreq>
+     <priority>0.6</priority>
+   </url>
+   <url>
+     <loc>https://www.franck-kanza.fr/portfolio/horizon-transports.html</loc>
+     <changefreq>yearly</changefreq>
+     <priority>0.6</priority>
+   </url>
+   <url>
+     <loc>https://www.franck-kanza.fr/portfolio/barber-shop.html</loc>
+     <changefreq>yearly</changefreq>
+     <priority>0.6</priority>
+   </url>
+   <url>
+     <loc>https://www.franck-kanza.fr/portfolio/uwalls.html</loc>
+     <changefreq>yearly</changefreq>
+     <priority>0.6</priority>
+   </url>
+   <url>
+     <loc>https://www.franck-kanza.fr/portfolio/fioul-market.html</loc>
+     <changefreq>yearly</changefreq>
+     <priority>0.6</priority>
+   </url>
+   <url>
+     <loc>https://www.franck-kanza.fr/portfolio/id-formation.html</loc>
+     <changefreq>yearly</changefreq>
+     <priority>0.6</priority>
+   </url>
+   <url>
+     <loc>https://www.franck-kanza.fr/portfolio/kanap.html</loc>
+     <changefreq>yearly</changefreq>
+     <priority>0.6</priority>
+   </url>
 
  </urlset>

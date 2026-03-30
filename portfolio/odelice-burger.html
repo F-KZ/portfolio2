@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'Délice Burger — Site web & App mobile | Franck Kanza</title>
+    <meta name="author" content="Franck Kanza">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Présentation du projet O'Délice Burger — site web React et application mobile React Native réalisés par Franck Kanza, développeur web freelance.">
+    <link rel="canonical" href="https://www.franck-kanza.fr/portfolio/odelice-burger.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="O'Délice Burger — Site web & App mobile | Franck Kanza">
+    <meta property="og:description" content="Présentation du projet O'Délice Burger — site web React et application mobile React Native réalisés par Franck Kanza, développeur web freelance.">
+    <meta property="og:image" content="https://www.franck-kanza.fr/assets/images/portfolio images/odelice.webp">
+    <meta property="og:url" content="https://www.franck-kanza.fr/portfolio/odelice-burger.html">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="O'Délice Burger — Site web & App mobile | Franck Kanza">
+    <meta name="twitter:description" content="Présentation du projet O'Délice Burger — site web React et application mobile React Native réalisés par Franck Kanza, développeur web freelance.">
+    <meta name="twitter:image" content="https://www.franck-kanza.fr/assets/images/portfolio images/odelice.webp">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+    <style>
+      * { box-sizing: border-box; }
+
+      .project-hero {
+        background: linear-gradient(135deg, #1a0500 0%, #3d0f00 50%, #8b2500 100%);
+        padding: 80px 0 60px;
+        text-align: center;
+        color: #fff;
+      }
+      .project-hero .project-tag {
+        display: inline-block;
+        background: var(--first-color, #e94560);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+      }
+      .project-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
+      .project-hero p { font-size: 1.1rem; opacity: 0.8; max-width: 640px; margin: 0 auto 2rem; }
+      .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+      .btn-demo {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--first-color, #e94560); color: #fff;
+        padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+        text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .btn-demo:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,69,96,0.4); }
+      .btn-outline {
+        display: inline-flex; align-items: center; gap: 8px;
+        border: 2px solid rgba(255,255,255,0.6); color: #fff;
+        padding: 12px 26px; border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+        text-decoration: none; transition: background 0.2s, border-color 0.2s;
+      }
+      .btn-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+
+      /* Volets site / app */
+      .dual-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+      @media (max-width: 768px) {
+        .dual-section { grid-template-columns: 1fr; }
+      }
+      .dual-panel {
+        padding: 60px 48px;
+      }
+      .dual-panel.web { background: #fff; }
+      .dual-panel.app { background: #f8f9fa; }
+
+      /* Description */
+      .project-section { padding: 70px 0; }
+      .project-section:nth-child(even) { background: #f8f9fa; }
+      .project-container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+      .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--first-color, #e94560); margin-bottom: 0.5rem; }
+      .section-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #1a1a2e; margin-bottom: 1.5rem; }
+      .section-text { font-size: 1.05rem; line-height: 1.8; color: #555; margin-bottom: 1rem; }
+
+      /* Panel titles */
+      .panel-icon {
+        width: 52px; height: 52px; border-radius: 14px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.5rem; margin-bottom: 1.2rem;
+      }
+      .panel-icon.web-icon { background: rgba(233,69,96,0.1); color: var(--first-color, #e94560); }
+      .panel-icon.app-icon { background: rgba(99,102,241,0.1); color: #6366f1; }
+      .panel-title { font-size: 1.3rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.8rem; }
+      .panel-text { font-size: 0.97rem; line-height: 1.75; color: #555; margin-bottom: 1.4rem; }
+      .panel-link {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-weight: 600; font-size: 0.9rem; text-decoration: none;
+        transition: gap 0.2s;
+      }
+      .panel-link.red { color: var(--first-color, #e94560); }
+      .panel-link.purple { color: #6366f1; }
+      .panel-link:hover { gap: 10px; }
+
+      /* Tech stack */
+      .tech-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.5rem; }
+      .tech-badge { display: flex; align-items: center; gap: 8px; background: #fff; border: 1.5px solid #e0e0e0; border-radius: 10px; padding: 10px 18px; font-weight: 600; font-size: 0.9rem; color: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+      .tech-badge i { font-size: 1.2rem; color: var(--first-color, #e94560); }
+
+      /* Défis */
+      .challenge-list { list-style: none; padding: 0; display: grid; gap: 20px; margin-top: 1.5rem; }
+      .challenge-item { background: #fff; border-left: 4px solid var(--first-color, #e94560); border-radius: 0 12px 12px 0; padding: 20px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+      .challenge-item h4 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+      .challenge-item p { font-size: 0.95rem; color: #666; line-height: 1.7; margin: 0; }
+
+      /* Screenshots */
+      .screenshots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 2rem; }
+      .screenshot-card { border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.2s; }
+      .screenshot-card:hover { transform: translateY(-4px); }
+      .screenshot-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+      /* CTA */
+      .project-cta { background: linear-gradient(135deg, #1a0500, #8b2500); padding: 70px 0; text-align: center; color: #fff; }
+      .project-cta h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 1rem; }
+      .project-cta p { opacity: 0.75; margin-bottom: 2rem; font-size: 1.05rem; }
+      .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+      .btn-cta-outline {
+        display: inline-flex; align-items: center; gap: 8px;
+        border: 2px solid rgba(255,255,255,0.6); color: #fff;
+        padding: 12px 26px; border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+        text-decoration: none; transition: background 0.2s;
+      }
+      .btn-cta-outline:hover { background: rgba(255,255,255,0.15); }
+
+      /* Nav */
+      .back-nav { padding: 20px 24px; background: #fff; border-bottom: 1px solid #eee; }
+      .back-nav a { display: inline-flex; align-items: center; gap: 6px; color: #555; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+      .back-nav a:hover { color: var(--first-color, #e94560); }
+
+      /* Divider */
+      .dual-divider { width: 1px; background: #e0e0e0; }
+      @media (max-width: 768px) { .dual-divider { display: none; } }
+    </style>
+  </head>
+  <body>
+
+    <nav class="back-nav">
+      <div class="project-container">
+        <a href="../index.html#portfolio"><i class="ri-arrow-left-line"></i> Retour au portfolio</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="project-hero">
+      <div class="project-container">
+        <span class="project-tag">Site web + Application mobile</span>
+        <h1>O'Délice Burger</h1>
+        <p>Un projet complet pour un fast-food de qualité : un site web React vitrine et une application mobile React Native pour commander depuis son téléphone.</p>
+        <div class="hero-btns">
+          <a href="https://f-kz.github.io/delice-burger/" target="_blank" rel="noopener" class="btn-demo">
+            <i class="ri-global-line"></i> Voir le site web
+          </a>
+          <a href="https://www.figma.com/design/lEHel3HbXzXKJ8uf378hFn/Burger-app?m=dev&t=ssQ6LHFroWZC63Ya-1" target="_blank" rel="noopener" class="btn-outline">
+            <i class="ri-smartphone-line"></i> Voir l'app sur Figma
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dual panel : site web / app mobile -->
+    <div style="background:#fff;">
+      <div class="project-container" style="padding-top:60px; padding-bottom:60px;">
+        <div style="display:grid; grid-template-columns:1fr 1px 1fr; gap:48px;" class="dual-wrapper">
+          <!-- Site web -->
+          <div>
+            <div class="panel-icon web-icon"><i class="ri-global-line"></i></div>
+            <p class="panel-title">Site web React</p>
+            <p class="panel-text">
+              Site vitrine moderne présentant la carte du restaurant, les promotions en cours et les informations pratiques. Développé en <strong>React</strong>, déployé sur GitHub Pages. L'interface mise sur un design sombre et chaleureux, fidèle à l'univers du burger artisanal.
+            </p>
+            <a href="https://f-kz.github.io/delice-burger/" target="_blank" rel="noopener" class="panel-link red">
+              Voir le site <i class="ri-arrow-right-line"></i>
+            </a>
+          </div>
+          <!-- Divider -->
+          <div style="background:#e0e0e0;"></div>
+          <!-- App mobile -->
+          <div>
+            <div class="panel-icon app-icon"><i class="ri-smartphone-line"></i></div>
+            <p class="panel-title">Application mobile React Native</p>
+            <p class="panel-text">
+              Application mobile permettant de consulter la carte, personnaliser sa commande et la passer directement depuis son smartphone. Conçue sur <strong>Figma</strong> puis développée avec <strong>React Native & Expo</strong> pour iOS et Android.
+            </p>
+            <a href="https://www.figma.com/design/lEHel3HbXzXKJ8uf378hFn/Burger-app?m=dev&t=ssQ6LHFroWZC63Ya-1" target="_blank" rel="noopener" class="panel-link purple">
+              Voir sur Figma <i class="ri-arrow-right-line"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technologies -->
+    <section class="project-section">
+      <div class="project-container">
+        <p class="section-label">Stack technique</p>
+        <h2 class="section-title">Technologies utilisées</h2>
+        <div class="tech-grid">
+          <span class="tech-badge"><i class="ri-reactjs-line"></i> React</span>
+          <span class="tech-badge"><i class="ri-javascript-line"></i> JavaScript</span>
+          <span class="tech-badge"><i class="ri-css3-line"></i> CSS Modules</span>
+          <span class="tech-badge"><i class="ri-smartphone-line"></i> React Native</span>
+          <span class="tech-badge"><i class="ri-artboard-2-line"></i> Expo</span>
+          <span class="tech-badge"><i class="ri-pencil-ruler-2-line"></i> Figma</span>
+          <span class="tech-badge"><i class="ri-git-branch-line"></i> Git / GitHub</span>
+          <span class="tech-badge"><i class="ri-global-line"></i> GitHub Pages</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Défis techniques -->
+    <section class="project-section">
+      <div class="project-container">
+        <p class="section-label">Challenges</p>
+        <h2 class="section-title">Défis techniques résolus</h2>
+        <ul class="challenge-list">
+          <li class="challenge-item">
+            <h4>Cohérence visuelle web & mobile</h4>
+            <p>Maintenir une identité graphique unifiée entre deux codebases distincts (React web et React Native). Résolu grâce à un design system défini sur Figma avec des tokens de couleurs, typographies et espacements partagés.</p>
+          </li>
+          <li class="challenge-item">
+            <h4>Navigation mobile intuitive avec React Navigation</h4>
+            <p>Concevoir une navigation naturelle sur l'app (accueil, carte, panier, profil) sans surcharger l'interface. Implémentée avec React Navigation via une bottom tab bar personnalisée adaptée à la charte du restaurant.</p>
+          </li>
+          <li class="challenge-item">
+            <h4>Performance des images sur le site web</h4>
+            <p>Les visuels des burgers étant très lourds, le temps de chargement était dégradé sur mobile. Résolu par la conversion en WebP, le lazy loading natif et des skeleton loaders pour améliorer le ressenti utilisateur.</p>
+          </li>
+          <li class="challenge-item">
+            <h4>Compatibilité iOS & Android avec Expo</h4>
+            <p>Certains composants React Native se comportaient différemment selon la plateforme. Utilisation des API Platform et des styles conditionnels pour garantir une expérience identique sur iOS et Android sans dupliquer le code.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="project-section">
+      <div class="project-container">
+        <p class="section-label">Aperçu</p>
+        <h2 class="section-title">Screenshots</h2>
+        <div class="screenshots-grid">
+          <div class="screenshot-card">
+            <img loading="lazy" src="../assets/images/portfolio images/odelice.webp" alt="Site web O'Délice Burger — vue desktop">
+          </div>
+          <div class="screenshot-card">
+            <img loading="lazy" src="../assets/images/burgerApp/image0.png" alt="App mobile O'Délice Burger — écran accueil">
+          </div>
+          <div class="screenshot-card">
+            <img loading="lazy" src="../assets/images/burgerApp/image1.png" alt="App mobile O'Délice Burger — carte">
+          </div>
+          <div class="screenshot-card">
+            <img loading="lazy" src="../assets/images/burgerApp/image2.png" alt="App mobile O'Délice Burger — détail produit">
+          </div>
+          <div class="screenshot-card">
+            <img loading="lazy" src="../assets/images/burgerApp/image3.png" alt="App mobile O'Délice Burger — panier">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="project-cta">
+      <div class="project-container">
+        <h2>Découvrir le projet</h2>
+        <p>Testez le site web ou explorez le design de l'application sur Figma.</p>
+        <div class="cta-btns">
+          <a href="https://f-kz.github.io/delice-burger/" target="_blank" rel="noopener" class="btn-demo">
+            <i class="ri-global-line"></i> Voir le site web
+          </a>
+          <a href="https://www.figma.com/design/lEHel3HbXzXKJ8uf378hFn/Burger-app?m=dev&t=ssQ6LHFroWZC63Ya-1" target="_blank" rel="noopener" class="btn-cta-outline">
+            <i class="ri-artboard-2-line"></i> Voir l'app sur Figma
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </body>
+</html>
