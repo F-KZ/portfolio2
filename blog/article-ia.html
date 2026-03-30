@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'IA va-t-elle remplacer les développeurs web ? | Franck Kanza</title>
+  <meta name="description" content="L'intelligence artificielle va-t-elle remplacer les développeurs web ? Analyse des capacités, limites de l'IA et de son impact sur le métier de développeur.">
+  <link rel="canonical" href="https://www.franck-kanza.fr/blog/article-ia.html">
+  <meta name="author" content="Franck Kanza">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="L'IA va-t-elle remplacer les développeurs web ?">
+  <meta property="og:description" content="Analyse des capacités, limites de l'IA et de son impact sur le métier de développeur web.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="article:author" content="Franck Kanza">
+  <meta property="article:published_time" content="2025-01-01T00:00:00+01:00">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "L'IA va-t-elle remplacer les développeurs web ?",
+    "description": "Analyse des capacités, limites de l'IA et de son impact sur le métier de développeur web.",
+    "author": { "@type": "Person", "name": "Franck Kanza", "url": "https://www.franck-kanza.fr" },
+    "publisher": { "@type": "Person", "name": "Franck Kanza" },
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-01-01",
+    "inLanguage": "fr-FR",
+    "keywords": ["IA", "intelligence artificielle", "développeur web", "React", "Next.js"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0f;
+      --bg-card: #141418;
+      --bg-glass: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --text: #e8e8ec;
+      --text-muted: rgba(232,232,236,0.5);
+      --accent: #6c63ff;
+      --accent-soft: rgba(108,99,255,0.15);
+      --accent2: #00d4aa;
+      --accent2-soft: rgba(0,212,170,0.12);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ─── Noise texture overlay ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ─── Ambient glow ─── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -20vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw;
+      height: 60vh;
+      background: radial-gradient(ellipse at center, rgba(108,99,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper { position: relative; z-index: 1; }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(13,13,15,0.8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+
+    .return-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      transition: all 0.2s ease;
+    }
+    .return-btn:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,0.2);
+      background: var(--bg-glass);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .tag.accent { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+    .tag.accent2 { border-color: var(--accent2); color: var(--accent2); background: var(--accent2-soft); }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 0.35rem; }
+    .article-meta i { color: var(--accent); font-size: 0.9rem; }
+
+    /* ─── Hero visual ─── */
+    .hero-visual {
+      animation: fadeUp 0.7s 0.15s ease both;
+    }
+
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(108,99,255,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .brain-svg {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .stat {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .stat-num.purple { color: var(--accent); }
+    .stat-num.green { color: var(--accent2); }
+    .stat-label { font-size: 0.72rem; color: var(--text-muted); line-height: 1.3; }
+
+    /* ─── ARTICLE ─── */
+    .article-container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    .article-intro {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: rgba(232,232,236,0.8);
+      border-left: 3px solid var(--accent);
+      padding-left: 1.5rem;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .article-section {
+      margin-bottom: 3rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    h2 .h2-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 0.15rem 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .card-list li {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card-list li:hover {
+      border-color: rgba(108,99,255,0.3);
+      transform: translateX(4px);
+    }
+
+    .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .card-icon.purple { background: var(--accent-soft); color: var(--accent); }
+    .card-icon.green  { background: var(--accent2-soft); color: var(--accent2); }
+    .card-icon.orange { background: rgba(255,165,0,0.12); color: #ffaa33; }
+
+    .card-text strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+    .card-text span {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Conclusion ─── */
+    .conclusion {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      line-height: 1.8;
+      color: rgba(232,232,236,0.8);
+      position: relative;
+      overflow: hidden;
+    }
+    .conclusion::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 0% 100%, rgba(0,212,170,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .conclusion a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,212,170,0.3);
+      transition: border-color 0.2s;
+    }
+    .conclusion a:hover { border-color: var(--accent2); }
+
+    /* ─── CTA ─── */
+    .cta-block {
+      margin-top: 3rem;
+      background: linear-gradient(135deg, rgba(108,99,255,0.15) 0%, rgba(0,212,170,0.08) 100%);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .cta-block h2 {
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .cta-block p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(108,99,255,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(108,99,255,0.5);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-nav {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-nav a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--text); }
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .footer-social a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .copy {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 3rem 1.5rem 2rem;
+      }
+      .hero-visual { order: -1; }
+      .article-container { padding: 0 1.5rem 4rem; }
+    }
+    @media (max-width: 480px) {
+      .header-inner { padding: 0.9rem 1.25rem; }
+      h1 { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo">Franck<span>.</span></a>
+      <a href="../index.html" class="return-btn">
+        <i class="ri-arrow-left-line"></i> Retour
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-tags">
+          <span class="tag accent">Intelligence Artificielle</span>
+          <span class="tag accent2">Développement Web</span>
+          <span class="tag">Analyse</span>
+        </div>
+        <h1>L'IA va-t-elle remplacer les <em>développeurs web</em>&nbsp;?</h1>
+        <div class="article-meta">
+          <span><i class="ri-user-line"></i> Franck Kanza</span>
+          <span><i class="ri-calendar-line"></i> Janvier 2025</span>
+          <span><i class="ri-time-line"></i> 5 min de lecture</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <!-- SVG illustratif IA + code -->
+          <div class="brain-svg">
+            <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Cercles animés -->
+              <circle cx="90" cy="80" r="60" stroke="rgba(108,99,255,0.2)" stroke-width="1" stroke-dasharray="4 6"/>
+              <circle cx="90" cy="80" r="40" stroke="rgba(0,212,170,0.2)" stroke-width="1" stroke-dasharray="3 5"/>
+              <!-- Nœuds réseau de neurones -->
+              <circle cx="90" cy="30" r="6" fill="#6c63ff" opacity="0.9"/>
+              <circle cx="130" cy="60" r="5" fill="#6c63ff" opacity="0.7"/>
+              <circle cx="120" cy="110" r="5" fill="#00d4aa" opacity="0.8"/>
+              <circle cx="60" cy="115" r="5" fill="#00d4aa" opacity="0.7"/>
+              <circle cx="50" cy="58" r="5" fill="#6c63ff" opacity="0.7"/>
+              <circle cx="90" cy="80" r="8" fill="url(#grad)" opacity="1"/>
+              <!-- Connexions -->
+              <line x1="90" y1="30" x2="130" y2="60" stroke="rgba(108,99,255,0.4)" stroke-width="1.5"/>
+              <line x1="90" y1="30" x2="50" y2="58" stroke="rgba(108,99,255,0.4)" stroke-width="1.5"/>
+              <line x1="130" y1="60" x2="90" y2="80" stroke="rgba(108,99,255,0.5)" stroke-width="1.5"/>
+              <line x1="50" y1="58" x2="90" y2="80" stroke="rgba(108,99,255,0.5)" stroke-width="1.5"/>
+              <line x1="90" y1="80" x2="120" y2="110" stroke="rgba(0,212,170,0.5)" stroke-width="1.5"/>
+              <line x1="90" y1="80" x2="60" y2="115" stroke="rgba(0,212,170,0.5)" stroke-width="1.5"/>
+              <line x1="120" y1="110" x2="60" y2="115" stroke="rgba(0,212,170,0.3)" stroke-width="1"/>
+              <!-- Texte code -->
+              <text x="66" y="150" font-size="9" fill="rgba(108,99,255,0.6)" font-family="monospace">const dev = human + AI</text>
+              <defs>
+                <radialGradient id="grad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#6c63ff"/>
+                  <stop offset="100%" stop-color="#00d4aa"/>
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-num purple">43%</div>
+              <div class="stat-label">des développeurs utilisent Copilot quotidiennement</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num green">+55%</div>
+              <div class="stat-label">de vitesse de livraison avec l'IA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE -->
+  <main>
+    <div class="article-container">
+
+      <p class="article-intro">
+        Avec l'essor de ChatGPT, GitHub Copilot et autres outils d'IA générative,
+        une question revient souvent : <strong>l'intelligence artificielle va-t-elle
+        remplacer les développeurs web ?</strong> Voici mon analyse en tant que
+        développeur freelance React &amp; Next.js à Paris.
+      </p>
+
+      <!-- Section 1 -->
+      <div class="article-section">
+        <h2><span class="h2-num">01</span> Ce que l'IA peut déjà faire</h2>
+        <ul class="card-list">
+          <li>
+            <div class="card-icon purple"><i class="ri-code-s-slash-line"></i></div>
+            <div class="card-text">
+              <strong>Générer du code</strong>
+              <span>L'IA peut écrire des blocs de code ou des composants entiers, automatiser des tâches répétitives, ou résoudre des problèmes courants.</span>
+            </div>
+          </li>
+          <li>
+            <div class="card-icon purple"><i class="ri-layout-line"></i></div>
+            <div class="card-text">
+              <strong>Créer des sites simples</strong>
+              <span>Les outils no-code/low-code, boostés par l'IA, permettent de concevoir des sites web sans coder.</span>
+            </div>
+          </li>
+          <li>
+            <div class="card-icon purple"><i class="ri-bug-line"></i></div>
+            <div class="card-text">
+              <strong>Optimisation et correction</strong>
+              <span>Analyse, débogage et optimisation de code en quelques secondes.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="article-section">
+        <h2><span class="h2-num">02</span> Limites de l'IA aujourd'hui</h2>
+        <ul class="card-list">
+          <li>
+            <div class="card-icon orange"><i class="ri-lightbulb-line"></i></div>
+            <div class="card-text">
+              <strong>Complexité et créativité</strong>
+              <span>L'IA a du mal à comprendre le contexte métier ou à innover en termes d'UX.</span>
+            </div>
+          </li>
+          <li>
+            <div class="card-icon orange"><i class="ri-settings-3-line"></i></div>
+            <div class="card-text">
+              <strong>Adaptabilité</strong>
+              <span>Les projets complexes nécessitent des ajustements humains précis que l'IA ne peut anticiper seule.</span>
+            </div>
+          </li>
+          <li>
+            <div class="card-icon orange"><i class="ri-group-line"></i></div>
+            <div class="card-text">
+              <strong>Collaboration</strong>
+              <span>Les développeurs interagissent avec des équipes et des clients, ce que l'IA ne peut pas remplacer.</span>
+            </div>
+          </li>
+          <li>
+            <div class="card-icon orange"><i class="ri-shield-line"></i></div>
+            <div class="card-text">
+              <strong>Sécurité</strong>
+              <span>L'IA peut générer du code non sécurisé qui nécessite une validation humaine rigoureuse.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="article-section">
+        <h2><span class="h2-num">03</span> Rôle futur de l'IA dans le développement</h2>
+        <ul class="card-list">
+          <li>
+            <div class="card-icon green"><i class="ri-rocket-line"></i></div>
+            <div class="card-text">
+              <strong>Assistant puissant</strong>
+              <span>L'IA automatisera certaines tâches pour aider les développeurs à aller plus vite.</span>
+            </div>
+          </li>
+          <li>
+            <div class="card-icon green"><i class="ri-brain-line"></i></div>
+            <div class="card-text">
+              <strong>Évolution des compétences</strong>
+              <span>Les développeurs se concentreront sur des aspects stratégiques et créatifs à plus forte valeur.</span>
+            </div>
+          </li>
+          <li>
+            <div class="card-icon green"><i class="ri-links-line"></i></div>
+            <div class="card-text">
+              <strong>Augmentation, pas remplacement</strong>
+              <span>L'IA viendra en soutien, mais la créativité humaine restera indispensable.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Conclusion -->
+      <div class="article-section">
+        <h2>Conclusion</h2>
+        <div class="conclusion">
+          <p>
+            L'IA ne remplacera pas les développeurs web, mais transformera leur façon de travailler.
+            Ceux qui adoptent l'IA comme un outil pourront travailler plus vite et se concentrer
+            sur des tâches plus complexes et créatives. En tant que
+            <a href="https://www.franck-kanza.fr" title="Développeur web freelance Paris">
+              développeur freelance React &amp; Next.js à Paris
+            </a>,
+            j'utilise déjà l'IA au quotidien pour livrer des projets plus rapidement.
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h2>Vous avez un projet web&nbsp;?</h2>
+        <p>Je crée des sites et applications sur-mesure en React &amp; Next.js. Devis gratuit et sans engagement.</p>
+        <a href="../index.html#contact" class="btn btn-primary">
+          Demander un devis <i class="ri-arrow-right-up-line"></i>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="../index.html" class="logo">Franck<span>.</span></a>
+      <ul class="footer-nav">
+        <li><a href="../index.html#about">À propos</a></li>
+        <li><a href="../index.html#resume">Résumé</a></li>
+        <li><a href="../index.html#service">Services</a></li>
+        <li><a href="../index.html#portfolio">Portfolio</a></li>
+      </ul>
+      <ul class="footer-social">
+        <li><a href="https://github.com/f-kz" aria-label="GitHub de Franck Kanza" rel="noopener"><i class="ri-github-fill"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/franck-kanza-6849b4195/" aria-label="LinkedIn de Franck Kanza" rel="noopener"><i class="ri-linkedin-fill"></i></a></li>
+      </ul>
+      <p class="copy">© Franck Kanza 2026</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

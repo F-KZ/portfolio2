@@ -1,7 +1,4 @@
-# Autorise tous les robots à explorer toutes les pages de ce site
 User-agent: *
-Disallow: /pages/        
-
-#sitemap
-
-Sitemap: https://franck-kanza.fr/sitemap.xml
+ Allow: /
+ Disallow: /assets/js/
+ Sitemap: https://www.franck-kanza.fr/sitemap.xml

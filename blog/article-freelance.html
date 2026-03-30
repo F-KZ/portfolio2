@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment devenir développeur freelance ? | Franck Kanza</title>
+  <meta name="description" content="Guide complet pour devenir développeur freelance : spécialisation, portfolio, statut légal, trouver des clients et fidéliser.">
+  <meta name="author" content="Franck Kanza">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.franck-kanza.fr/blog/article-freelance.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Comment devenir développeur freelance ?",
+    "author": { "@type": "Person", "name": "Franck Kanza", "url": "https://www.franck-kanza.fr" },
+    "datePublished": "2025-01-01",
+    "inLanguage": "fr-FR"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0c09;
+      --bg-card: #161310;
+      --bg-glass: rgba(255,255,255,0.04);
+      --border: rgba(255,220,130,0.1);
+      --text: #f0ead8;
+      --text-muted: rgba(240,234,216,0.5);
+      --accent: #f5a623;
+      --accent-soft: rgba(245,166,35,0.12);
+      --accent2: #e8572a;
+      --accent2-soft: rgba(232,87,42,0.12);
+      --accent3: #f5d76e;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* Noise */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* Ambient glow */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -15vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw;
+      height: 55vh;
+      background: radial-gradient(ellipse at center, rgba(245,166,35,0.1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper { position: relative; z-index: 1; }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(14,12,9,0.82);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+
+    .return-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      transition: all 0.2s ease;
+    }
+    .return-btn:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .tag.amber { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+    .tag.orange { border-color: var(--accent2); color: var(--accent2); background: var(--accent2-soft); }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 0.35rem; }
+    .article-meta i { color: var(--accent); font-size: 0.9rem; }
+
+    /* ─── Hero visual ─── */
+    .hero-visual { animation: fadeUp 0.7s 0.15s ease both; }
+
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 10%, rgba(245,166,35,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .steps-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .step-row {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .step-row:hover { border-color: rgba(245,166,35,0.3); color: var(--text); }
+
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(245,166,35,0.3);
+      color: var(--accent);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ─── ARTICLE ─── */
+    .article-container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    .article-intro {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(240,234,216,0.75);
+      border-left: 3px solid var(--accent);
+      padding-left: 1.5rem;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .article-block { margin-bottom: 3rem; animation: fadeUp 0.6s ease both; }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    h2 .h2-badge {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(245,166,35,0.35);
+      border-radius: 6px;
+      padding: 0.15rem 0.55rem;
+      letter-spacing: 0.06em;
+    }
+
+    .lead-p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .card-list li {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card-list li:hover {
+      border-color: rgba(245,166,35,0.3);
+      transform: translateX(4px);
+    }
+
+    .card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .ci-amber  { background: var(--accent-soft);  color: var(--accent); }
+    .ci-orange { background: var(--accent2-soft); color: var(--accent2); }
+    .ci-gold   { background: rgba(245,215,110,0.12); color: var(--accent3); }
+
+    .card-list li .inner strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+      color: var(--text);
+    }
+    .card-list li .inner span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Conclusion ─── */
+    .conclusion {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .conclusion::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 100% 0%, rgba(232,87,42,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .conclusion p {
+      font-size: 0.95rem;
+      color: rgba(240,234,216,0.75);
+      margin-bottom: 1rem;
+    }
+    .conclusion p:last-child { margin-bottom: 0; }
+
+    /* ─── CTA ─── */
+    .cta-block {
+      margin-top: 3rem;
+      background: linear-gradient(135deg, rgba(245,166,35,0.13) 0%, rgba(232,87,42,0.08) 100%);
+      border: 1px solid rgba(245,166,35,0.25);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .cta-block h2 { justify-content: center; font-size: 1.4rem; margin-bottom: 0.75rem; }
+    .cta-block p  { color: var(--text-muted); max-width: 440px; margin: 0 auto 1.75rem; font-size: 0.92rem; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(245,166,35,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(245,166,35,0.45);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-nav {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .footer-nav a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--accent); }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .footer-social a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .copy { font-size: 0.78rem; color: var(--text-muted); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 2rem; }
+      .hero-visual { order: -1; }
+      .article-container { padding: 0 1.5rem 4rem; }
+    }
+    @media (max-width: 480px) {
+      .header-inner { padding: 0.9rem 1.25rem; }
+      h1 { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo">Franck<span>.</span></a>
+      <a href="../index.html" class="return-btn">
+        <i class="ri-arrow-left-line"></i> Retour
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-tags">
+          <span class="tag amber">Freelance</span>
+          <span class="tag orange">Carrière</span>
+          <span class="tag">Guide</span>
+        </div>
+        <h1>Comment devenir <em>développeur freelance</em>&nbsp;?</h1>
+        <div class="article-meta">
+          <span><i class="ri-user-line"></i> Franck Kanza</span>
+          <span><i class="ri-calendar-line"></i> Janvier 2025</span>
+          <span><i class="ri-time-line"></i> 6 min de lecture</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="steps-visual">
+            <div class="step-row"><span class="step-num">01</span> Se spécialiser</div>
+            <div class="step-row"><span class="step-num">02</span> Construire un portfolio</div>
+            <div class="step-row"><span class="step-num">03</span> Définir statut &amp; tarifs</div>
+            <div class="step-row"><span class="step-num">04</span> Trouver des clients</div>
+            <div class="step-row"><span class="step-num">05</span> Gérer les projets</div>
+            <div class="step-row"><span class="step-num">06</span> Fidéliser</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE -->
+  <main>
+    <div class="article-container">
+
+      <p class="article-intro">
+        Devenir développeur freelance est une aventure accessible à condition d'être bien préparé.
+        Voici les <strong>6 étapes clés</strong> pour lancer votre activité indépendante, trouver vos
+        premiers clients et construire une carrière durable.
+      </p>
+
+      <!-- 1 -->
+      <div class="article-block">
+        <h2><span class="h2-badge">01</span> Se spécialiser pour se démarquer</h2>
+        <p class="lead-p">Choisissez une spécialité pour devenir expert dans votre domaine :</p>
+        <ul class="card-list">
+          <li>
+            <div class="card-icon ci-amber"><i class="ri-reactjs-line"></i></div>
+            <div class="inner"><strong>Front-End</strong><span>React.js ou Vue.js pour des interfaces modernes et performantes.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-amber"><i class="ri-server-line"></i></div>
+            <div class="inner"><strong>Back-End</strong><span>Node.js, Django ou PHP pour la logique serveur et les APIs.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-amber"><i class="ri-store-line"></i></div>
+            <div class="inner"><strong>E-commerce</strong><span>WooCommerce et Shopify pour les boutiques en ligne.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-amber"><i class="ri-smartphone-line"></i></div>
+            <div class="inner"><strong>Mobile</strong><span>React Native ou Flutter pour les applications mobiles cross-platform.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2 -->
+      <div class="article-block">
+        <h2><span class="h2-badge">02</span> Construire un portfolio solide</h2>
+        <p class="lead-p">Montrez vos compétences avec des projets concrets :</p>
+        <ul class="card-list">
+          <li>
+            <div class="card-icon ci-orange"><i class="ri-layout-masonry-line"></i></div>
+            <div class="inner"><strong>Portfolio en ligne</strong><span>Présentez vos meilleurs travaux avec des descriptions claires.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-orange"><i class="ri-github-line"></i></div>
+            <div class="inner"><strong>Open-source</strong><span>Contribuez à des projets sur GitHub pour crédibiliser votre profil.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-orange"><i class="ri-hand-heart-line"></i></div>
+            <div class="inner"><strong>Premiers projets</strong><span>Travaillez bénévolement ou à petit prix pour construire vos références.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 3 -->
+      <div class="article-block">
+        <h2><span class="h2-badge">03</span> Définir votre statut légal et vos tarifs</h2>
+        <p class="lead-p">Commencez en tant qu'auto-entrepreneur pour plus de simplicité.</p>
+        <ul class="card-list">
+          <li>
+            <div class="card-icon ci-gold"><i class="ri-government-line"></i></div>
+            <div class="inner"><strong>Inscription URSSAF</strong><span>Obtenez votre numéro SIRET pour facturer légalement.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-gold"><i class="ri-money-euro-circle-line"></i></div>
+            <div class="inner"><strong>Tarifs</strong><span>Démarrez à 25–50 €/h puis ajustez progressivement selon votre expérience.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 4 -->
+      <div class="article-block">
+        <h2><span class="h2-badge">04</span> Trouver des clients</h2>
+        <p class="lead-p">Utilisez plusieurs canaux pour décrocher des projets :</p>
+        <ul class="card-list">
+          <li>
+            <div class="card-icon ci-amber"><i class="ri-global-line"></i></div>
+            <div class="inner"><strong>Plateformes</strong><span>Malt, Upwork, Fiverr, Toptal — créez des profils complets et optimisés.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-amber"><i class="ri-linkedin-box-line"></i></div>
+            <div class="inner"><strong>Réseautage</strong><span>LinkedIn, groupes Facebook, événements locaux et meetups tech.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-amber"><i class="ri-send-plane-line"></i></div>
+            <div class="inner"><strong>Prospection directe</strong><span>Contactez des entreprises et proposez vos services de façon personnalisée.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 5 -->
+      <div class="article-block">
+        <h2><span class="h2-badge">05</span> Gérer vos projets efficacement</h2>
+        <p class="lead-p">Organisez votre travail avec des outils adaptés :</p>
+        <ul class="card-list">
+          <li>
+            <div class="card-icon ci-orange"><i class="ri-kanban-view"></i></div>
+            <div class="inner"><strong>Gestion de projet</strong><span>Trello, Notion ou Asana pour suivre l'avancement et les tâches.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-orange"><i class="ri-file-list-3-line"></i></div>
+            <div class="inner"><strong>Facturation</strong><span>Freebe, Henrri ou Facture.net pour gérer vos devis et factures.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-orange"><i class="ri-chat-3-line"></i></div>
+            <div class="inner"><strong>Communication</strong><span>Slack ou Zoom pour maintenir un lien clair avec vos clients.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 6 -->
+      <div class="article-block">
+        <h2><span class="h2-badge">06</span> Fidéliser vos clients</h2>
+        <p class="lead-p">Un client satisfait est votre meilleur atout :</p>
+        <ul class="card-list">
+          <li>
+            <div class="card-icon ci-gold"><i class="ri-time-line"></i></div>
+            <div class="inner"><strong>Respect des délais</strong><span>Tenez vos engagements et communiquez en cas de retard.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-gold"><i class="ri-tools-line"></i></div>
+            <div class="inner"><strong>Support post-livraison</strong><span>Proposez un accompagnement après la mise en ligne du projet.</span></div>
+          </li>
+          <li>
+            <div class="card-icon ci-gold"><i class="ri-star-line"></i></div>
+            <div class="inner"><strong>Avis &amp; témoignages</strong><span>Demandez des retours pour enrichir votre portfolio et crédibilité.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Conclusion -->
+      <div class="article-block">
+        <h2>Conclusion</h2>
+        <div class="conclusion">
+          <p>Devenir développeur freelance demande de la pratique, de l'organisation et de la persévérance.</p>
+          <ul class="card-list" style="margin-top:1rem;">
+            <li style="border-radius:10px; padding:0.7rem 1rem;">
+              <div class="card-icon ci-amber"><i class="ri-code-s-slash-line"></i></div>
+              <div class="inner"><span>Apprenez et perfectionnez vos compétences techniques en continu.</span></div>
+            </li>
+            <li style="border-radius:10px; padding:0.7rem 1rem;">
+              <div class="card-icon ci-orange"><i class="ri-briefcase-line"></i></div>
+              <div class="inner"><span>Construisez un portfolio et décrochez vos premiers clients.</span></div>
+            </li>
+            <li style="border-radius:10px; padding:0.7rem 1rem;">
+              <div class="card-icon ci-gold"><i class="ri-rocket-line"></i></div>
+              <div class="inner"><span>Organisez-vous pour gérer efficacement vos projets et bâtir une carrière épanouissante. 🚀</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h2>Vous avez un projet web&nbsp;?</h2>
+        <p>Je crée des sites et applications sur-mesure en React &amp; Next.js. Devis gratuit et sans engagement.</p>
+        <a href="../index.html#contact" class="btn btn-primary">
+          Demander un devis <i class="ri-arrow-right-up-line"></i>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="../index.html" class="logo">Franck<span>.</span></a>
+      <ul class="footer-nav">
+        <li><a href="../index.html#about">À propos</a></li>
+        <li><a href="../index.html#resume">Résumé</a></li>
+        <li><a href="../index.html#service">Service</a></li>
+        <li><a href="../index.html#portfolio">Portfolio</a></li>
+      </ul>
+      <ul class="footer-social">
+        <li><a href="https://github.com/f-kz" aria-label="GitHub de Franck Kanza" rel="noopener"><i class="ri-github-fill"></i></a></li>
+        <li><a href="" aria-label="Twitter de Franck Kanza"><i class="ri-twitter-x-fill"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/franck-kanza-6849b4195/" aria-label="LinkedIn de Franck Kanza" rel="noopener"><i class="ri-linkedin-fill"></i></a></li>
+      </ul>
+      <p class="copy">© Franck Kanza 2026</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
