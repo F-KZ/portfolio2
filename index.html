@@ -1979,12 +1979,18 @@
     </div>
   </section>
 
-  <!-- ① Conteneur de la carte -->
-  <div class="contact-map-wrapper">
-    <div id="contact-map">
-      <div id="map"></div>
+  <!-- Section Où me trouver -->
+  <section class="sue-section location-section">
+    <div class="sue-container">
+      <h2 class="sue-title">Où me trouver</h2>
     </div>
-  </div>
+    <!-- ① Conteneur de la carte -->
+    <div class="contact-map-wrapper">
+      <div id="contact-map">
+        <div id="map"></div>
+      </div>
+    </div>
+  </section>
  
 
   <!--========== Footer ==========-->
@@ -2025,7 +2031,7 @@
  <!-- ③ Votre code — doit être AVANT le script Google ou dans le callback -->
  <script>
   function initMap() {
-    const FRANCK = { lat: 48.8566, lng: 2.3522 };
+    const FRANCK = { lat: 49.1846, lng: -0.4134 };
 
     const map = new google.maps.Map(
       document.getElementById('contact-map'), {
@@ -2048,16 +2054,9 @@
     new google.maps.Marker({
       position: FRANCK,
       map:      map,
-      title:    'Franck Kanza — Paris',
+      title:    'FKZ Conception Digital',
       icon: {
-        url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-            <circle cx="20" cy="20" r="18"
-              fill="#6effa0" stroke="#07080f" stroke-width="2"/>
-            <text x="20" y="25" text-anchor="middle"
-              font-family="sans-serif" font-weight="bold"
-              font-size="13" fill="#07080f">FK</text>
-          </svg>`),
+        url: 'assets/images/favicon.png' ,
         scaledSize: new google.maps.Size(40, 40),
         anchor:     new google.maps.Point(20, 20),
       },
