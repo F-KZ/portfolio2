@@ -6238,3 +6238,232 @@ body{
   white-space: nowrap;
   border: 0;
 }
+
+
+/* =====================================================
+   Malt
+===================================================== */
+
+.malt-section {
+  background: var(--dark-color);
+  border-top: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.12);
+  border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.12);
+  padding: 80px 24px;
+  color: var(--color-02);
+}
+.malt-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.malt-text { flex: 1; min-width: 260px; }
+.malt-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 0.8rem;
+}
+.malt-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--color-02);
+}
+.malt-title span {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.malt-desc { font-size: 1.05rem; color: var(--color-04); line-height: 1.7; margin-bottom: 2rem; }
+.malt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--primary-color);
+  color: var(--dark-color);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.malt-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px hsla(var(--hue), var(--sat), var(--light), 0.35);
+}
+.malt-badge { flex-shrink: 0; }
+.malt-card {
+  background: hsla(var(--hue), var(--sat), var(--light), 0.08);
+  border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.2);
+  border-radius: 20px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+  text-align: center;
+}
+.malt-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: hsla(var(--hue), var(--sat), var(--light), 0.15);
+  border: 2px solid var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  object-fit: cover;
+}
+.malt-info { display: flex; flex-direction: column; gap: 4px; }
+.malt-info strong { font-size: 1.05rem; color: var(--color-02); }
+.malt-info span { font-size: 0.85rem; color: var(--color-04); }
+.malt-stars { font-size: 1.2rem; letter-spacing: 2px; color: var(--primary-color); }
+
+/* =====================================================
+  Carousel Portfolio Main Page
+===================================================== */
+
+.carousel-wrap { padding: 1.5rem 0 2rem; font-family: var(--font-sans); }
+.carousel-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; padding: 0 4px; }
+.carousel-header h2 { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
+.carousel-header p { font-size: 13px; color: var(--color-text-secondary); }
+.nav-buttons { display: flex; gap: 8px; }
+.nav-btn { width: 36px; height: 36px; border-radius: 50%; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s, transform 0.1s; color: var(--color-text-primary); }
+.nav-btn:hover { background: var(--color-background-secondary); }
+.nav-btn:active { transform: scale(0.94); }
+.nav-btn svg { width: 16px; height: 16px; }
+.track-outer { overflow: hidden; position: relative; }
+.track { display: flex; gap: 16px; transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
+.card { flex: 0 0 calc(33.333% - 11px); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); background: var(--color-background-primary); overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s; }
+.card:hover { border-color: var(--color-border-secondary); transform: translateY(-3px); }
+.card-img { width: 100%; height: 160px; background: var(--color-background-secondary); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+.card:hover .card-img img { transform: scale(1.04); }
+.card-img-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+.card-body { padding: 14px 16px 16px; }
+.card-tag { font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; line-height: 1.4; }
+.card-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+.card-arrow { display: flex; justify-content: flex-end; margin-top: 12px; }
+.arrow-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--color-background-secondary); display: flex; align-items: center; justify-content: center; }
+.arrow-icon svg { width: 14px; height: 14px; color: var(--color-text-secondary); }
+.dots { display: flex; gap: 6px; justify-content: center; margin-top: 1.5rem; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-border-secondary); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+.dot.active { background: var(--color-text-primary); transform: scale(1.3); }
+@media (max-width: 900px) {
+  .card { flex: 0 0 calc(50% - 8px); }
+}
+@media (max-width: 600px) {
+  .card { flex: 0 0 calc(85% - 8px); }
+  .carousel-header h2 { font-size: 18px; }
+}
+
+/* =====================================================
+   Services Grid
+===================================================== */
+.srv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.srv-card {
+  background: hsla(var(--hue), var(--sat), var(--light), 0.04);
+  border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.srv-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-4px);
+}
+.srv-card--accent {
+  border-color: var(--primary-color);
+  background: hsla(var(--hue), var(--sat), var(--light), 0.06);
+}
+.srv-icon {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+.srv-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.srv-stack span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: hsla(var(--hue), var(--sat), var(--light), 0.08);
+  border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.14);
+  color: var(--primary-color);
+  letter-spacing: 0.5px;
+}
+.srv-card h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-02);
+  margin: 0;
+}
+.srv-card > p {
+  font-size: 0.9rem;
+  color: var(--color-04);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+.srv-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.srv-features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-04);
+}
+.srv-features li i {
+  color: var(--primary-color);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+.srv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-color);
+  color: var(--dark-color);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+.srv-btn:hover { opacity: 0.85; }
+@media (max-width: 900px) {
+  .srv-grid { grid-template-columns: 1fr; }
+}

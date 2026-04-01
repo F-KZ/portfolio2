@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets & Portfolio | Franck Kanza Développeur Web Freelance</title>
+    <meta name="author" content="Franck Kanza">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Découvrez les projets de Franck Kanza : sites vitrine, e-commerce et applications mobiles. React, Next.js, React Native — plus de 20 réalisations.">
+    <link rel="canonical" href="https://www.franck-kanza.fr/page/projets.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projets & Portfolio | Franck Kanza Développeur Web Freelance">
+    <meta property="og:description" content="Sites vitrine, e-commerce et applications mobiles. Plus de 20 réalisations en React & Next.js.">
+    <meta property="og:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+    <meta property="og:url" content="https://www.franck-kanza.fr/page/projets.html">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projets & Portfolio | Franck Kanza">
+    <meta name="twitter:description" content="Plus de 20 projets web & mobile. React, Next.js, React Native.">
+    <meta name="twitter:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+
+    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+
+    <style>
+      .projets-page-hero {
+        background: var(--dark-color);
+        padding: 100px 24px 60px;
+        text-align: center;
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.12);
+      }
+      .projets-page-hero .hero-tag {
+        display: inline-block;
+        background: hsla(var(--hue), var(--sat), var(--light), 0.12);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+      }
+      .projets-page-hero h1 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 800;
+        color: var(--color-02);
+        margin-bottom: 1rem;
+      }
+      .projets-page-hero h1 span { color: var(--primary-color); }
+      .projets-page-hero p {
+        font-size: 1.05rem;
+        color: var(--color-04);
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+      .back-nav {
+        padding: 16px 24px;
+        background: var(--dark-color);
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+      }
+      .back-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--color-04);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .back-nav a:hover { color: var(--primary-color); }
+      .projets-filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 40px 24px 0;
+      }
+      .filter-btn {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.06);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.14);
+        color: var(--color-04);
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 8px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-btn:hover, .filter-btn.active {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--dark-color);
+      }
+      .projets-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+        padding: 36px 0 60px;
+      }
+      .projet-card {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        background: hsla(var(--hue), var(--sat), var(--light), 0.03);
+        transition: transform 0.3s, border-color 0.3s;
+        display: flex;
+        flex-direction: column;
+      }
+      .projet-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+      .projet-card.bientot { opacity: 0.55; cursor: default; }
+      .projet-card.bientot:hover { transform: none; border-color: hsla(var(--hue), var(--sat), var(--light), 0.1); }
+      .projet-card a { display: flex; flex-direction: column; flex: 1; text-decoration: none; color: inherit; }
+      .projet-card-img { width: 100%; aspect-ratio: 16/10; overflow: hidden; background: hsla(var(--hue), var(--sat), var(--light), 0.06); }
+      .projet-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+      .projet-card:hover .projet-card-img img { transform: scale(1.04); }
+      .projet-card-body { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+      .projet-card-cat { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary-color); }
+      .projet-card-body h2 { font-size: 1rem; font-weight: 700; color: var(--color-02); margin: 0; }
+      .projet-card-body p { font-size: 0.85rem; color: var(--color-04); line-height: 1.5; margin: 0; flex: 1; }
+      .projet-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+      .projet-card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+      .projet-card-tags span { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; background: hsla(var(--hue), var(--sat), var(--light), 0.08); color: var(--color-04); border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.12); }
+      .projet-card-arrow { font-size: 1.1rem; color: var(--primary-color); flex-shrink: 0; }
+      .bientot-badge { font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 10px; background: hsla(var(--hue), var(--sat), var(--light), 0.08); color: var(--color-04); border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.12); }
+      .projets-cta { background: hsla(var(--hue), var(--sat), var(--light), 0.04); border-top: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1); padding: 60px 24px; text-align: center; }
+      .projets-cta h2 { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--color-02); font-weight: 800; margin-bottom: 10px; }
+      .projets-cta h2 span { color: var(--primary-color); }
+      .projets-cta p { color: var(--color-04); font-size: 1rem; margin-bottom: 24px; }
+      .projets-cta a { display: inline-flex; align-items: center; gap: 8px; background: var(--primary-color); color: var(--dark-color); font-weight: 700; font-size: 0.95rem; padding: 13px 28px; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
+      .projets-cta a:hover { opacity: 0.85; }
+    </style>
+  </head>
+
+  <body class="light-theme">
+
+    <nav class="back-nav">
+      <div class="sue-container">
+        <a href="../index.html"><i class="ri-arrow-left-line"></i> Retour à l'accueil</a>
+      </div>
+    </nav>
+
+    <header class="projets-page-hero">
+      <span class="hero-tag">+20 projets réalisés</span>
+      <h1>Mes <span>Projets</span></h1>
+      <p>Sites vitrine, e-commerce et applications mobiles. Chaque projet est conçu sur-mesure avec React, Next.js ou React Native.</p>
+    </header>
+
+    <section class="sue-section" id="projets">
+      <div class="sue-container">
+
+        <div class="projets-filters">
+          <button class="filter-btn active" data-filter="all">Tous</button>
+          <button class="filter-btn" data-filter="vitrine">Site Vitrine</button>
+          <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+          <button class="filter-btn" data-filter="app">Applications</button>
+          <button class="filter-btn" data-filter="web">Site Web</button>
+        </div>
+
+        <div class="projets-grid">
+
+          <div class="projet-card" data-cat="vitrine">
+            <a href="../portfolio/horizon-transports.html">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/horizon.webp" loading="lazy" alt="Site web Horizon Transports — formation VTC & Taxi"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">Site Vitrine</span>
+                <h2>Horizon Transports</h2>
+                <p>Site vitrine one-page pour un organisme de formation VTC & Taxi en Normandie.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>Next.js</span><span>SEO</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card" data-cat="vitrine">
+            <a href="../portfolio/barber-shop.html">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/barberShop.webp" loading="lazy" alt="Site vitrine salon de coiffure Barber Shop"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">Site Vitrine</span>
+                <h2>Barber Shop</h2>
+                <p>Site vitrine moderne pour un salon de coiffure & barbier, avec prise de rendez-vous.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>React</span><span>Tailwind</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card" data-cat="vitrine">
+            <a href="../portfolio/odelice-burger.html">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/odelice.webp" loading="lazy" alt="Site web O'Délice Burger"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">Site Vitrine + App</span>
+                <h2>O'Délice Burger</h2>
+                <p>Site vitrine et application mobile pour un restaurant burger — design moderne et appétissant.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>React</span><span>React Native</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card" data-cat="vitrine">
+            <a href="../portfolio/uwalls.html">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/uwalls.webp" loading="lazy" alt="Site vitrine U-Walls — décoration murale"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">Site Vitrine</span>
+                <h2>U-Walls</h2>
+                <p>Site vitrine pour une micro-entreprise spécialisée dans la décoration murale sur-mesure.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>Next.js</span><span>SEO</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card" data-cat="vitrine">
+            <a href="../portfolio/fioul-market.html">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/fioulmarket.webp" loading="lazy" alt="Site vitrine Fioul Market"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">Site Vitrine</span>
+                <h2>Fioul Market</h2>
+                <p>Site vitrine pour un revendeur de fioul domestique, avec formulaire de devis en ligne.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>Next.js</span><span>SEO</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card" data-cat="vitrine">
+            <a href="../portfolio/id-formation.html">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/id-formation.webp" loading="lazy" alt="Site vitrine ID-Formation"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">Site Vitrine</span>
+                <h2>ID-Formation</h2>
+                <p>Site vitrine pour un organisme de formation professionnelle certifié Qualiopi.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>React</span><span>SEO</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card" data-cat="vitrine">
+            <a href="https://f-kz.github.io/maillots/" target="_blank" rel="noopener">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/maillot.webp" loading="lazy" alt="Site web Wish — prêt à porter"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">Site Vitrine</span>
+                <h2>Wish</h2>
+                <p>Site vitrine pour une boutique de prêt à porter — tenues classe et chic.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>HTML/CSS</span><span>JS</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card" data-cat="ecommerce">
+            <a href="../portfolio/kanap.html">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/kanap.webp" loading="lazy" alt="Site e-commerce Kanap — mobilier"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">E-Commerce</span>
+                <h2>Kanap</h2>
+                <p>Boutique e-commerce de vente de mobilier — catalogue, panier, paiement sécurisé.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>Next.js</span><span>Stripe</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card" data-cat="ecommerce">
+            <a href="https://electronic-shop-front.vercel.app/" target="_blank" rel="noopener">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/eShop.webp" loading="lazy" alt="Site e-commerce Electronic Shop"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">E-Commerce</span>
+                <h2>E-Shop</h2>
+                <p>Boutique en ligne d'électronique avec paiement PayPal et gestion des commandes.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>Next.js</span><span>PayPal</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card" data-cat="ecommerce">
+            <a href="https://f-kz.github.io/E-commerce-Fashion/" target="_blank" rel="noopener">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/fashion.webp" loading="lazy" alt="Fashion-House — e-commerce prêt à porter"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">E-Commerce</span>
+                <h2>Fashion-House</h2>
+                <p>Boutique e-commerce de mode — navigation par catégories, fiche produit, panier.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>React</span><span>CSS</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card bientot" data-cat="ecommerce">
+            <div class="projet-card-img"><img src="../assets/images/portfolio images/techLines.webp" loading="lazy" alt="Tech Lines — e-commerce smartphones"></div>
+            <div class="projet-card-body">
+              <span class="projet-card-cat">E-Commerce</span>
+              <h2>Tech Lines</h2>
+              <p>Site e-commerce de vente de smartphones et accessoires high-tech.</p>
+              <div class="projet-card-footer">
+                <div class="projet-card-tags"><span>Next.js</span></div>
+                <span class="bientot-badge">Bientôt dispo</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="projet-card" data-cat="app">
+            <a href="../portfolio/odelice-burger.html">
+              <div class="projet-card-img"><img src="../assets/images/burgerApp/image0.png" loading="lazy" alt="Application mobile O'Délice Burger"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">Application Mobile</span>
+                <h2>O'Délice Burger App</h2>
+                <p>Application mobile de commande de burgers — menu, panier, suivi de commande.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>React Native</span><span>Expo</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card bientot" data-cat="app">
+            <div class="projet-card-img"><img src="../assets/images/portfolio images/zara.webp" loading="lazy" alt="Application mobile Atelier Zara"></div>
+            <div class="projet-card-body">
+              <span class="projet-card-cat">Application Mobile</span>
+              <h2>Atelier Zara</h2>
+              <p>Application mobile de réservation de soins et prestations beauté.</p>
+              <div class="projet-card-footer">
+                <div class="projet-card-tags"><span>React Native</span></div>
+                <span class="bientot-badge">Bientôt dispo</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="projet-card" data-cat="web">
+            <a href="https://twitch-clone-rho-nine.vercel.app/" target="_blank" rel="noopener">
+              <div class="projet-card-img"><img src="../assets/images/portfolio images/twitch.webp" loading="lazy" alt="Clone Twitch en Next.js"></div>
+              <div class="projet-card-body">
+                <span class="projet-card-cat">Site Web</span>
+                <h2>Twitch Clone</h2>
+                <p>Reproduction fidèle de l'interface Twitch — streaming, chat en direct, profils.</p>
+                <div class="projet-card-footer">
+                  <div class="projet-card-tags"><span>Next.js</span><span>WebSocket</span></div>
+                  <i class="ri-arrow-right-up-line projet-card-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="projet-card bientot" data-cat="web">
+            <div class="projet-card-img"><img src="../assets/images/portfolio images/Property.webp" loading="lazy" alt="Vacance & Chill — réservation de logements"></div>
+            <div class="projet-card-body">
+              <span class="projet-card-cat">Site Web</span>
+              <h2>Vacance & Chill</h2>
+              <p>Plateforme de réservation de logements de vacances — recherche, filtres, réservation.</p>
+              <div class="projet-card-footer">
+                <div class="projet-card-tags"><span>Next.js</span></div>
+                <span class="bientot-badge">Bientôt dispo</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="projets-cta">
+      <div class="sue-container">
+        <h2>Votre projet est le <span>prochain.</span></h2>
+        <p>Discutons de votre idée — devis gratuit sous 24h.</p>
+        <a href="contact.html"><i class="ri-mail-send-line"></i> Demander un devis</a>
+      </div>
+    </div>
+
+    <footer class="sue-footer">
+      <div class="sue-container">
+        <div class="sue-logo-footer">
+          <a href="../index.html"><img loading="lazy" class="background-logo" src="../assets/images/favicon.png" alt="Franck Kanza — Développeur Web Freelance"></a>
+          <p class="copy-right">Développeur Web Freelance Normandie & Paris</p>
+        </div>
+        <div class="inner">
+          <div class="sue-logo">
+            <a href="../index.html"><span>Franck</span></a>
+          </div>
+          <ul class="footer-menu">
+            <li class="menu-item"><a href="../index.html#about">À Propos</a></li>
+            <li class="menu-item"><a href="../index.html#resume">Resume</a></li>
+            <li class="menu-item"><a href="../index.html#service">Services</a></li>
+            <li class="menu-item"><a href="../index.html#portfolio">Portfolio</a></li>
+          </ul>
+          <ul class="contact-social-links center">
+            <li><a href="https://github.com/f-kz" target="_blank" rel="noopener"><i class="ri-github-fill"></i></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100087362503714" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/franck-kanza-6849b4195/" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a></li>
+          </ul>
+          <p class="copy-right">© Franck Kanza 2026</p>
+        </div>
+        <div>
+          <ul class="sue-footer-contact">
+            <li class="copy-right"><a href="https://wa.me/33644396284?text=Bonjour%20Franck%2C%20je%20souhaite%20un%20devis%20pour%20mon%20projet" target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i></a>+33 6 44 39 62 84</li>
+            <li class="copy-right"><a href="mailto:franck.kanza@outlook.fr"><i class="ri-mail-send-fill"></i></a>franck.kanza@outlook.fr</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.projet-card');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.dataset.filter;
+          cards.forEach(card => {
+            card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
+          });
+        });
+      });
+    </script>
+
+    <script src="../assets/js/main.js"></script>
+
+  </body>
+</html>

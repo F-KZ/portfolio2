@@ -1,4 +1,6 @@
 User-agent: *
- Allow: /
- Disallow: /assets/js/
- Sitemap: https://www.franck-kanza.fr/sitemap.xml
+Allow: /
+Disallow: /assets/js/
+Disallow: /assets/css/
+
+Sitemap: https://www.franck-kanza.fr/sitemap.xml

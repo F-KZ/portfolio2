@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services — Développement Web & Mobile | Franck Kanza Freelance</title>
+    <meta name="author" content="Franck Kanza">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Franck Kanza, développeur web freelance : sites vitrine, e-commerce et applications mobiles en React & Next.js. Performance, SEO et design sur-mesure en Normandie & Paris.">
+    <link rel="canonical" href="https://www.franck-kanza.fr/page/services.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Services — Développement Web & Mobile | Franck Kanza">
+    <meta property="og:description" content="Sites vitrine, e-commerce et applications mobiles sur-mesure. React, Next.js, React Native. Devis gratuit.">
+    <meta property="og:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+    <meta property="og:url" content="https://www.franck-kanza.fr/page/services.html">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Services — Développement Web & Mobile | Franck Kanza">
+    <meta name="twitter:description" content="Sites vitrine, e-commerce et applications mobiles. Devis gratuit sous 24h.">
+    <meta name="twitter:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+
+    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+
+    <style>
+      .services-page-hero {
+        background: var(--dark-color);
+        padding: 100px 24px 60px;
+        text-align: center;
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.12);
+      }
+      .services-page-hero .hero-tag {
+        display: inline-block;
+        background: hsla(var(--hue), var(--sat), var(--light), 0.12);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+      }
+      .services-page-hero h1 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 800;
+        color: var(--color-02);
+        margin-bottom: 1rem;
+      }
+      .services-page-hero h1 span { color: var(--primary-color); }
+      .services-page-hero p {
+        font-size: 1.05rem;
+        color: var(--color-04);
+        max-width: 560px;
+        margin: 0 auto 32px;
+        line-height: 1.7;
+      }
+      .hero-actions {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .hero-actions a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 12px 26px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .hero-actions .btn-primary {
+        background: var(--primary-color);
+        color: var(--dark-color);
+      }
+      .hero-actions .btn-secondary {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.1);
+        color: var(--color-02);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.2);
+      }
+      .hero-actions a:hover { opacity: 0.85; }
+
+      .back-nav {
+        padding: 16px 24px;
+        background: var(--dark-color);
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+      }
+      .back-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--color-04);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .back-nav a:hover { color: var(--primary-color); }
+
+      /* Services list */
+      .service-detail {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        padding: 80px 0;
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.08);
+      }
+      .service-detail:last-of-type { border-bottom: none; }
+      .service-detail.reverse { direction: rtl; }
+      .service-detail.reverse > * { direction: ltr; }
+
+      @media (max-width: 768px) {
+        .service-detail { grid-template-columns: 1fr; gap: 32px; }
+        .service-detail.reverse { direction: ltr; }
+      }
+
+      .service-detail-visual {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.04);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        border-radius: 20px;
+        padding: 48px 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 300px;
+        gap: 20px;
+      }
+      .service-detail-visual i {
+        font-size: 4rem;
+        color: var(--primary-color);
+      }
+      .service-detail-visual .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+      }
+      .service-detail-visual .tech-tag {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.08);
+        color: var(--color-04);
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 20px;
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.12);
+      }
+      .service-detail-visual .price-badge {
+        background: var(--primary-color);
+        color: var(--dark-color);
+        font-size: 0.85rem;
+        font-weight: 700;
+        padding: 6px 18px;
+        border-radius: 20px;
+      }
+
+      .service-detail-content .service-label {
+        display: inline-block;
+        background: hsla(var(--hue), var(--sat), var(--light), 0.1);
+        color: var(--primary-color);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 3px 12px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+      }
+      .service-detail-content h2 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 800;
+        color: var(--color-02);
+        margin-bottom: 14px;
+        line-height: 1.2;
+      }
+      .service-detail-content h2 span { color: var(--primary-color); }
+      .service-detail-content > p {
+        font-size: 0.95rem;
+        color: var(--color-04);
+        line-height: 1.75;
+        margin-bottom: 24px;
+      }
+      .service-benefits {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .service-benefits li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: var(--color-04);
+        line-height: 1.5;
+      }
+      .service-benefits li i {
+        color: var(--primary-color);
+        font-size: 1.05rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .service-detail-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .service-detail-actions a {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-weight: 700;
+        font-size: 0.88rem;
+        padding: 10px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .service-detail-actions .btn-primary {
+        background: var(--primary-color);
+        color: var(--dark-color);
+      }
+      .service-detail-actions .btn-outline {
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.2);
+        color: var(--color-04);
+      }
+      .service-detail-actions a:hover { opacity: 0.8; }
+
+      /* Process section */
+      .process-section {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.03);
+        border-top: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.08);
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.08);
+        padding: 80px 0;
+      }
+      .process-section .section-header {
+        text-align: center;
+        margin-bottom: 56px;
+      }
+      .process-section .section-header .tag {
+        display: inline-block;
+        background: hsla(var(--hue), var(--sat), var(--light), 0.1);
+        color: var(--primary-color);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 3px 12px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+      .process-section h2 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 800;
+        color: var(--color-02);
+      }
+      .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 28px;
+      }
+      .process-step {
+        text-align: center;
+        padding: 32px 20px;
+        background: hsla(var(--hue), var(--sat), var(--light), 0.04);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        border-radius: 16px;
+        transition: border-color 0.3s;
+      }
+      .process-step:hover { border-color: var(--primary-color); }
+      .process-step .step-number {
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--primary-color);
+        opacity: 0.25;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+      .process-step i {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 12px;
+        display: block;
+      }
+      .process-step h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--color-02);
+        margin-bottom: 8px;
+      }
+      .process-step p {
+        font-size: 0.85rem;
+        color: var(--color-04);
+        line-height: 1.6;
+      }
+
+      /* Guarantees */
+      .guarantees-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 60px 0;
+      }
+      .guarantee-card {
+        padding: 28px 20px;
+        background: hsla(var(--hue), var(--sat), var(--light), 0.04);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        border-radius: 14px;
+        text-align: center;
+      }
+      .guarantee-card i {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 12px;
+        display: block;
+      }
+      .guarantee-card h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--color-02);
+        margin-bottom: 6px;
+      }
+      .guarantee-card p {
+        font-size: 0.82rem;
+        color: var(--color-04);
+        line-height: 1.6;
+      }
+
+      /* CTA banner */
+      .services-cta-banner {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.04);
+        border-top: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        padding: 60px 24px;
+        text-align: center;
+      }
+      .services-cta-banner h2 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        color: var(--color-02);
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+      .services-cta-banner h2 span { color: var(--primary-color); }
+      .services-cta-banner p {
+        color: var(--color-04);
+        font-size: 1rem;
+        margin-bottom: 28px;
+      }
+      .services-cta-banner .cta-row {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .services-cta-banner a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 13px 28px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .services-cta-banner a:hover { opacity: 0.85; }
+      .services-cta-banner .btn-primary {
+        background: var(--primary-color);
+        color: var(--dark-color);
+      }
+      .services-cta-banner .btn-outline {
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.25);
+        color: var(--color-02);
+      }
+
+      /* Services grid */
+      .sp-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        padding: 60px 0;
+      }
+      .sp-card {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.04);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        border-radius: 18px;
+        padding: 36px 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: border-color 0.3s, transform 0.3s;
+      }
+      .sp-card:hover { border-color: var(--primary-color); transform: translateY(-4px); }
+      .sp-card--accent {
+        border-color: var(--primary-color);
+        background: hsla(var(--hue), var(--sat), var(--light), 0.06);
+      }
+      .sp-card-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+      .sp-icon { font-size: 2rem; color: var(--primary-color); flex-shrink: 0; }
+      .sp-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+      .sp-stack span {
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 20px;
+        background: hsla(var(--hue), var(--sat), var(--light), 0.08);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.14);
+        color: var(--primary-color);
+        letter-spacing: 0.5px;
+      }
+      .sp-card h2 { font-size: 1.25rem; font-weight: 800; color: var(--color-02); margin: 0; }
+      .sp-card > p { font-size: 0.9rem; color: var(--color-04); line-height: 1.75; margin: 0; flex: 1; }
+      .sp-features { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+      .sp-features li { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--color-04); }
+      .sp-features li i { color: var(--primary-color); font-size: 1rem; flex-shrink: 0; }
+      .sp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--primary-color);
+        color: var(--dark-color);
+        font-weight: 700;
+        font-size: 0.875rem;
+        padding: 11px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: opacity 0.2s;
+        align-self: flex-start;
+        margin-top: 4px;
+      }
+      .sp-btn:hover { opacity: 0.85; }
+      @media (max-width: 768px) {
+        .sp-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+
+  <body class="light-theme">
+
+    <!-- Retour accueil -->
+    <nav class="back-nav">
+      <div class="sue-container">
+        <a href="../index.html">
+          <i class="ri-arrow-left-line"></i> Retour à l'accueil
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="services-page-hero">
+      <span class="hero-tag">Développeur Web Freelance</span>
+      <h1>Mes <span>Services</span></h1>
+      <p>Sites vitrine, e-commerce, applications mobiles — des solutions sur-mesure pensées pour votre croissance. React & Next.js, performance Lighthouse 90+, SEO intégré.</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn-primary"><i class="ri-mail-send-line"></i> Devis gratuit</a>
+        <a href="formules.html" class="btn-secondary"><i class="ri-price-tag-3-line"></i> Voir les tarifs</a>
+      </div>
+    </header>
+
+    <!-- Services grid -->
+    <section class="sue-section" id="services">
+      <div class="sue-container">
+        <div class="sp-grid">
+
+          <!-- Site Vitrine -->
+          <div class="sp-card">
+            <div class="sp-card-head">
+              <i class="ri-landscape-line sp-icon"></i>
+              <div class="sp-stack">
+                <span>React</span><span>Next.js</span><span>Tailwind</span>
+              </div>
+            </div>
+            <h2>Site Vitrine</h2>
+            <p>Des sites construits avec <strong>React</strong> et <strong>Next.js</strong> — rendu SSR pour un référencement Google optimal, score Lighthouse 90+ garanti, mobile-first. Chaque projet est unique, aucun template.</p>
+            <ul class="sp-features">
+              <li><i class="ri-checkbox-circle-fill"></i>Design 100% sur-mesure</li>
+              <li><i class="ri-checkbox-circle-fill"></i>SEO technique intégré dès le code</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Formation incluse — autonomie garantie</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Livraison en 2–4 semaines</li>
+            </ul>
+            <a href="formules.html" class="sp-btn">Voir les formules <i class="ri-arrow-right-line"></i></a>
+          </div>
+
+          <!-- Application Mobile -->
+          <div class="sp-card">
+            <div class="sp-card-head">
+              <i class="ri-smartphone-line sp-icon"></i>
+              <div class="sp-stack">
+                <span>React Native</span><span>Expo</span><span>Node.js</span>
+              </div>
+            </div>
+            <h2>Application Mobile</h2>
+            <p>iOS & Android depuis un seul code en <strong>React Native</strong> avec <strong>Expo</strong>. Performances natives 60 FPS, backend <strong>Node.js</strong> si nécessaire. Bien au-delà de ce que propose le no-code.</p>
+            <ul class="sp-features">
+              <li><i class="ri-checkbox-circle-fill"></i>Un seul code — deux stores</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Paiements, push, géolocalisation</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Publication App Store & Google Play</li>
+              <li><i class="ri-checkbox-circle-fill"></i>30 jours de support inclus</li>
+            </ul>
+            <a href="formules.html" class="sp-btn">Voir les formules <i class="ri-arrow-right-line"></i></a>
+          </div>
+
+          <!-- E-Commerce -->
+          <div class="sp-card">
+            <div class="sp-card-head">
+              <i class="ri-shopping-cart-2-line sp-icon"></i>
+              <div class="sp-stack">
+                <span>Next.js</span><span>Node.js</span><span>Stripe</span>
+              </div>
+            </div>
+            <h2>E-Commerce</h2>
+            <p>Boutiques haute performance en <strong>Next.js</strong> SSR — indexation Google maximale, chargement &lt; 1s, architecture scalable jusqu'à 10 000 visiteurs/jour. Sans les limites de Shopify.</p>
+            <ul class="sp-features">
+              <li><i class="ri-checkbox-circle-fill"></i>SSR Next.js — SEO natif</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Stripe & PayPal intégrés</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Dashboard admin sur-mesure</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Architecture scalable</li>
+            </ul>
+            <a href="formules.html" class="sp-btn">Voir les formules <i class="ri-arrow-right-line"></i></a>
+          </div>
+
+          <!-- Solution Personnalisée -->
+          <div class="sp-card sp-card--accent">
+            <div class="sp-card-head">
+              <i class="ri-settings-3-line sp-icon"></i>
+              <div class="sp-stack">
+                <span>React</span><span>Next.js</span><span>React Native</span><span>Node.js</span>
+              </div>
+            </div>
+            <h2>Solution Personnalisée</h2>
+            <p>Un projet qui sort de l'ordinaire ? Dashboard, SaaS, marketplace, application métier — je combine <strong>React</strong>, <strong>Next.js</strong>, <strong>React Native</strong> et <strong>Node.js</strong> pour construire exactement ce dont vous avez besoin.</p>
+            <ul class="sp-features">
+              <li><i class="ri-checkbox-circle-fill"></i>Cadrage & devis sous 24h</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Stack adaptée à votre projet</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Accompagnement de A à Z</li>
+              <li><i class="ri-checkbox-circle-fill"></i>Paiement échelonné possible</li>
+            </ul>
+            <a href="contact.html" class="sp-btn">Discutons de votre projet <i class="ri-arrow-right-line"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Mon processus -->
+    <div class="process-section">
+      <div class="sue-container">
+        <div class="section-header">
+          <span class="tag">Méthodologie</span>
+          <h2>Comment je travaille</h2>
+        </div>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-number">01</div>
+            <i class="ri-discuss-line"></i>
+            <h3>Échange & Cadrage</h3>
+            <p>On discute de votre projet, vos objectifs et votre cible. Je vous pose les bonnes questions pour cerner vos besoins.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">02</div>
+            <i class="ri-file-list-3-line"></i>
+            <h3>Devis & Contrat</h3>
+            <p>Je vous envoie un devis détaillé et un contrat clair. Paiement échelonné disponible pour tous les projets.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">03</div>
+            <i class="ri-palette-line"></i>
+            <h3>Design & Maquettes</h3>
+            <p>Je conçois les maquettes sur Figma. Vous validez le design avant que le développement commence.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">04</div>
+            <i class="ri-code-s-slash-line"></i>
+            <h3>Développement</h3>
+            <p>Développement en React/Next.js avec des points d'avancement réguliers. Vous suivez la progression en temps réel.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">05</div>
+            <i class="ri-rocket-2-line"></i>
+            <h3>Livraison & Déploiement</h3>
+            <p>Mise en ligne, tests de performance et de compatibilité. Formation incluse pour prendre en main votre site.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Garanties -->
+    <section class="sue-section">
+      <div class="sue-container">
+        <div style="text-align:center; margin-bottom: 40px;">
+          <span style="display:inline-block; background: hsla(var(--hue), var(--sat), var(--light), 0.1); color: var(--primary-color); font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 3px 12px; border-radius: 20px; margin-bottom: 12px;">Engagement</span>
+          <h2 style="font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; color: var(--color-02);">Ce que je vous garantis</h2>
+        </div>
+        <div class="guarantees-grid">
+          <div class="guarantee-card">
+            <i class="ri-speed-up-line"></i>
+            <h3>Performance 90+</h3>
+            <p>Score Lighthouse 90+ garanti sur chaque livraison. Votre site se charge vite, Google le sait.</p>
+          </div>
+          <div class="guarantee-card">
+            <i class="ri-search-line"></i>
+            <h3>SEO Intégré</h3>
+            <p>Balises optimisées, sitemap, données structurées — le référencement est intégré dès le code, pas ajouté après.</p>
+          </div>
+          <div class="guarantee-card">
+            <i class="ri-smartphone-line"></i>
+            <h3>Mobile-First</h3>
+            <p>Chaque projet est conçu d'abord pour mobile. Vos utilisateurs naviguent sur téléphone, votre site aussi.</p>
+          </div>
+          <div class="guarantee-card">
+            <i class="ri-customer-service-2-line"></i>
+            <h3>Support 30 jours</h3>
+            <p>30 jours de support inclus après livraison. Un bug ? Une question ? Je réponds sous 24h.</p>
+          </div>
+          <div class="guarantee-card">
+            <i class="ri-shield-check-line"></i>
+            <h3>Code propre & sécurisé</h3>
+            <p>Code documenté, testé et sécurisé selon les bonnes pratiques OWASP. Pas de dette technique cachée.</p>
+          </div>
+          <div class="guarantee-card">
+            <i class="ri-hand-heart-line"></i>
+            <h3>Devis gratuit</h3>
+            <p>Devis gratuit et sans engagement sous 24h. On discute avant de s'engager.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA bas de page -->
+    <div class="services-cta-banner">
+      <div class="sue-container">
+        <h2>Prêt à lancer votre <span>projet</span> ?</h2>
+        <p>Devis gratuit sous 24h. Paiement échelonné disponible.</p>
+        <div class="cta-row">
+          <a href="contact.html" class="btn-primary"><i class="ri-mail-send-line"></i> Demander un devis gratuit</a>
+          <a href="formules.html" class="btn-outline"><i class="ri-price-tag-3-line"></i> Voir les formules & tarifs</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="sue-footer">
+      <div class="sue-container">
+        <div class="sue-logo-footer">
+          <a href="../index.html"><img loading="lazy" class="background-logo" src="../assets/images/favicon.png" alt="Franck Kanza — Développeur Web Freelance"></a>
+          <p class="copy-right">Développeur Web Freelance Normandie & Paris</p>
+        </div>
+        <div class="inner">
+          <div class="sue-logo">
+            <a href="../index.html"><span>Franck</span></a>
+          </div>
+          <ul class="footer-menu">
+            <li class="menu-item"><a href="../index.html#about">À Propos</a></li>
+            <li class="menu-item"><a href="../index.html#resume">Resume</a></li>
+            <li class="menu-item"><a href="../index.html#service">Services</a></li>
+            <li class="menu-item"><a href="../index.html#portfolio">Portfolio</a></li>
+          </ul>
+          <ul class="contact-social-links center">
+            <li><a href="https://github.com/f-kz" target="_blank" rel="noopener"><i class="ri-github-fill"></i></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100087362503714" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/franck-kanza-6849b4195/" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a></li>
+          </ul>
+          <p class="copy-right">© Franck Kanza 2026</p>
+        </div>
+        <div>
+          <ul class="sue-footer-contact">
+            <li class="copy-right"><a href="https://wa.me/33644396284?text=Bonjour%20Franck%2C%20je%20souhaite%20un%20devis%20pour%20mon%20projet" target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i></a>+33 6 44 39 62 84</li>
+            <li class="copy-right"><a href="mailto:franck.kanza@outlook.fr"><i class="ri-mail-send-fill"></i></a>franck.kanza@outlook.fr</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+
+  </body>
+</html>

@@ -9,7 +9,7 @@
     <!-- Métadonnées importantes -->
     <meta name="author" content="Franck Kanza">
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Franck Kanza, développeur web freelance à Normandie & Paris. Création de sites vitrine, e-commerce et applications mobiles sur-mesure en React & Next.js. Devis gratuit et sans engagement.">
+    <meta name="description" content="Franck Kanza, développeur web freelance Normandie & Paris. Sites vitrine, e-commerce & apps mobiles en React / Next.js. Devis gratuit.">
     <meta name="keywords" content="développeur web, Franck Kanza, freelance, design web, création de site internet, applications mobile, développeur freelance, créateur d'applications, caen, paris, france, rouen">
     <link rel="canonical" href="https://www.franck-kanza.fr/">
   
@@ -121,13 +121,12 @@
   </head>
   
 <body class="light-theme">
-  <div class="splash-screen">
+ <div class="splash-screen">
     <div class="splash-content">
-       <!-- Garder pour le splash, mais changer en p ou span -->
 <span class="splash-title">Bienvenue</p>
       <div class="loading-bar"></div>
     </div>
-  </div>
+  </div> 
 
   <!--========== Customized cursor ==========-->
   <div class="cursor">
@@ -149,10 +148,10 @@
           <a href="/"><img src="assets/images/favicon.png" alt="Franck Kanza — Développeur Web Freelance"></a>
         </div>
         <div class="header-btns">
-          <a href="#contact" class="sue-btn-link">
+          <a href="page/contact.html" class="sue-btn-link">
             <div class="sue-main-btn border-btn lets-talk-btn">Discutons</div>
           </a>
-          <a href="#contact" class="lets-talk-icon"><i class="ri-chat-1-fill"></i></a>
+          <a href="page/contact.html" class="lets-talk-icon"><i class="ri-chat-1-fill"></i></a>
           <div class="theme-btn">
             <i class="ri-sun-fill sun-icon"></i>
             <i class="ri-moon-fill moon-icon"></i>
@@ -171,9 +170,11 @@
           <li class="menu-item"><a href="#home" class="current"><i class="ri-home-4-line"></i><span>Accueil</span></a></li>
           <li class="menu-item"><a href="#about"><i class="ri-user-line"></i><span>A Propos</span></a></li>
           <li class="menu-item"><a href="#resume"><i class="ri-quote-text"></i><span>Resume</span></a></li>
-          <li class="menu-item"><a href="#service"><i class="ri-service-line"></i><span>Service</span></a></li>
-          <li class="menu-item"><a href="#portfolio"><i class="ri-briefcase-line"></i><span>Portfolio</span></a></li>
-          <li class="menu-item"><a href="#contact"><i class="ri-chat-1-line"></i><span>Contact</span></a></li>
+          <li class="menu-item"><a href="page/services.html"><i class="ri-service-line"></i><span>Service</span></a></li>
+          <li class="menu-item"><a href="page/projets.html"><i class="ri-briefcase-line"></i><span>Projets</span></a></li>
+          <li class="menu-item"><a href="page/contact.html"><i class="ri-chat-1-line"></i><span>Contact</span></a></li>
+          <li class="menu-item"><a href="page/formules.html"><i class="ri-function-add-fill"></i><span>Formules</span></a></li>
+          <li class="menu-item"><a href="page/blog.html"><i class="ri-bootstrap-fill"></i><span>Blog</span></a></li>
         </ul>
       </div>
     </div>
@@ -196,8 +197,8 @@
           </ul>
         </div>
         <div class="avatar-container espace-header">
-          <a href="#contact" class="sue-btn-link">
-            <div class="sue-main-btn fill-btn hire-btn-01">Besoin d'un Devis ? <i class="ri-user-follow-line"></i></div>
+          <a href="page/contact.html" class="sue-btn-link">
+            <div class="sue-main-btn fill-btn hire-btn-01">Besoin d'un developpeur web ? <i class="ri-user-follow-line"></i></div>
           </a>
           <div class="laptop">
             <div class="screen">
@@ -237,8 +238,8 @@
     <div class="sue-container sue-sub-container">
       <div class="sue-wrapper">
         <div class="section-title about-title">
-          <h3>Des Designs Unique et Innovant</h3>
-          <p>Du sur-mesure pour une identité sans égale.</p>
+          <h2>Des Designs Unique et Innovant</h2>
+          <h3>Du sur-mesure pour une identité sans égale.</h3>
         </div>
         <div class="section-content">
           <div class="about-img">
@@ -787,8 +788,8 @@
     <div class="sue-container sue-sub-container">
       <div class="sue-wrapper">
         <div class="section-title about-title">
-          <h3>Passez à la vitesse supérieure avec React !</h3>
-          <p>Votre succès ne patientera plus.</p>
+          <h2>Passez à la vitesse supérieure avec Next JS !</h2>
+          <h3>Votre succès ne patientera plus.</h3>
         </div>
         <div class="section-content">
           <div class="about-img">
@@ -824,8 +825,8 @@
     <div class="sue-container sue-sub-container">
       <div class="sue-wrapper">
         <div class="section-title about-title">
-          <h3>Dominez les résultats de recherche !</h3>
-          <p>L'art de la conquête digitale.</p>
+          <h2>Dominez les résultats de recherche !</h2>
+          <h3>L'art de la conquête digitale.</h3>
           
         </div>
         <div class="section-content">
@@ -1093,243 +1094,117 @@
   <section class="sue-section nav-menu-section" id="portfolio">
     <div class="sue-container sue-column sue-sub-container">
       <div class="sue-wrapper">
-        <div class="section-title">
-          <h3>Portfolio</h3>
-          <p>Mes Projets</p>
-        </div>
-        <div class="portfolio-tabs">
-          <a class="tab-btn active" data-filter="all">All</a>
-          <a class="tab-btn" data-filter="web-design">E-Commerce</a>
-          <a class="tab-btn" data-filter="ui-design">Site Vitrine</a>
-          <a class="tab-btn" data-filter="photoshop">Applications</a>
-          <a class="tab-btn" data-filter="templates">Site Web</a>
-        </div>
-        <div class="section-content">
-          <div class="portfolio-container">
-
-            <div class="card-with-modal ui-design">
-              <a href="portfolio/horizon-transports.html">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/horizon.webp" loading="lazy" alt="Site web Horizon Transports — formation VTC & Taxi, réalisé par Franck Kanza">
-                  </div>
-                  <div class="card-info">
-                    <span>Horizon Transports</span>
-                    <h4>Formez vous au titre VTC... </h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal ui-design">
-              <a href="portfolio/barber-shop.html">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/barberShop.webp" loading="lazy" alt="Site vitrine salon de coiffure Barber Shop, réalisé en React par Franck Kanza">
-                  </div>
-                  <div class="card-info">
-                    <span>Barber Shop</span>
-                    <h4>Bienvenue chez Barber Shop... </h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal ui-design">
-              <a href="portfolio/odelice-burger.html">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/odelice.webp" loading="lazy" alt="Site web O'Délice Burger — fast-food en React, réalisé par Franck Kanza">
-                  </div>
-                  <div class="card-info">
-                    <span>O'Délice Burger</span>
-                    <h4>Burger de qualité... </h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal ui-design">
-              <a href="portfolio/uwalls.html">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/uwalls.webp" loading="lazy" alt="Site vitrine U-Walls — décoration murale, réalisé par Franck Kanza">
-                  </div>
-                  <div class="card-info">
-                    <span>U-Walls</span>
-                    <h4>Là où la créativité rencontre vos murs... </h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal ui-design">
-              <a href="portfolio/fioul-market.html">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/fioulmarket.webp" loading="lazy" alt="Site vitrine Fioul Market — vente de fioul en ligne, réalisé par Franck Kanza">
-                  </div>
-                  <div class="card-info">
-                    <span>Fioul Market</span>
-                    <h4>Réchauffez votre maison grâce à Fioul Market... </h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal ui-design">
-              <a href="portfolio/id-formation.html">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/id-formation.webp" loading="lazy" alt="Site vitrine ID-Formation — formation professionnelle, réalisé par Franck Kanza">
-                  </div>
-                  <div class="card-info">
-                    <span>ID-Formation</span>
-                    <h4>Formez vous...</h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal web-design">
-              <a href="portfolio/kanap.html">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/kanap.webp" loading="lazy" alt="Site e-commerce Kanap — vente de mobilier en Next.js, réalisé par Franck Kanza">
-                  </div>
-                  <div class="card-info">
-                    <span>Kanap</span>
-                    <h4>Envie d'un nouveau canapé ?...</h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal ui-design">
-              <a href="https://f-kz.github.io/maillots/" target="_blank" rel="noopener">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/maillot.webp" loading="lazy" alt="Site web Wish — vente de prêt à porter">
-                  </div>
-                  <div class="card-info">
-                    <span>Wish</span>
-                    <h4>Pour des tenues classe et chic </h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal web-design">
-              <a href="https://electronic-shop-front.vercel.app/" target="_blank" rel="noopener">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/eShop.webp" loading="lazy" alt="Site e-commerce Electronic Shop — vente en ligne avec paiement PayPal, Next.js">
-                  </div>
-                  <div class="card-info">
-                    <span>E-Shop</span>
-                    <h4>les derniéres nouveautés...</h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            
-
-            <div class="card-with-modal templates">
-              <a href="https://twitch-clone-rho-nine.vercel.app/" target="_blank" rel="noopener">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/twitch.webp" loading="lazy" alt="Clone Twitch réalisé en Next.js par Franck Kanza">
-                  </div>
-                  <div class="card-info">
-                    <span>Twitch</span>
-                    <h4>Rejoignez l'univers Twitch...</h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal web-design">
-              <div class="portfolio-card">
-                <div class="card-img">
-                  <img src="assets/images/portfolio images/techLines.webp" loading="lazy" alt="Tech Lines — site e-commerce de vente de téléphones">
-                </div>
-                <div class="card-info">
-                  <span>Tech Lines</span>
-                  <h4>Manquez pas la promo...</h4>
-                  <i class="ri-arrow-right-up-line card-btn"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-with-modal templates">
-              <div class="portfolio-card">
-                <div class="card-img">
-                  <img src="assets/images/portfolio images/Property.webp" loading="lazy" alt="Vacance & Chill — réservation de logements de vacances en Next.js">
-                </div>
-                <div class="card-info">
-                  <span>Vacance & Chill</span>
-                  <h4>Besoin de souffler ?...</h4>
-                  <i class="ri-arrow-right-up-line card-btn"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-with-modal web-design">
-              <a href="https://f-kz.github.io/E-commerce-Fashion/" target="_blank" rel="noopener">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/portfolio images/fashion.webp" loading="lazy" alt="Fashion-House — site e-commerce de prêt à porter">
-                  </div>
-                  <div class="card-info">
-                    <span>Fashion-House</span>
-                    <h4>Toujours à la mode...</h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div class="card-with-modal photoshop">
-              <div class="portfolio-card">
-                <div class="card-img">
-                  <img src="assets/images/portfolio images/zara.webp" loading="lazy" alt="Application mobile Atelier Zara — réservation de soins en React Native">
-                </div>
-                <div class="card-info">
-                  <span>Atelier Zara</span>
-                  <h4>Prenez soins de vous...</h4>
-                  <i class="ri-arrow-right-up-line card-btn"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-with-modal photoshop">
-              <a href="portfolio/odelice-burger.html">
-                <div class="portfolio-card">
-                  <div class="card-img">
-                    <img src="assets/images/burgerApp/image0.png" loading="lazy" height="200px" width="200px" style="object-fit: cover;" alt="Application mobile O'Délice Burger réalisée en React Native par Franck Kanza">
-                  </div>
-                  <div class="card-info">
-                    <span>O'Délice Burger App</span>
-                    <h4>Burger de qualité... </h4>
-                    <i class="ri-arrow-right-up-line card-btn"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-
+        <div class="carousel-header">
+          <div>
+            <h2>Portfolio</h2>
+            <p>Mes projets</p>
+          </div>
+          <div class="nav-buttons">
+            <button class="nav-btn" id="prev" aria-label="Précédent">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+            </button>
+            <button class="nav-btn" id="next" aria-label="Suivant">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
+            </button>
           </div>
         </div>
+      
+        <div class="track-outer">
+          <div class="track" id="track">
+      
+            <a class="card" href="portfolio/horizon-transports.html">
+              <div class="card-img">
+                <img src="assets/images/portfolio images/horizon.webp" loading="lazy" alt="Site web Horizon Transports — formation VTC & Taxi">
+              </div>
+              <div class="card-body">
+                <p class="card-tag">UI Design</p>
+                <p class="card-title">Horizon Transports</p>
+                <p class="card-desc">Formez-vous au titre VTC & Taxi</p>
+                <div class="card-arrow"><div class="arrow-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></div></div>
+              </div>
+            </a>
+
+            <a class="card" href="portfolio/barber-shop.html">
+              <div class="card-img">
+                <img src="assets/images/portfolio images/barberShop.webp" loading="lazy" alt="Site vitrine salon de coiffure Barber Shop">
+              </div>
+              <div class="card-body">
+                <p class="card-tag">UI Design · React</p>
+                <p class="card-title">Barber Shop</p>
+                <p class="card-desc">Site vitrine salon de coiffure</p>
+                <div class="card-arrow"><div class="arrow-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></div></div>
+              </div>
+            </a>
+
+            <a class="card" href="portfolio/odelice-burger.html">
+              <div class="card-img">
+                <img src="assets/images/portfolio images/odelice.webp" loading="lazy" alt="Site web O'Délice Burger — fast-food en React">
+              </div>
+              <div class="card-body">
+                <p class="card-tag">UI Design · React</p>
+                <p class="card-title">O'Délice Burger</p>
+                <p class="card-desc">Site fast-food, burgers de qualité</p>
+                <div class="card-arrow"><div class="arrow-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></div></div>
+              </div>
+            </a>
+
+            <a class="card" href="portfolio/uwalls.html">
+              <div class="card-img">
+                <img src="assets/images/portfolio images/uwalls.webp" loading="lazy" alt="Site vitrine U-Walls — décoration murale">
+              </div>
+              <div class="card-body">
+                <p class="card-tag">UI Design</p>
+                <p class="card-title">U-Walls</p>
+                <p class="card-desc">Décoration murale créative</p>
+                <div class="card-arrow"><div class="arrow-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></div></div>
+              </div>
+            </a>
+
+            <a class="card" href="portfolio/fioul-market.html">
+              <div class="card-img">
+                <img src="assets/images/portfolio images/fioulmarket.webp" loading="lazy" alt="Site vitrine Fioul Market — vente de fioul en ligne">
+              </div>
+              <div class="card-body">
+                <p class="card-tag">UI Design</p>
+                <p class="card-title">Fioul Market</p>
+                <p class="card-desc">Vente de fioul en ligne</p>
+                <div class="card-arrow"><div class="arrow-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></div></div>
+              </div>
+            </a>
+
+            <a class="card" href="portfolio/id-formation.html">
+              <div class="card-img">
+                <img src="assets/images/portfolio images/id-formation.webp" loading="lazy" alt="Site vitrine ID-Formation — formation professionnelle">
+              </div>
+              <div class="card-body">
+                <p class="card-tag">UI Design</p>
+                <p class="card-title">ID-Formation</p>
+                <p class="card-desc">Formation professionnelle</p>
+                <div class="card-arrow"><div class="arrow-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></div></div>
+              </div>
+            </a>
+
+            <a class="card" href="portfolio/kanap.html">
+              <div class="card-img">
+                <img src="assets/images/portfolio images/kanap.webp" loading="lazy" alt="Site e-commerce Kanap — vente de mobilier en Next.js">
+              </div>
+              <div class="card-body">
+                <p class="card-tag">Web Design · Next.js</p>
+                <p class="card-title">Kanap</p>
+                <p class="card-desc">E-commerce mobilier & canapés</p>
+                <div class="card-arrow"><div class="arrow-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></div></div>
+              </div>
+            </a>
+      
+          </div>
+        </div>
+      
+        <div class="dots" id="dots"></div>
+
+        <div style="text-align: center; margin-top: 32px; ">
+          <a href="page/projets.html" class="sue-main-btn  fill-btn" style="color:#fff;">Voir tous mes projets <i class="ri-arrow-right-line"></i></a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1339,199 +1214,74 @@
     <div class="sue-container sue-sub-container">
       <div class="sue-wrapper">
         <div class="section-title">
-          <h3>Mes Formules</h3>
-          <p>Ce que je vous propose</p>
+          <h2>Développeur Web expert en React et Next.js</h2>
+          <h3>Voici ce que je vous propose</h3>
         </div>
         <div class="section-content">
-          <div class="service-container">
+          <div class="srv-grid">
 
-            <div class="card-with-modal">
-              <div class="service-card">
-                <div class="service-info">
-                  <i class="ri-landscape-line service-icon"></i>
-                  <h4>Site Vitrine</h4>
-                  <a class="service-see-more">Voir plus<i class="ri-arrow-right-up-fill"></i></a>
-                </div>
+            <!-- Site Vitrine -->
+            <div class="srv-card">
+              <div class="srv-icon"><i class="ri-landscape-line"></i></div>
+              <div class="srv-stack">
+                <span>React</span><span>Next.js</span><span>Tailwind</span>
               </div>
-
-              <div class="service-modal-backdrop">
-                <div class="service-modal">
-                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
-                  <div class="modal-content">
-                    <div class="modal-title">
-                      <h3>Site Vitrine</h3>
-                      <p>Besoin d'un site vitrine qui convertit vos visiteurs en clients ? Je crée des sites web ultra-rapides, optimisés SEO et parfaitement adaptés à votre activité.</p>
-                    </div>
-                    <h4>💻 Mes Solutions Clés</h4>
-                    <ul class="my-services">
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Sites 100% sur-mesure (design unique et adapté à votre image)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Technologies modernes (Next.js, React, Tailwind CSS)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Performance optimale (90+ score Lighthouse)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ SEO intégré (balises optimisées, sitemap, contenu structuré)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Mobile-first (parfaitement responsive sur tous les appareils)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Facile à gérer (formation incluse)</p></li>
-                    </ul>
-                    <p>💰 Mes Tarifs (Forfait Projet) :</p>
-                    <p>Site vitrine ( one single page ) : à partir de  <span style="color: rgb(11, 234, 11);">1000€</span></p>
-                    <p>Site vitrine ( > 3 pages  ) : à partir de  <span style="color: rgb(11, 234, 11);">2 100€</span></p>
-                    <p>Site vitrine avancé : à partir de  <span style="color: rgb(11, 234, 11);">2 000€</span></p>
-                    <p>*(Paiement échelonné possible - Projet livré en 2-4 semaines)*</p>          
-                  </div>
-                </div>
-              
-              </div>
+              <h4>Site Vitrine</h4>
+              <p>Des sites rapides, référencés et sur-mesure construits avec <strong>React</strong> et <strong>Next.js</strong>. Rendu SSR pour un SEO optimal, score Lighthouse 90+ garanti, mobile-first. Formation incluse pour gérer votre contenu en autonomie.</p>
+              <ul class="srv-features">
+                <li><i class="ri-checkbox-circle-fill"></i>Design 100% sur-mesure</li>
+                <li><i class="ri-checkbox-circle-fill"></i>SEO technique intégré</li>
+                <li><i class="ri-checkbox-circle-fill"></i>Livraison en 2–4 semaines</li>
+              </ul>
+              <a href="page/formules.html" class="srv-btn">Voir les formules <i class="ri-arrow-right-line"></i></a>
             </div>
 
-            <div class="card-with-modal">
-              <div class="service-card">
-                <div class="service-info">
-                  <i class="ri-app-store-fill service-icon"></i>
-                  <h4>Applications</h4>
-                  <a class="service-see-more">Voir plus <i class="ri-arrow-right-up-fill"></i></a>
-                </div>
+            <!-- Application Mobile -->
+            <div class="srv-card">
+              <div class="srv-icon"><i class="ri-smartphone-line"></i></div>
+              <div class="srv-stack">
+                <span>React Native</span><span>Expo</span><span>Node.js</span>
               </div>
-
-              <div class="service-modal-backdrop">
-                <div class="service-modal">
-                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
-                  <div class="modal-content">
-                    <div class="modal-title">
-                      <h3>Applications Mobile 📱 </h3>
-                      <p>Vous souhaitez une application mobile rapide, fluide et scalable pour iOS et Android ? Je développe des apps cross-platform haut de gamme en React Native et Flutter, bien plus performantes que les solutions no-code (Glide, Adalo).
-
-                      </p>
-                    </div>
-                    <h4>Ce que je propose</h4>
-                    <ul class="my-services">
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ App 100% personnalisée (design unique, animations UX/UI premium)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Développement cross-platform (1 seul code pour iOS + Android)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Performances natives (60 FPS, chargement optimisé)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Backend intégré (Node.js, API REST/GraphQL)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Fonctionnalités avancées (paiements, notifications push, géolocalisation)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Maintenance incluse (30 jours de support gratuit)</p></li>
-                    </ul>
-                    <p>💰 Mes Tarifs (Forfait Projet) :</p>
-                    <p>MVP App Mobile (3-5 écrans) : à partir de  <span style="color: rgb(11, 234, 11);">4 000 €</span></p>
-                    <p>Application Complète (10+ écrans, backend) : à partir de  <span style="color: rgb(11, 234, 11);">7 000 €</span></p>
-                    <p>Solution Complexe (marketplace, IA, temps réel) : à partir de  <span style="color: rgb(11, 234, 11);">10 000 €</span></p>
-                    <p>*(Paiement échelonné • Livraison en 6-12 semaines)*</p>
-                  </div>
-                </div>
-               
-              </div>
+              <h4>Application Mobile</h4>
+              <p>Applications iOS & Android cross-platform développées en <strong>React Native</strong> avec <strong>Expo</strong>. Un seul code pour les deux stores, performances natives 60 FPS, backend <strong>Node.js</strong> intégré si nécessaire.</p>
+              <ul class="srv-features">
+                <li><i class="ri-checkbox-circle-fill"></i>iOS & Android — 1 seul code</li>
+                <li><i class="ri-checkbox-circle-fill"></i>Paiements, push, géolocalisation</li>
+                <li><i class="ri-checkbox-circle-fill"></i>30 jours de support inclus</li>
+              </ul>
+              <a href="page/formules.html" class="srv-btn">Voir les formules <i class="ri-arrow-right-line"></i></a>
             </div>
 
-            <div class="card-with-modal">
-              <div class="service-card">
-                <div class="service-info">
-                  <i class="ri-shopping-cart-2-line service-icon"></i>
-                  <h4>E-Commerce </h4>
-                  <a class="service-see-more">Voir plus <i class="ri-arrow-right-up-fill"></i></a>
-                </div>
+            <!-- E-Commerce -->
+            <div class="srv-card">
+              <div class="srv-icon"><i class="ri-shopping-cart-2-line"></i></div>
+              <div class="srv-stack">
+                <span>Next.js</span><span>Stripe</span><span>Node.js</span>
               </div>
-
-              <div class="service-modal-backdrop">
-                <div class="service-modal">
-                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
-                  <div class="modal-content">
-                    <div class="modal-title">
-                      <h3>E-Commerce 🛍️ </h3>
-                      <p>Vous rêvez d'une boutique en ligne ultra-rapide, optimisée pour le SEO et scalable ? Je conçois des sites e-commerce high-tech en React & Next.js, bien loin des solutions préfabriquées (Shopify, WooCommerce) qui manquent de flexibilité.</p>
-                    </div>
-                    <h4>✨ Ce que je vous offre :</h4>
-                    <ul class="my-services">
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Site 100% personnalisé (design unique, adapté à votre branding)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Performance optimale (90+ score Lighthouse, chargement en <1s)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ SEO intégré (SSR Next.js, balises optimisées, blogs intégrés)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Paiements sécurisés (Stripe, PayPal, solutions sur-mesure)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Mobile-first (UX parfaite sur tous les écrans)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Scalable (architecture prête pour +10K visiteurs/jour)</p></li>
-                    </ul>
-                    <p>💰 Mes Tarifs (Forfait Projet) :</p>
-                    <p>MVP E-Commerce (+20 produits) : à partir de  <span style="color: rgb(11, 234, 11);">6 000 €</span></p>
-                    <p>Boutique Avancée (100+ produits) : à partir de  <span style="color: rgb(11, 234, 11);">10 000 €</span></p>
-                    <p>Marketplace/Multi-vendeurs : à partir de  <span style="color: rgb(11, 234, 11);">12 000 €</span></p>
-                    <p>*(Paiement échelonné • Livraison en 4-8 semaines)*</p>
-                  </div>
-                </div>
-               
-              </div>
+              <h4>E-Commerce</h4>
+              <p>Boutiques en ligne haute performance avec <strong>Next.js</strong> SSR — bien au-delà de Shopify. Architecture scalable jusqu'à 10 000 visiteurs/jour, paiements sécurisés Stripe/PayPal, catalogue et dashboard sur-mesure.</p>
+              <ul class="srv-features">
+                <li><i class="ri-checkbox-circle-fill"></i>SSR Next.js — indexation maximale</li>
+                <li><i class="ri-checkbox-circle-fill"></i>Paiements Stripe & PayPal</li>
+                <li><i class="ri-checkbox-circle-fill"></i>Architecture scalable</li>
+              </ul>
+              <a href="page/formules.html" class="srv-btn">Voir les formules <i class="ri-arrow-right-line"></i></a>
             </div>
 
-            <div class="card-with-modal">
-              <div class="service-card">
-                <div class="service-info">
-                  <i class="ri-rocket-fill service-icon"></i>
-                  <h4>Pack Demarrage</h4>
-                  <a class="service-see-more">Voir plus <i class="ri-arrow-right-up-fill"></i></a>
-                </div>
+            <!-- Solution Personnalisée -->
+            <div class="srv-card srv-card--accent">
+              <div class="srv-icon"><i class="ri-settings-3-line"></i></div>
+              <div class="srv-stack">
+                <span>React</span><span>Next.js</span><span>React Native</span><span>Node.js</span>
               </div>
-
-              <div class="service-modal-backdrop">
-                <div class="service-modal">
-                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
-                  <div class="modal-content">
-                    <div class="modal-title">
-                      <h3>🚀 Pack Démarrage </h3>
-                      <p>Vous rêvez d'un site web moderne, performant et optimisé pour le SEO, sans vous ruiner ni perdre des mois en démarches ? Mon Pack Démarrage est fait pour vous !
-
-                      </p>
-                    </div>
-                    <h4>✨ Ce que je propose</h4>
-                    <ul class="my-services">
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Site Vitrine Personnalisée </p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Optimisation SEO Basique </p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Maintenance 6 mois → 100€/mois</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Hébergement + Nom de domaine</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>✅ Déploiement</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>💰 Prix :  <span style="color: rgb(11, 234, 11);">2 100 €</span></p></li>
-                    </ul>
-                    <p>💡 Idéal pour : Startups, artisans, indépendants et petites entreprises qui veulent une présence en ligne rapide, professionnelle et efficace.</p>
-                  </div>
-                </div>
-               
-              </div>
-            </div>
-
-            <div class="card-with-modal">
-              <div class="service-card">
-                <div class="service-info">
-                  <i class="ri-magic-fill service-icon"></i>
-                  <h4>Pack Startup <i class="ri-heart-fill" style="color: #ff4d4d; font-size: 1.2em;"></i></h4>
-                  <a class="service-see-more">Voir plus <i class="ri-arrow-right-up-fill"></i></a>
-                </div>
-              </div>
-
-              <div class="service-modal-backdrop">
-                <div class="service-modal">
-                  <a class="modal-close-btn"><i class="ri-close-line"></i></a>
-                  <div class="modal-content">
-                    <div class="modal-title">
-                      <h3>🚀 Pack Startup <i class="ri-heart-fill" style="color: #ff4d4d; font-size: 1.2em;"></i></h3>
-                  
-                      <p>Transformez vos idées en réalité digitale ! 🚀</p>
-                      <ul  class="my-services">
-                        <li>✅ Solutions innovantes & performantes</li>
-                        <li>✅ Design intuitif & expérience utilisateur optimale</li>
-                        <li>✅ Développement sécurisé et évolutif</li>
-                      </ul>
-                      <p><i class="ri-app-store-fill"> Apps IOS</i> & <i class="ri-google-play-fill"> Android</i> | 🌐 Sites web responsifs | 🔄 Maintenance & Mises à jour</p>
-                    </div>
-                    <h4>✨ Ce que je propose</h4>
-                    <ul class="my-services">
-                      <li><i class="ri-checkbox-circle-fill"></i><p>Un site internet</p></li>
-                      <li></i> <a class="description" href="https://f-kz.github.io/delice-burger/">➡️ cliquez ici pour voir le site</a></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p> Une application mobile</p></li>
-                      <li></i><p><a href="https://www.figma.com/design/lEHel3HbXzXKJ8uf378hFn/Burger-app?m=dev&t=lJZyjcAVt0g21Pxx-1">➡️ cliquez ici pour voir l'application</a></p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p> Le tout compris avec toutes les étapes de la création du site et de l'application (conception, développement, hébergement, maintenance, seo, etc...)</p></li>
-                      <li><i class="ri-checkbox-circle-fill"></i><p>💰 à partir de  <span style="color: rgb(11, 234, 11);"></span>8 500 €</span></p></li>
-                    </ul>
-                    <p>💡 Idéal pour : les startups qui souhaitent une présence en ligne rapide et efficace. </p>
-                  </div>
-                  
-                </div>
-               
-              </div>
+              <h4>Solution Personnalisée</h4>
+              <p>Un projet qui sort des sentiers battus ? Dashboard, marketplace, SaaS, application métier — je conçois des solutions full-stack sur-mesure en combinant <strong>React</strong>, <strong>Next.js</strong>, <strong>React Native</strong> et <strong>Node.js</strong> selon vos besoins.</p>
+              <ul class="srv-features">
+                <li><i class="ri-checkbox-circle-fill"></i>Cadrage & devis sous 24h</li>
+                <li><i class="ri-checkbox-circle-fill"></i>Stack adaptée à votre projet</li>
+                <li><i class="ri-checkbox-circle-fill"></i>Accompagnement de A à Z</li>
+              </ul>
+              <a href="page/contact.html" class="srv-btn">Discutons de votre projet <i class="ri-arrow-right-line"></i></a>
             </div>
 
           </div>
@@ -1547,8 +1297,8 @@
      
       <div class="testimonials">
         <div class="section-title">
-          <h3>Blogs</h3>
-          <p>ça pourrait vous interesser</p>
+          <h2>Blogs</h2>
+          <h3>ça pourrait vous interesser</h3>
         </div>
         <div class="section-content">
           <div class="swiper sue-client-swiper">
@@ -1560,7 +1310,7 @@
                   alt="image d'une url">
                 </div>
                 <div class="client-details straightDiv">
-                  <h3>Quels sont les prix d'un site vritine ?</h3>
+                  <h3>Quels sont les prix d'un site vitrine ?</h3>
                   <span>article crée par Franck Kanza</span>
                   <p>Comment estimer le prix d'un site vitrine et sur quoi ce baser ?...</p>
                   <a href="./blog/article-prix-site-vitrine.html" class="infoButton fill-btn">plus d'infos</a>
@@ -1636,106 +1386,70 @@
     </div>
   </section>
 
+
+  
+
   <!--========== Contact Me ==========-->
   <section class="sue-section nav-menu-section" id="contact">
     <div class="sue-container sue-sub-container">
       <div class="sue-wrapper">
         <div class="section-title">
-          <h3>Contactez Moi</h3>
-          <p>Faisons votre Devis ensemble</p>
+          <h2>Besoin d'un developpeur web ?</h2>
+          <h3>Faisons votre Devis ensemble</h3>
         </div>
-        <div class="section-content">
-          <div class="contact-container">
-
-            <div class="contact-info">
-              <h3>Contact Info</h3>
-              <ul class="contact-details">
-
-                <li class="contact-item">
-                  <div class="contact-icon">
-                    <i class="ri-mail-send-fill"></i>
-                  </div>
-                  <div class="contact-method">
-                    <span>E-mail</span>
-                    <h4>franck.kanza@outlook.fr</h4>
-                    <a href="mailto:franck.kanza@outlook.fr" target="_blank"><span>Envoyez <i class="ri-arrow-right-up-line"></i></span></a>
-                  </div>
-                </li>
-
-                <li class="contact-item">
-                  <div class="contact-icon">
-                    <i class="ri-whatsapp-line"></i>
-                  </div>
-                  <div class="contact-method">
-                    <span>Telephone</span>
-                    <h4>+33 6 44 39 62 84</h4>
-                    <a href="https://wa.me/33644396284?text=Bonjour%20Franck%2C%20je%20souhaite%20un%20devis%20pour%20mon%20projet" target="_blank"><span>Send <i class="ri-arrow-right-up-line"></i></span></a>
-                  </div>
-                </li>
-
-                <li class="contact-item">
-                  <div class="contact-icon">
-                    <i class="ri-messenger-fill"></i>
-                  </div>
-                  <div class="contact-method">
-                    <span>Messenger</span>
-                    <h4>Franck.Kanza-fb123</h4>
-                    <a href="" target="_blank"><span>Send <i class="ri-arrow-right-up-line"></i></span></a>
-                  </div>
-                </li>
-
-              </ul>
-
-              <h3>Social Info</h3>
-              <ul class="contact-social-links">
-                <li><a href="https://github.com/f-kz" aria-label="GitHub de Franck Kanza" rel="noopener"><i class="ri-github-fill"></i></a></li>
-                <li><a href="https://www.facebook.com/profile.php?id=100087362503714" aria-label="Facebook de Franck Kanza" rel="noopener"><i class="ri-facebook-fill"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/franck-kanza-6849b4195/"><i class="ri-linkedin-fill"></i></a></li>
-              </ul>
-
+        <div class="contact-form-body">
+          <h2>Travaillons <span>ensemble.</span></h2>
+          <p>Merci de remplir le formulaire, je vous répondrai dans les plus brefs délais. J'accepte les appels entre 9h et 18h.</p>
+          <form method="POST" id="sue-contact-form">
+            <div class="input-group">
+              <input type="text" name="full-name" placeholder="Nom & Prénom *" required>
             </div>
-
-            <div class="contact-form-body">
-              <h2>Travaillons <span>ensemble.</span></h2>
-              <p>Merci de remplir le formulaire je vous répondrais dans les plus bref delais. J'accepte les appels entre 9h et 18h</p>
-              <form method="POST" id="sue-contact-form">
-                <div class="input-group">
-                  <input type="text" name="full-name" placeholder="Name *" required>
-                </div>
-                <div class="input-group">
-                  <input type="text" name="email" placeholder="Email *" required>
-                </div>
-                <div class="input-group">
-                  <input type="text" name="subject" placeholder=" Application ? Site vitrine ?  autre ? ..." required>
-                </div>
-                <div class="input-group">
-                  <textarea name="message" placeholder="Quelques mots sur votre projet..." required></textarea>
-                </div>
-                <div class="input-group send-message">
-                  <button class="sue-main-btn fill-btn submit-btn" name="submit" type="submit">Envoyer</button>
-                  <div class="contact-form-alert"></div>
-                </div>
-              </form>
+            <div class="input-group">
+              <input type="email" name="email" placeholder="Email *" required>
             </div>
+            <div class="input-group">
+              <input type="text" name="subject" placeholder="Type de projet (site vitrine, app, e-commerce...)" required>
+            </div>
+            <div class="input-group">
+              <textarea name="message" placeholder="Décrivez votre projet en quelques mots..." required></textarea>
+            </div>
+            <div class="input-group send-message">
+              <button class="sue-main-btn fill-btn submit-btn" name="submit" type="submit">Envoyer</button>
+              <div class="contact-form-alert"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!--========== Malt ==========-->
+  <section class="malt-section">
+    <div class="malt-inner">
+      <div class="malt-text">
+        <p class="malt-label">Disponible en freelance</p>
+        <h2 class="malt-title">Retrouvez moi egalement sur <span>Malt</span></h2>
+        <p class="malt-desc">Consultez mon profil, mes avis clients et mes disponibilités directement sur la plateforme.</p>
+        <a href="https://www.malt.fr/profile/franckkanza" target="_blank" rel="noopener" class="malt-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.94 4.32a5.56 5.56 0 0 0-7.87 0l-1.07 1.07-1.07-1.07a5.57 5.57 0 0 0-7.87 7.87l1.07 1.07L12 21.13l7.87-7.87 1.07-1.07a5.56 5.56 0 0 0 0-7.87z"/></svg>
+          Voir mon profil Malt
+        </a>
+      </div>
+      <div class="malt-badge">
+        <div class="malt-card">
+          <img src="assets/images/favicon.png" alt="Franck Kanza" class="malt-avatar">
+          <div class="malt-info">
+            <strong style="color:#fff;">Franck Kanza</strong>
+            <span>Développeur Web Freelance</span>
+            <span>React · Next.js · Mobile</span>
           </div>
+          <div class="malt-stars">★★★★★</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section Où me trouver -->
-  <section class="sue-section location-section">
-    <div class="sue-container">
-      <h2 class="sue-title">Où me trouver</h2>
-    </div>
-    <!-- ① Conteneur de la carte -->
-    <div class="contact-map-wrapper">
-      <div id="contact-map">
-        <div id="map"></div>
-      </div>
-    </div>
-  </section>
+
  
 
   <!--========== Footer ==========-->

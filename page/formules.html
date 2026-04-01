@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formules & Tarifs | Franck Kanza Développeur Web Freelance</title>
+    <meta name="author" content="Franck Kanza">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Découvrez les formules et tarifs de Franck Kanza, développeur web freelance. Sites vitrine, e-commerce, applications mobiles — devis gratuit sous 24h.">
+    <link rel="canonical" href="https://www.franck-kanza.fr/page/formules.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Formules & Tarifs | Franck Kanza Développeur Web Freelance">
+    <meta property="og:description" content="Sites vitrine, e-commerce, applications mobiles. Découvrez mes formules et tarifs. Devis gratuit.">
+    <meta property="og:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+    <meta property="og:url" content="https://www.franck-kanza.fr/page/formules.html">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Formules & Tarifs | Franck Kanza">
+    <meta name="twitter:description" content="Sites vitrine, e-commerce, applications mobiles. Devis gratuit sous 24h.">
+    <meta name="twitter:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+
+    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+
+    <style>
+      .formules-page-hero {
+        background: var(--dark-color);
+        padding: 100px 24px 60px;
+        text-align: center;
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.12);
+      }
+      .formules-page-hero .hero-tag {
+        display: inline-block;
+        background: hsla(var(--hue), var(--sat), var(--light), 0.12);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+      }
+      .formules-page-hero h1 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 800;
+        color: var(--color-02);
+        margin-bottom: 1rem;
+      }
+      .formules-page-hero h1 span { color: var(--primary-color); }
+      .formules-page-hero p {
+        font-size: 1.05rem;
+        color: var(--color-04);
+        max-width: 560px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      .back-nav {
+        padding: 16px 24px;
+        background: var(--dark-color);
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+      }
+      .back-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--color-04);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .back-nav a:hover { color: var(--primary-color); }
+
+      /* Formules grid */
+      .formules-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 28px;
+        padding: 60px 0;
+      }
+
+      .formule-card {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.04);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        border-radius: 16px;
+        padding: 36px 28px;
+        transition: border-color 0.3s, transform 0.3s;
+      }
+      .formule-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-4px);
+      }
+      .formule-card.featured {
+        border-color: var(--primary-color);
+        position: relative;
+      }
+      .formule-card.featured::before {
+        content: "Populaire ❤️";
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-color);
+        color: var(--dark-color);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+
+      .formule-card-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 14px;
+      }
+      .formule-card h2 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--color-02);
+        margin-bottom: 10px;
+      }
+      .formule-card > p {
+        font-size: 0.93rem;
+        color: var(--color-04);
+        line-height: 1.65;
+        margin-bottom: 20px;
+      }
+      .formule-card h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--color-02);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+      .formule-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .formule-features li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: var(--color-04);
+        line-height: 1.5;
+      }
+      .formule-features li i {
+        color: var(--primary-color);
+        font-size: 1rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .formule-pricing {
+        border-top: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        padding-top: 20px;
+        margin-top: 4px;
+      }
+      .formule-pricing h3 {
+        font-size: 0.85rem;
+        color: var(--color-04);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+      .formule-pricing-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        color: var(--color-04);
+        padding: 6px 0;
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.06);
+      }
+      .formule-pricing-row:last-of-type { border-bottom: none; }
+      .formule-pricing-row strong {
+        color: var(--primary-color);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .formule-note {
+        font-size: 0.8rem;
+        color: var(--color-04);
+        opacity: 0.7;
+        margin-top: 10px;
+        font-style: italic;
+      }
+
+      .formule-cta {
+        margin-top: 24px;
+      }
+      .formule-cta a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--primary-color);
+        color: var(--dark-color);
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .formule-cta a:hover { opacity: 0.85; }
+
+      /* CTA banner */
+      .formules-cta-banner {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.04);
+        border-top: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        padding: 60px 24px;
+        text-align: center;
+      }
+      .formules-cta-banner h2 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        color: var(--color-02);
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+      .formules-cta-banner h2 span { color: var(--primary-color); }
+      .formules-cta-banner p {
+        color: var(--color-04);
+        font-size: 1rem;
+        margin-bottom: 28px;
+      }
+      .formules-cta-banner a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--primary-color);
+        color: var(--dark-color);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .formules-cta-banner a:hover { opacity: 0.85; }
+    </style>
+  </head>
+
+  <body class="light-theme">
+
+    <!-- Retour accueil -->
+    <nav class="back-nav">
+      <div class="sue-container">
+        <a href="../index.html">
+          <i class="ri-arrow-left-line"></i> Retour à l'accueil
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="formules-page-hero">
+      <span class="hero-tag">Développeur Web Freelance</span>
+      <h1>Mes <span>Formules</span> & Tarifs</h1>
+      <p>Des solutions sur-mesure adaptées à chaque projet. Paiement échelonné possible. Devis gratuit sous 24h.</p>
+    </header>
+
+    <!-- Formules -->
+    <section class="sue-section" id="formules">
+      <div class="sue-container">
+        <div class="formules-grid">
+
+          <!-- Site Vitrine -->
+          <div class="formule-card">
+            <div class="formule-card-icon"><i class="ri-landscape-line"></i></div>
+            <h2>Site Vitrine</h2>
+            <p>Sites web ultra-rapides, optimisés SEO et parfaitement adaptés à votre activité. Design unique, mobile-first, livré en 2 à 4 semaines.</p>
+            <h3>Ce que j'inclus</h3>
+            <ul class="formule-features">
+              <li><i class="ri-checkbox-circle-fill"></i><span>Design 100% sur-mesure, adapté à votre image</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Technologies modernes (Next.js, React, Tailwind CSS)</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Performance optimale — score Lighthouse 90+</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>SEO intégré (balises optimisées, sitemap, données structurées)</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Responsive — parfaitement adapté sur tous les appareils</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Formation incluse pour gérer votre site</span></li>
+            </ul>
+            <div class="formule-pricing">
+              <h3>Tarifs (forfait projet)</h3>
+              <div class="formule-pricing-row"><span>Site one-page</span><strong>à partir de 1 000 €</strong></div>
+              <div class="formule-pricing-row"><span>Site multi-pages (&gt; 3 pages)</span><strong>à partir de 2 100 €</strong></div>
+              <div class="formule-pricing-row"><span>Site vitrine avancé</span><strong>à partir de 2 000 €</strong></div>
+              <p class="formule-note">Paiement échelonné possible · Livraison en 2–4 semaines</p>
+            </div>
+            <div class="formule-cta">
+              <a href="contact.html"><i class="ri-mail-send-line"></i> Demander un devis</a>
+            </div>
+          </div>
+
+          <!-- Applications Mobile -->
+          <div class="formule-card">
+            <div class="formule-card-icon"><i class="ri-app-store-fill"></i></div>
+            <h2>Application Mobile</h2>
+            <p>Applications cross-platform iOS & Android en React Native. Performances natives, design premium, backend intégré.</p>
+            <h3>Ce que j'inclus</h3>
+            <ul class="formule-features">
+              <li><i class="ri-checkbox-circle-fill"></i><span>App 100% personnalisée — animations UX/UI premium</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Cross-platform : un seul code pour iOS + Android</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Performances natives — 60 FPS, chargement optimisé</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Backend intégré (Node.js, API REST/GraphQL)</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Fonctionnalités avancées — paiements, push, géolocalisation</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>30 jours de support gratuit après livraison</span></li>
+            </ul>
+            <div class="formule-pricing">
+              <h3>Tarifs (forfait projet)</h3>
+              <div class="formule-pricing-row"><span>MVP App (3–5 écrans)</span><strong>à partir de 4 000 €</strong></div>
+              <div class="formule-pricing-row"><span>Application complète (10+ écrans)</span><strong>à partir de 7 000 €</strong></div>
+              <div class="formule-pricing-row"><span>Solution complexe (marketplace, IA)</span><strong>à partir de 10 000 €</strong></div>
+              <p class="formule-note">Paiement échelonné · Livraison en 6–12 semaines</p>
+            </div>
+            <div class="formule-cta">
+              <a href="contact.html"><i class="ri-mail-send-line"></i> Demander un devis</a>
+            </div>
+          </div>
+
+          <!-- E-Commerce -->
+          <div class="formule-card">
+            <div class="formule-card-icon"><i class="ri-shopping-cart-2-line"></i></div>
+            <h2>E-Commerce</h2>
+            <p>Boutiques en ligne ultra-rapides en React & Next.js. SEO, paiements sécurisés, architecture scalable dès 10 000 visiteurs/jour.</p>
+            <h3>Ce que j'inclus</h3>
+            <ul class="formule-features">
+              <li><i class="ri-checkbox-circle-fill"></i><span>Design 100% personnalisé — adapté à votre branding</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Performance optimale — score Lighthouse 90+, chargement &lt; 1s</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>SEO avancé (SSR Next.js, balises optimisées, blog intégré)</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Paiements sécurisés (Stripe, PayPal, sur-mesure)</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Mobile-first — UX parfaite sur tous les écrans</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Architecture scalable — prête pour +10K visiteurs/jour</span></li>
+            </ul>
+            <div class="formule-pricing">
+              <h3>Tarifs (forfait projet)</h3>
+              <div class="formule-pricing-row"><span>MVP E-Commerce (+20 produits)</span><strong>à partir de 6 000 €</strong></div>
+              <div class="formule-pricing-row"><span>Boutique avancée (100+ produits)</span><strong>à partir de 10 000 €</strong></div>
+              <div class="formule-pricing-row"><span>Marketplace / multi-vendeurs</span><strong>à partir de 12 000 €</strong></div>
+              <p class="formule-note">Paiement échelonné · Livraison en 4–8 semaines</p>
+            </div>
+            <div class="formule-cta">
+              <a href="contact.html"><i class="ri-mail-send-line"></i> Demander un devis</a>
+            </div>
+          </div>
+
+          <!-- Pack Démarrage -->
+          <div class="formule-card">
+            <div class="formule-card-icon"><i class="ri-rocket-fill"></i></div>
+            <h2>Pack Démarrage</h2>
+            <p>Un site web moderne, performant et optimisé SEO, sans vous ruiner. Idéal pour artisans, indépendants et petites entreprises.</p>
+            <h3>Ce que j'inclus</h3>
+            <ul class="formule-features">
+              <li><i class="ri-checkbox-circle-fill"></i><span>Site vitrine personnalisée</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Optimisation SEO basique</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Maintenance 6 mois — 100 €/mois</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Hébergement + nom de domaine inclus</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Déploiement complet</span></li>
+            </ul>
+            <div class="formule-pricing">
+              <h3>Tarif</h3>
+              <div class="formule-pricing-row"><span>Pack Démarrage complet</span><strong>2 100 €</strong></div>
+              <p class="formule-note">Idéal pour startups, artisans, indépendants et petites entreprises</p>
+            </div>
+            <div class="formule-cta">
+              <a href="contact.html"><i class="ri-mail-send-line"></i> Demander un devis</a>
+            </div>
+          </div>
+
+          <!-- Pack Startup -->
+          <div class="formule-card featured">
+            <div class="formule-card-icon"><i class="ri-magic-fill"></i></div>
+            <h2>Pack Startup ❤️</h2>
+            <p>La solution complète pour les startups : un site web <strong>et</strong> une application mobile, de la conception au déploiement.</p>
+            <h3>Ce que j'inclus</h3>
+            <ul class="formule-features">
+              <li><i class="ri-checkbox-circle-fill"></i><span>Un site internet sur-mesure</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Une application mobile iOS & Android</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Conception, développement, hébergement</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>SEO intégré & maintenance incluse</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Design UX/UI premium — expérience utilisateur optimale</span></li>
+              <li><i class="ri-checkbox-circle-fill"></i><span>Développement sécurisé et évolutif</span></li>
+            </ul>
+            <div class="formule-pricing">
+              <h3>Tarif</h3>
+              <div class="formule-pricing-row"><span>Pack Startup complet</span><strong>à partir de 8 500 €</strong></div>
+              <p class="formule-note">Idéal pour les startups qui veulent une présence en ligne rapide et efficace</p>
+            </div>
+            <div class="formule-cta">
+              <a href="contact.html"><i class="ri-mail-send-line"></i> Demander un devis</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA bas de page -->
+    <div class="formules-cta-banner">
+      <div class="sue-container">
+        <h2>Un projet en tête ? Parlons-en <span>maintenant.</span></h2>
+        <p>Je réponds sous 24h. Devis gratuit, sans engagement.</p>
+        <a href="contact.html"><i class="ri-arrow-right-line"></i> Demander un devis gratuit</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="sue-footer">
+      <div class="sue-container">
+        <div class="sue-logo-footer">
+          <a href="../index.html"><img loading="lazy" class="background-logo" src="../assets/images/favicon.png" alt="Franck Kanza — Développeur Web Freelance"></a>
+          <p class="copy-right">Développeur Web Freelance Normandie & Paris</p>
+        </div>
+        <div class="inner">
+          <div class="sue-logo">
+            <a href="../index.html"><span>Franck</span></a>
+          </div>
+          <ul class="footer-menu">
+            <li class="menu-item"><a href="../index.html#about">À Propos</a></li>
+            <li class="menu-item"><a href="../index.html#resume">Resume</a></li>
+            <li class="menu-item"><a href="../index.html#service">Services</a></li>
+            <li class="menu-item"><a href="../index.html#portfolio">Portfolio</a></li>
+          </ul>
+          <ul class="contact-social-links center">
+            <li><a href="https://github.com/f-kz" target="_blank" rel="noopener"><i class="ri-github-fill"></i></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=100087362503714" target="_blank" rel="noopener"><i class="ri-facebook-fill"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/franck-kanza-6849b4195/" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i></a></li>
+          </ul>
+          <p class="copy-right">© Franck Kanza 2026</p>
+        </div>
+        <div>
+          <ul class="sue-footer-contact">
+            <li class="copy-right"><a href="https://wa.me/33644396284?text=Bonjour%20Franck%2C%20je%20souhaite%20un%20devis%20pour%20mon%20projet" target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i></a>+33 6 44 39 62 84</li>
+            <li class="copy-right"><a href="mailto:franck.kanza@outlook.fr"><i class="ri-mail-send-fill"></i></a>franck.kanza@outlook.fr</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+
+  </body>
+</html>

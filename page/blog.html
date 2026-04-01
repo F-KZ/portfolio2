@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Développement Web, Freelance & Tech | Franck Kanza</title>
+    <meta name="author" content="Franck Kanza">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Le blog de Franck Kanza, développeur web freelance : conseils, guides et analyses sur le développement web, React, Next.js, freelance et l'IA.">
+    <link rel="canonical" href="https://www.franck-kanza.fr/page/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog — Développement Web, Freelance & Tech | Franck Kanza">
+    <meta property="og:description" content="Conseils, guides et analyses sur le développement web, React, Next.js, freelance et l'IA.">
+    <meta property="og:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+    <meta property="og:url" content="https://www.franck-kanza.fr/page/blog.html">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog — Développement Web, Freelance & Tech | Franck Kanza">
+    <meta name="twitter:description" content="Conseils, guides et analyses sur le développement web, freelance et l'IA.">
+    <meta name="twitter:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+
+    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+    <link rel="preload" as="image" href="../assets/images/blog images/1.webp">
+
+    <style>
+      /* ── Reset & base ── */
+      *, *::before, *::after { box-sizing: border-box; }
+      body { margin: 0; font-family: inherit; background: var(--dark-color); color: var(--color-02); }
+
+      /* ── Back nav ── */
+      .back-nav {
+        padding: 16px 24px;
+        background: var(--dark-color);
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+      }
+      .back-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--color-04);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .back-nav a:hover { color: var(--primary-color); }
+
+      /* ── Hero ── */
+      .blog-hero {
+        background: var(--dark-color);
+        padding: 80px 24px 56px;
+        text-align: center;
+        border-bottom: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.12);
+      }
+      .blog-hero .hero-tag {
+        display: inline-block;
+        background: hsla(var(--hue), var(--sat), var(--light), 0.12);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+      }
+      .blog-hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 800;
+        color: var(--color-02);
+        margin: 0 0 1rem;
+      }
+      .blog-hero h1 span { color: var(--primary-color); }
+      .blog-hero p {
+        font-size: 1.05rem;
+        color: var(--color-04);
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* ── Filter tabs ── */
+      .blog-filters {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 40px 24px 0;
+      }
+      .filter-btn {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.08);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.15);
+        color: var(--color-04);
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 8px 18px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--dark-color);
+      }
+
+      /* ── Grid ── */
+      .blog-grid-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+      @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 580px) { .blog-grid { grid-template-columns: 1fr; } }
+
+      /* ── Article card ── */
+      .blog-card {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.04);
+        border: 1px solid hsla(var(--hue), var(--sat), var(--light), 0.1);
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        transition: transform 0.25s, border-color 0.25s;
+      }
+      .blog-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--primary-color);
+      }
+      .blog-card.hidden { display: none; }
+
+      .card-thumb {
+        height: 200px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .card-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s;
+      }
+      .blog-card:hover .card-thumb img { transform: scale(1.05); }
+
+      .card-body {
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 10px;
+      }
+      .card-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .card-cat {
+        background: hsla(var(--hue), var(--sat), var(--light), 0.12);
+        color: var(--primary-color);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 20px;
+      }
+      .card-date {
+        color: var(--color-04);
+        font-size: 0.8rem;
+      }
+      .card-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-02);
+        line-height: 1.45;
+        margin: 0;
+      }
+      .card-excerpt {
+        font-size: 0.88rem;
+        color: var(--color-04);
+        line-height: 1.6;
+        margin: 0;
+        flex: 1;
+      }
+      .card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--primary-color);
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-top: 4px;
+      }
+
+      /* ── Light theme overrides ── */
+      .light-theme .blog-card { background: #fff; border-color: #e8e8e8; }
+      .light-theme .blog-card:hover { border-color: var(--primary-color); }
+      .light-theme .card-thumb { background: #f4f4f4; }
+      .light-theme .filter-btn { background: #f0f0f0; border-color: #ddd; color: #555; }
+    </style>
+  </head>
+
+  <body>
+    <!-- ── Back navigation ── -->
+    <nav class="back-nav">
+      <a href="../index.html">
+        <i class="ri-arrow-left-line"></i> Retour au portfolio
+      </a>
+    </nav>
+
+    <!-- ── Hero ── -->
+    <header class="blog-hero">
+      <span class="hero-tag">Blog</span>
+      <h1>Conseils &amp; <span>Ressources</span></h1>
+      <p>Développement web, freelance, IA et tech — des articles concrets écrits par un développeur qui code vraiment.</p>
+    </header>
+
+    <!-- ── Filters ── -->
+    <div class="blog-filters">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="freelance">Freelance</button>
+      <button class="filter-btn" data-filter="dev">Développement</button>
+      <button class="filter-btn" data-filter="ia">IA & Tech</button>
+      <button class="filter-btn" data-filter="business">Business</button>
+    </div>
+
+    <!-- ── Grid ── -->
+    <main class="blog-grid-wrap">
+      <div class="blog-grid" id="blogGrid">
+
+        <!-- Article 1 : prix site vitrine -->
+        <a href="../blog/article-prix-site-vitrine.html" class="blog-card" data-cat="business">
+          <div class="card-thumb"><img src="../assets/images/blog images/1.webp" alt="Combien coûte un site vitrine en 2026"></div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-cat">Business</span>
+              <span class="card-date">Janv. 2026</span>
+            </div>
+            <h2 class="card-title">Combien coûte un site vitrine en 2026 ? Guide complet des tarifs</h2>
+            <p class="card-excerpt">De 500 € à 10 000 € — les vrais tarifs d'un site vitrine selon vos besoins, expliqués par un freelance React à Paris.</p>
+            <span class="card-link">Lire l'article <i class="ri-arrow-right-line"></i></span>
+          </div>
+        </a>
+
+        <!-- Article 2 : IA -->
+        <a href="../blog/article-ia.html" class="blog-card" data-cat="ia">
+          <div class="card-thumb"><img src="../assets/images/blog images/iaBanniere.svg" alt="L'IA va-t-elle remplacer les développeurs web"></div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-cat">IA & Tech</span>
+              <span class="card-date">Janv. 2026</span>
+            </div>
+            <h2 class="card-title">L'IA va-t-elle remplacer les développeurs web ?</h2>
+            <p class="card-excerpt">Analyse des capacités, limites de l'IA et de son impact réel sur le métier de développeur aujourd'hui.</p>
+            <span class="card-link">Lire l'article <i class="ri-arrow-right-line"></i></span>
+          </div>
+        </a>
+
+        <!-- Article 3 : devenir développeur -->
+        <a href="../blog/article-developpeur.html" class="blog-card" data-cat="dev">
+          <div class="card-thumb"><img src="../assets/images/blog images/devi.webp" alt="Comment devenir développeur web en 2026"></div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-cat">Développement</span>
+              <span class="card-date">Janv. 2026</span>
+            </div>
+            <h2 class="card-title">Comment devenir développeur web en 2026 ? Le guide complet</h2>
+            <p class="card-excerpt">Langages à apprendre, formations gratuites, projets pratiques et conseils d'un développeur freelance React à Paris.</p>
+            <span class="card-link">Lire l'article <i class="ri-arrow-right-line"></i></span>
+          </div>
+        </a>
+
+        <!-- Article 4 : devenir freelance -->
+        <a href="../blog/article-freelance.html" class="blog-card" data-cat="freelance">
+          <div class="card-thumb"><img src="../assets/images/blog images/free.webp" alt="Comment devenir développeur freelance"></div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-cat">Freelance</span>
+              <span class="card-date">Janv. 2026</span>
+            </div>
+            <h2 class="card-title">Comment devenir développeur freelance ?</h2>
+            <p class="card-excerpt">Guide complet : spécialisation, portfolio, statut légal, trouver des clients et les fidéliser durablement.</p>
+            <span class="card-link">Lire l'article <i class="ri-arrow-right-line"></i></span>
+          </div>
+        </a>
+
+        <!-- Article 5 : réseau -->
+        <a href="../blog/article-reseau.html" class="blog-card" data-cat="freelance">
+          <div class="card-thumb"><img src="../assets/images/blog images/banniere-reseau.webp" alt="Les meilleurs outils pour développer son réseau professionnel"></div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-cat">Freelance</span>
+              <span class="card-date">Janv. 2026</span>
+            </div>
+            <h2 class="card-title">Les meilleurs outils pour développer son réseau professionnel en 2026</h2>
+            <p class="card-excerpt">LinkedIn, Meetup, Discord, cartes de visite numériques — les outils qui font vraiment la différence pour un freelance.</p>
+            <span class="card-link">Lire l'article <i class="ri-arrow-right-line"></i></span>
+          </div>
+        </a>
+
+      </div>
+    </main>
+
+    <!-- ── Scripts ── -->
+    <script>
+      // Filter
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const blogCards  = document.querySelectorAll('.blog-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.dataset.filter;
+          blogCards.forEach(card => {
+            const match = filter === 'all' || card.dataset.cat === filter;
+            card.classList.toggle('hidden', !match);
+          });
+        });
+      });
+
+      // Light theme persistence
+      const savedTheme = localStorage.getItem('sue-saved-theme');
+      if (savedTheme === 'light') document.body.classList.add('light-theme');
+    </script>
+  </body>
+</html>
