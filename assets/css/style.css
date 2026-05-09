@@ -5612,6 +5612,7 @@ body{
    .avatar-container {
       flex-direction: column-reverse;
       row-gap: 10px;
+       padding-top: 3rem;
    }
 
    .avatar-container .hire-btn-01 {
