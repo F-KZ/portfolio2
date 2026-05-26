@@ -2,33 +2,35 @@
    Resume section tabs and tab contents
 ===================================================== */
 const resumeTabs = document.querySelector(".resume-tabs");
-const resumePortfolioTabBtns = resumeTabs.querySelectorAll(".tab-btn");
-const resumeTabContents = document.querySelectorAll(".resume-tab-content");
+if (resumeTabs) {
+   const resumePortfolioTabBtns = resumeTabs.querySelectorAll(".tab-btn");
+   const resumeTabContents = document.querySelectorAll(".resume-tab-content");
 
-var resumeTabNav = function(resumeTabClick){
-   resumeTabContents.forEach((resumeTabContent) => {
-      resumeTabContent.style.display = "none";
-      resumeTabContent.classList.remove("active");
+   var resumeTabNav = function(resumeTabClick){
+      resumeTabContents.forEach((resumeTabContent) => {
+         resumeTabContent.style.display = "none";
+         resumeTabContent.classList.remove("active");
+      });
+
+      resumePortfolioTabBtns.forEach((resumePortfolioTabBtn) => {
+         resumePortfolioTabBtn.classList.remove("active");
+      });
+
+      resumeTabContents[resumeTabClick].style.display = "flex";
+
+      setTimeout(() => {
+         resumeTabContents[resumeTabClick].classList.add("active");
+      }, 100);
+
+      resumePortfolioTabBtns[resumeTabClick].classList.add("active");
+   }
+
+   resumePortfolioTabBtns.forEach((resumePortfolioTabBtn, i) => {
+      resumePortfolioTabBtn.addEventListener("click", () => {
+         resumeTabNav(i);
+      });
    });
-
-   resumePortfolioTabBtns.forEach((resumePortfolioTabBtn) => {
-      resumePortfolioTabBtn.classList.remove("active");
-   });
-
-   resumeTabContents[resumeTabClick].style.display = "flex";
-
-   setTimeout(() => {
-      resumeTabContents[resumeTabClick].classList.add("active");
-   }, 100);
-
-   resumePortfolioTabBtns[resumeTabClick].classList.add("active");
 }
-
-resumePortfolioTabBtns.forEach((resumePortfolioTabBtn, i) => {
-   resumePortfolioTabBtn.addEventListener("click", () => {
-      resumeTabNav(i);
-   });
-});
 
 /* =====================================================
    Service modal open/close function
@@ -74,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Filter portfolio cards according to portfolio tabs.
 document.addEventListener("DOMContentLoaded", () => {
    const portfolioTabs = document.querySelector(".portfolio-tabs");
+   if (!portfolioTabs) return;
    const portfolioTabBtns = portfolioTabs.querySelectorAll(".tab-btn");
    const cardsWithModals = document.querySelectorAll(".portfolio-container .card-with-modal");
 
@@ -161,9 +164,10 @@ document.addEventListener("DOMContentLoaded", () => {
 const sueContactForm = document.getElementById("sue-contact-form");
 const sueContactFormAlert = document.querySelector(".contact-form-alert");
 
+if (sueContactForm) {
 // Récupérez vos IDs EmailJS
-    const serviceID = 'service_twkldo4'; // Remplacez par votre Service ID
-    const templateID = 'template_ikocaf8'; // Remplacez par votre Template ID
+    const serviceID = 'service_twkldo4';
+    const templateID = 'template_ikocaf8';
 
 sueContactForm.addEventListener('submit', function(event) {
    event.preventDefault();
@@ -190,6 +194,7 @@ sueContactForm.addEventListener('submit', function(event) {
          console.error('FAILED...', error);
       });
 });
+} // end if (sueContactForm)
 
 
 /* =====================================================
@@ -236,100 +241,76 @@ const menuHideBtn = document.querySelector(".menu-hide-btn");
 const menuShowBtn = document.querySelector(".menu-show-btn");
 var navTimeout;
 
-window.addEventListener("scroll", () => {
-   bottomNav.classList.add("active");
-   menuShowBtn.classList.remove("active");
+if (bottomNav && menuHideBtn && menuShowBtn) {
+   window.addEventListener("scroll", () => {
+      bottomNav.classList.add("active");
+      menuShowBtn.classList.remove("active");
 
-   if(window.scrollY < 10){
-      menuHideBtn.classList.remove("active");
-
-      function scrollStopped(){
-         bottomNav.classList.add("active");
+      if(window.scrollY < 10){
+         menuHideBtn.classList.remove("active");
+         clearTimeout(navTimeout);
+         navTimeout = setTimeout(() => bottomNav.classList.add("active"), 2500);
       }
 
-      clearTimeout(navTimeout);
-      navTimeout = setTimeout(scrollStopped, 2500);
-   }
+      if(window.scrollY > 10){
+         menuHideBtn.classList.add("active");
+         clearTimeout(navTimeout);
+         navTimeout = setTimeout(() => {
+            bottomNav.classList.remove("active");
+            menuShowBtn.classList.add("active");
+         }, 2500);
+      }
+   });
 
-   if(window.scrollY > 10){
+   menuHideBtn.addEventListener("click", () => {
+      bottomNav.classList.toggle("active");
+      menuHideBtn.classList.toggle("active");
+      menuShowBtn.classList.toggle("active");
+   });
+
+   menuShowBtn.addEventListener("click", () => {
+      bottomNav.classList.toggle("active");
       menuHideBtn.classList.add("active");
-
-      function scrollStopped(){
-         bottomNav.classList.remove("active");
-         menuShowBtn.classList.add("active");
-      }
-
-      clearTimeout(navTimeout);
-      navTimeout = setTimeout(scrollStopped, 2500);
-   }
-});
-
-// Hide bottom navigation menu on click menu-hide-btn.
-menuHideBtn.addEventListener("click", () => {
-   bottomNav.classList.toggle("active");
-   menuHideBtn.classList.toggle("active");
-   menuShowBtn.classList.toggle("active");
-});
-
-// Show bottom navigation menu on click menu-show-btn.
-menuShowBtn.addEventListener("click", () => {
-   bottomNav.classList.toggle("active");
-   menuHideBtn.classList.add("active");
-   menuShowBtn.classList.toggle("active");
-});
+      menuShowBtn.classList.toggle("active");
+   });
+}
 
 /* =====================================================
    To-top-button with scroll indicator bar
 ===================================================== */
 window.addEventListener("scroll", () => {
    const toTopBtn = document.querySelector(".to-top-btn");
+   if (toTopBtn) toTopBtn.classList.toggle("active", window.scrollY > 0);
 
-   toTopBtn.classList.toggle("active", window.scrollY > 0);
-
-   // Scroll indicator bar
    const scrollIndicatorBar = document.querySelector(".scroll-indicator-bar");
-
-   const pageScroll = document.body.scrollTop || document.documentElement.scrollTop;
-   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-
-   const scrollValue = (pageScroll / height) * 100;
-
-   scrollIndicatorBar.style.height = scrollValue + "%";
+   if (scrollIndicatorBar) {
+      const pageScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      scrollIndicatorBar.style.height = ((pageScroll / height) * 100) + "%";
+   }
 });
 
 /* =====================================================
    Customized cursor on mousemove
 ===================================================== */
 const cursor = document.querySelector(".cursor");
-const cursorDot = cursor.querySelector(".cursor-dot");
-const cursorCircle = cursor.querySelector(".cursor-circle");
+if (cursor) {
+   const cursorDot = cursor.querySelector(".cursor-dot");
+   const cursorCircle = cursor.querySelector(".cursor-circle");
 
-document.addEventListener("mousemove", (e) => {
-   let x = e.clientX;
-   let y = e.clientY;
-
-   cursorDot.style.top = y + "px";
-   cursorDot.style.left = x + "px";
-   cursorCircle.style.top = y + "px";
-   cursorCircle.style.left = x + "px";
-});
-
-// Cursor effects on hover website elements.
-const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn");
-
-cursorHoverlinks.forEach((cursorHoverlink) => {
-   cursorHoverlink.addEventListener("mouseover", () => {
-      cursorDot.classList.add("large");
-      cursorCircle.style.display = "none";
+   document.addEventListener("mousemove", (e) => {
+      cursorDot.style.top = e.clientY + "px";
+      cursorDot.style.left = e.clientX + "px";
+      cursorCircle.style.top = e.clientY + "px";
+      cursorCircle.style.left = e.clientX + "px";
    });
-});
 
-cursorHoverlinks.forEach((cursorHoverlink) => {
-   cursorHoverlink.addEventListener("mouseout", () => {
-      cursorDot.classList.remove("large");
-      cursorCircle.style.display = "block";
+   const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn");
+   cursorHoverlinks.forEach((link) => {
+      link.addEventListener("mouseover", () => { cursorDot.classList.add("large"); cursorCircle.style.display = "none"; });
+      link.addEventListener("mouseout",  () => { cursorDot.classList.remove("large"); cursorCircle.style.display = "block"; });
    });
-});
+}
 
 /* =====================================================
    Website dark/light theme
@@ -337,28 +318,22 @@ cursorHoverlinks.forEach((cursorHoverlink) => {
 
 // Change theme and save current theme on click the theme button.
 const themeBtn = document.querySelector(".theme-btn");
-
-themeBtn.addEventListener("click", () => {
-   // Change theme icon and theme on click theme button.
-   themeBtn.classList.toggle("active-sun-icon");
-   document.body.classList.toggle("light-theme");
-
-   // Save theme icon and theme on click theme button.
-   const getCurrentIcon = () => themeBtn.classList.contains("active-sun-icon") ? "sun" : "moon";
-   const getCurrentTheme = () => document.body.classList.contains("light-theme") ? "light" : "dark";
-
-   localStorage.setItem("sue-saved-icon", getCurrentIcon());
-   localStorage.setItem("sue-saved-theme", getCurrentTheme());
-});
-
-// Get saved theme icon and theme on document loaded.
 const savedIcon = localStorage.getItem("sue-saved-icon");
 const savedTheme = localStorage.getItem("sue-saved-theme");
 
-document.addEventListener("DOMContentLoaded", () => {
-   themeBtn.classList[savedIcon === "sun" ? "add" : "remove"]("active-sun-icon");
-   document.body.classList[savedTheme === "light" ? "add" : "remove"]("light-theme");
-});
+if (themeBtn) {
+   themeBtn.addEventListener("click", () => {
+      themeBtn.classList.toggle("active-sun-icon");
+      document.body.classList.toggle("light-theme");
+      localStorage.setItem("sue-saved-icon", themeBtn.classList.contains("active-sun-icon") ? "sun" : "moon");
+      localStorage.setItem("sue-saved-theme", document.body.classList.contains("light-theme") ? "light" : "dark");
+   });
+
+   document.addEventListener("DOMContentLoaded", () => {
+      themeBtn.classList[savedIcon === "sun" ? "add" : "remove"]("active-sun-icon");
+      document.body.classList[savedTheme === "light" ? "add" : "remove"]("light-theme");
+   });
+}
 
 /* =====================================================
    ScrollReveal JS animations
@@ -389,16 +364,11 @@ ScrollReveal().reveal('.contact-info h3', { delay: 100, origin: 'bottom', interv
 ===================================================== */
 document.addEventListener("DOMContentLoaded", () => {
    const splashScreen = document.querySelector(".splash-screen");
-   
-   // Attendre que la page soit complètement chargée
+   if (!splashScreen) return;
    window.addEventListener("load", () => {
-      // Attendre que l'animation de la barre de chargement soit terminée
       setTimeout(() => {
          splashScreen.classList.add("fade-out");
-         // Supprimer complètement le splash screen après la transition
-         setTimeout(() => {
-            splashScreen.remove();
-         }, 500);
+         setTimeout(() => splashScreen.remove(), 500);
       }, 2000);
    });
 });
@@ -411,6 +381,7 @@ const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const dotsEl = document.getElementById('dots');
 
+if (track && prevBtn && nextBtn && dotsEl) {
 const cards = track.querySelectorAll('.card');
 const total = cards.length;
 let visible = 3;
@@ -467,3 +438,4 @@ track.addEventListener('touchend', e => {
 visible = getVisible();
 buildDots();
 goTo(0);
+} // end if (track)

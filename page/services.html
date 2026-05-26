@@ -28,17 +28,48 @@
   </head>
 
   <body class="light-theme">
-
-    <!-- Retour accueil -->
-    <nav class="back-nav">
-      <div class="sue-container">
-        <a href="../index.html">
-          <i class="ri-arrow-left-line"></i> Retour à l'accueil
-        </a>
+  <header class="sue-header">
+    <div class="sue-container">
+      <div class="inner">
+        <div class="sue-logo">
+          <a href="../index.html"><img src="../assets/images/favicon.png" alt="Franck Kanza — Développeur Web Freelance"></a>
+        </div>
+        <div class="header-btns">
+          <a href="contact.html" class="sue-btn-link">
+            <div class="sue-main-btn border-btn lets-talk-btn">Discutons</div>
+          </a>
+          <a href="contact.html" class="lets-talk-icon"><i class="ri-chat-1-fill"></i></a>
+          <div class="theme-btn">
+            <i class="ri-sun-fill sun-icon"></i>
+            <i class="ri-moon-fill moon-icon"></i>
+          </div>
+        </div>
       </div>
-    </nav>
+    </div>
+  </header>
 
-    <!-- Hero -->
+  <div class="bottom-nav-container">
+    <div class="bottom-nav active">
+      <div class="bottom-nav-inner">
+        <i class="ri-arrow-left-down-line menu-hide-btn"></i>
+        <ul class="menu">
+          <li class="menu-item"><a href="../index.html"><i class="ri-home-4-line"></i><span>Accueil</span></a></li>
+          <li class="menu-item"><a href="services.html"><i class="ri-service-line"></i><span>Services</span></a></li>
+          <li class="menu-item"><a href="projets.html"><i class="ri-briefcase-line"></i><span>Projets</span></a></li>
+          <li class="menu-item"><a href="contact.html"><i class="ri-chat-1-line"></i><span>Contact</span></a></li>
+          <li class="menu-item"><a href="formules.html"><i class="ri-function-add-fill"></i><span>Formules</span></a></li>
+          <li class="menu-item"><a href="blog.html"><i class="ri-article-line"></i><span>Blog</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="menu-show-btn">
+      <div class="bar-01"></div>
+      <div class="bar-02"></div>
+    </div>
+  </div>
+
+
+<!-- Hero -->
     <header class="services-page-hero">
       <span class="hero-tag">Développeur Web Freelance</span>
       <h1>Mes <span>Services</span></h1>
@@ -51,6 +82,18 @@
 
     <!-- Services grid -->
     <section class="sue-section" id="services">
+
+       <!-- Chatbot service banner -->
+    <div style="background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.07));border-top:1px solid rgba(99,102,241,0.18);border-bottom:1px solid rgba(99,102,241,0.18);padding:56px 24px;text-align:center;">
+      <div class="sue-container">
+        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,0.12);color:#6366f1;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;border:1px solid rgba(99,102,241,0.25);margin-bottom:18px;"><i class="ri-robot-2-line"></i> Nouveau</span>
+        <h2 style="font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:800;color:var(--color-02);margin:0 0 12px;">Votre site répond 24h/24 avec un <span style="color:#6366f1;">chatbot sur-mesure</span></h2>
+        <p style="color:var(--color-01);max-width:540px;margin:0 auto 28px;line-height:1.7;">Capturez des leads la nuit, répondez aux questions répétitives automatiquement, améliorez votre taux de conversion. Découvrez les forfaits qui vous convient le mieux !</p>
+        <a href="chatbot.html" style="display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(99,102,241,0.4);">
+          <i class="ri-arrow-right-line"></i> Découvrir ce service
+        </a>
+      </div>
+    </div>
       <div class="sue-container">
         <div class="sp-grid">
 
@@ -132,6 +175,17 @@
 
         </div>
       </div>
+      <!-- LMS service banner -->
+    <div style="background:linear-gradient(135deg,#0f2a2a,#0d3d36);padding:56px 24px;text-align:center;">
+      <div class="sue-container">
+        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(20,184,166,0.2);color:#2dd4bf;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:20px;border:1px solid rgba(20,184,166,0.4);margin-bottom:18px;"><i class="ri-graduation-cap-line"></i> Formation en ligne</span>
+        <h2 style="font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:800;color:#f0fdf9;margin:0 0 12px;">Monétisez votre expertise avec une <span style="color:#2dd4bf;">plateforme LMS sur-mesure</span></h2>
+        <p style="color:#99d6cc;max-width:540px;margin:0 auto 28px;line-height:1.7;">Créez et vendez vos formations en ligne avec une plateforme complète : paiements Stripe, espace apprenant, certificats automatiques et tableau de bord analytique.</p>
+        <a href="lms.html" style="display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(20,184,166,0.5);">
+          <i class="ri-arrow-right-line"></i> Découvrir ce service
+        </a>
+      </div>
+    </div>
     </section>
 
     <!-- Mon processus -->
@@ -217,6 +271,10 @@
         </div>
       </div>
     </section>
+
+   
+
+    
 
     <!-- CTA bas de page -->
     <div class="services-cta-banner">

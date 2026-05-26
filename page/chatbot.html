@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot sur-mesure — 3 versions dès 100€/mois | Franck Kanza</title>
+  <meta name="author" content="Franck Kanza">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Franck Kanza intègre un chatbot intelligent sur votre site : FAQ automatisée, qualification de prospects, prise de RDV Google Calendar. 3 versions dès 100€/mois.">
+  <link rel="canonical" href="https://www.franck-kanza.fr/page/chatbot.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chatbot sur-mesure — 3 versions | Franck Kanza">
+  <meta property="og:description" content="Un chatbot personnalisé sur votre site : FAQ, qualification de prospects, prise de RDV automatisée. 3 versions dès 100€/mois.">
+  <meta property="og:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+  <meta property="og:url" content="https://www.franck-kanza.fr/page/chatbot.html">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chatbot sur-mesure — 3 versions | Franck Kanza">
+  <meta name="twitter:description" content="Chatbot intelligent sur votre site : FAQ, qualification prospects, prise de RDV Google Calendar. Dès 100€/mois.">
+  <meta name="twitter:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+
+  <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    /* ── Variables ── */
+    :root {
+      --cb-purple: #6366f1;
+      --cb-violet: #8b5cf6;
+      --cb-dark:   #0d0f1a;
+      --cb-card:   #141624;
+      --cb-border: rgba(99,102,241,0.18);
+      --cb-text:   #e2e8f0;
+      --cb-muted:  #94a3b8;
+      --cb-green:  #22c55e;
+    }
+
+    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: var(--cb-dark); color: var(--cb-text); }
+
+    /* ── Back nav ── */
+    .back-nav { padding: 18px 24px; border-bottom: 1px solid var(--cb-border); }
+    .back-nav a { color: var(--cb-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 7px; font-size: 14px; transition: color 0.2s; }
+    .back-nav a:hover { color: var(--cb-purple); }
+
+    /* ── Helpers ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .tag-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(99,102,241,0.12); color: var(--cb-purple);
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 20px; border: 1px solid var(--cb-border);
+    }
+    .tag-label i { font-size: 13px; }
+    .section-title { text-align: center; margin-bottom: 56px; }
+    .section-title h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 800; color: var(--cb-text); margin: 12px 0 16px; }
+    .section-title p { color: var(--cb-muted); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    /* ── Hero ── */
+    .cb-hero {
+      position: relative;
+      padding: 90px 24px 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .cb-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cb-hero-tag { margin-bottom: 22px; }
+    .cb-hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin: 0 0 22px;
+      color: #fff;
+    }
+    .cb-hero h1 span {
+      background: linear-gradient(135deg, var(--cb-purple), var(--cb-violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cb-hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.18rem);
+      color: var(--cb-muted);
+      max-width: 620px;
+      margin: 0 auto 38px;
+      line-height: 1.75;
+    }
+    .cb-hero-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--cb-purple), var(--cb-violet));
+      color: #fff; border: none; border-radius: 10px;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      cursor: pointer; transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.4);
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--cb-purple); border: 1.5px solid rgba(99,102,241,0.5);
+      border-radius: 10px; font-size: 15px; font-weight: 700;
+      text-decoration: none; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(99,102,241,0.1); border-color: var(--cb-purple); }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      border-top: 1px solid var(--cb-border);
+      border-bottom: 1px solid var(--cb-border);
+      padding: 36px 24px;
+      margin: 0;
+    }
+    .stats-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 32px; text-align: center;
+    }
+    .stat-num {
+      font-size: 2.4rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--cb-purple), var(--cb-violet));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      display: block; line-height: 1;
+    }
+    .stat-label { font-size: 13px; color: var(--cb-muted); margin-top: 6px; display: block; }
+
+    /* ── Problem section ── */
+    .problem-section { padding: 88px 24px; }
+    .problem-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 56px; align-items: center;
+    }
+    .problem-text h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; margin: 12px 0 20px; color: #fff; }
+    .problem-text p { color: var(--cb-muted); line-height: 1.8; margin-bottom: 16px; font-size: 15px; }
+    .pain-list { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 13px; }
+    .pain-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.18);
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 14px; color: #fca5a5; line-height: 1.5;
+    }
+    .pain-list li i { color: #ef4444; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .problem-visual {
+      background: var(--cb-card); border: 1px solid var(--cb-border);
+      border-radius: 18px; padding: 28px;
+    }
+    .chat-demo { display: flex; flex-direction: column; gap: 14px; }
+    .chat-demo-msg {
+      padding: 11px 15px; border-radius: 14px;
+      font-size: 13.5px; line-height: 1.55; max-width: 85%;
+    }
+    .chat-demo-msg.bot {
+      background: #1e293b; color: var(--cb-text);
+      align-self: flex-start; border-bottom-left-radius: 4px;
+    }
+    .chat-demo-msg.user {
+      background: linear-gradient(135deg,var(--cb-purple),var(--cb-violet));
+      color: #fff; align-self: flex-end; border-bottom-right-radius: 4px;
+    }
+    .chat-demo-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--cb-border);
+    }
+    .chat-demo-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg,var(--cb-purple),var(--cb-violet));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: #fff;
+    }
+    .chat-demo-name { font-weight: 700; font-size: 13px; }
+    .chat-demo-status { font-size: 11px; color: var(--cb-green); display: flex; align-items: center; gap: 4px; }
+    .chat-demo-status::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--cb-green); display:inline-block; }
+    .chat-qr { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
+    .chat-qr span {
+      padding: 5px 12px; border: 1px solid rgba(99,102,241,0.45);
+      border-radius: 20px; font-size: 11.5px; color: #a5b4fc;
+      background: rgba(99,102,241,0.08); cursor: default;
+    }
+
+    /* ── Benefits ── */
+    .benefits-section { padding: 88px 24px; background: rgba(99,102,241,0.03); border-top: 1px solid var(--cb-border); border-bottom: 1px solid var(--cb-border); }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .benefit-card {
+      background: var(--cb-card);
+      border: 1px solid var(--cb-border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .benefit-card:hover { border-color: rgba(99,102,241,0.45); transform: translateY(-3px); }
+    .benefit-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(99,102,241,0.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .benefit-icon i { font-size: 22px; color: var(--cb-purple); }
+    .benefit-card h3 { font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 10px; }
+    .benefit-card p { font-size: 14px; color: var(--cb-muted); line-height: 1.7; margin: 0; }
+    .benefit-card .benefit-metric {
+      margin-top: 16px; padding-top: 14px;
+      border-top: 1px solid var(--cb-border);
+      font-size: 12px; color: var(--cb-purple); font-weight: 700;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ── Inclus ── */
+    .inclus-section { padding: 88px 24px; }
+    .inclus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .inclus-list { display: flex; flex-direction: column; gap: 16px; }
+    .inclus-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--cb-card); border: 1px solid var(--cb-border);
+      border-radius: 12px; padding: 18px 20px;
+      transition: border-color 0.2s;
+    }
+    .inclus-item:hover { border-color: rgba(99,102,241,0.4); }
+    .inclus-item-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(99,102,241,0.12);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .inclus-item-icon i { font-size: 18px; color: var(--cb-purple); }
+    .inclus-item h4 { font-size: 14.5px; font-weight: 700; color: #fff; margin: 0 0 5px; }
+    .inclus-item p { font-size: 13px; color: var(--cb-muted); margin: 0; line-height: 1.6; }
+
+    /* ── Pricing card ── */
+    .pricing-card {
+      background: linear-gradient(145deg, #1a1035, #120e2a);
+      border: 1px solid rgba(99,102,241,0.4);
+      border-radius: 24px;
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(99,102,241,0.2);
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(99,102,241,0.12);
+      pointer-events: none;
+    }
+    .pricing-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(99,102,241,0.2); color: #a5b4fc;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(99,102,241,0.35);
+      margin-bottom: 20px;
+    }
+    .pricing-card h3 { font-size: 1.3rem; font-weight: 800; color: #fff; margin: 0 0 8px; }
+    .pricing-card .pricing-desc { font-size: 13.5px; color: var(--cb-muted); margin-bottom: 28px; line-height: 1.6; }
+    .price-display { margin-bottom: 28px; }
+    .price-amount {
+      font-size: 3.6rem; font-weight: 900; color: #fff;
+      line-height: 1;
+    }
+    .price-amount span { font-size: 1.4rem; font-weight: 600; vertical-align: super; }
+    .price-ht { font-size: 13px; color: var(--cb-muted); margin-top: 4px; }
+    .pricing-features { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 11px; }
+    .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--cb-text); }
+    .pricing-features li i { color: var(--cb-green); font-size: 16px; flex-shrink: 0; }
+    .pricing-cta { width: 100%; text-align: center; justify-content: center; font-size: 16px; }
+    .pricing-note { text-align: center; margin-top: 14px; font-size: 12px; color: var(--cb-muted); }
+
+    /* ── Process ── */
+    .process-section { padding: 88px 24px; background: rgba(99,102,241,0.03); border-top: 1px solid var(--cb-border); }
+    .cb-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0; position: relative;
+    }
+    .cb-step { padding: 32px 24px; text-align: center; position: relative; }
+    .cb-step:not(:last-child)::after {
+      content: '';
+      position: absolute; top: 54px; right: -1px;
+      width: 2px; height: 24px;
+      background: linear-gradient(to bottom, var(--cb-purple), transparent);
+    }
+    .cb-step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--cb-purple), var(--cb-violet));
+      color: #fff; font-weight: 800; font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 4px 16px rgba(99,102,241,0.4);
+    }
+    .cb-step h3 { font-size: 14px; font-weight: 700; color: #fff; margin: 0 0 8px; }
+    .cb-step p { font-size: 13px; color: var(--cb-muted); line-height: 1.6; margin: 0; }
+
+    /* ── FAQ ── */
+    .faq-section { padding: 88px 24px; }
+    .faq-grid { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+    .faq-item {
+      background: var(--cb-card); border: 1px solid var(--cb-border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; color: #fff;
+      padding: 20px 24px; text-align: left; font-size: 15px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      font-family: inherit; transition: background 0.15s;
+    }
+    .faq-q:hover { background: rgba(99,102,241,0.06); }
+    .faq-q i { font-size: 18px; color: var(--cb-purple); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-a { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+    .faq-a p { color: var(--cb-muted); font-size: 14px; line-height: 1.75; margin: 0 0 20px; }
+    .faq-item.open .faq-a { max-height: 300px; padding-top: 4px; }
+    .faq-item.open .faq-q i { transform: rotate(45deg); }
+
+    /* ── CTA banner ── */
+    .cb-cta-banner {
+      padding: 80px 24px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(139,92,246,0.08));
+      border-top: 1px solid var(--cb-border);
+      text-align: center;
+    }
+    .cb-cta-banner h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: #fff; margin: 16px 0 14px; }
+    .cb-cta-banner h2 span { color: var(--cb-purple); }
+    .cb-cta-banner p { color: var(--cb-muted); margin-bottom: 36px; font-size: 15px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* ── Footer ── */
+    .sue-footer { background: #080a10; border-top: 1px solid var(--cb-border); padding: 40px 24px; }
+    .sue-footer .sue-container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .sue-footer .copy-right { color: var(--cb-muted); font-size: 13px; margin: 4px 0 0; }
+    .sue-footer .sue-logo-footer img { height: 36px; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--cb-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cb-purple); }
+
+    /* ── Formules ── */
+    .formules-section { padding: 88px 24px; background: rgba(99,102,241,0.03); border-top: 1px solid var(--cb-border); }
+    .formules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .formule-card {
+      background: var(--cb-card); border: 1px solid var(--cb-border);
+      border-radius: 20px; padding: 32px 28px; position: relative;
+      transition: transform 0.2s, border-color 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .formule-card:hover { transform: translateY(-4px); border-color: rgba(99,102,241,0.4); }
+    .formule-card.popular {
+      border-color: var(--cb-purple);
+      box-shadow: 0 0 0 1px rgba(99,102,241,0.4), 0 16px 48px rgba(99,102,241,0.2);
+    }
+    .formule-popular-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--cb-purple), var(--cb-violet));
+      color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 4px 14px; border-radius: 20px; white-space: nowrap;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .formule-version { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cb-purple); margin-bottom: 8px; }
+    .formule-card h3 { font-size: 1.25rem; font-weight: 800; color: #fff; margin: 0 0 8px; }
+    .formule-tagline { font-size: 13px; color: var(--cb-muted); margin-bottom: 24px; line-height: 1.55; }
+    .formule-price { margin-bottom: 24px; }
+    .formule-price .price-main { font-size: 2.6rem; font-weight: 900; color: #fff; line-height: 1; }
+    .formule-price .price-main sup { font-size: 1.1rem; font-weight: 600; vertical-align: super; }
+    .formule-price .price-period { font-size: 12px; color: var(--cb-muted); margin-top: 6px; }
+    .formule-price .price-annual { font-size: 12px; color: var(--cb-green); margin-top: 3px; font-weight: 600; }
+    .formule-features { list-style: none; padding: 0; margin: 0 0 auto; display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; }
+    .formule-features li { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: var(--cb-text); line-height: 1.45; }
+    .formule-features li i { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .formule-features li i.yes { color: var(--cb-green); }
+    .formule-features li i.carry { color: #6366f1; }
+    .formule-cta { width: 100%; justify-content: center; text-align: center; }
+    .formule-note { text-align: center; margin-top: 10px; font-size: 11.5px; color: var(--cb-muted); }
+    .custom-box {
+      margin-top: 40px; text-align: center;
+      background: rgba(99,102,241,0.05); border: 1px solid var(--cb-border);
+      border-radius: 16px; padding: 32px 24px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .formules-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    }
+    @media (max-width: 768px) {
+      .problem-grid { grid-template-columns: 1fr; gap: 36px; }
+      .cb-step:not(:last-child)::after { display: none; }
+      .cb-hero h1 { letter-spacing: -0.5px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="sue-header">
+    <div class="sue-container">
+      <div class="inner">
+        <div class="sue-logo">
+          <a href="../index.html"><img src="../assets/images/favicon.png" alt="Franck Kanza — Développeur Web Freelance"></a>
+        </div>
+        <div class="header-btns">
+          <a href="contact.html" class="sue-btn-link">
+            <div class="sue-main-btn border-btn lets-talk-btn">Discutons</div>
+          </a>
+          <a href="contact.html" class="lets-talk-icon"><i class="ri-chat-1-fill"></i></a>
+          <div class="theme-btn">
+            <i class="ri-sun-fill sun-icon"></i>
+            <i class="ri-moon-fill moon-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="bottom-nav-container">
+    <div class="bottom-nav active">
+      <div class="bottom-nav-inner">
+        <i class="ri-arrow-left-down-line menu-hide-btn"></i>
+        <ul class="menu">
+          <li class="menu-item"><a href="../index.html"><i class="ri-home-4-line"></i><span>Accueil</span></a></li>
+          <li class="menu-item"><a href="services.html"><i class="ri-service-line"></i><span>Services</span></a></li>
+          <li class="menu-item"><a href="projets.html"><i class="ri-briefcase-line"></i><span>Projets</span></a></li>
+          <li class="menu-item"><a href="contact.html"><i class="ri-chat-1-line"></i><span>Contact</span></a></li>
+          <li class="menu-item"><a href="formules.html"><i class="ri-function-add-fill"></i><span>Formules</span></a></li>
+          <li class="menu-item"><a href="blog.html"><i class="ri-article-line"></i><span>Blog</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="menu-show-btn">
+      <div class="bar-01"></div>
+      <div class="bar-02"></div>
+    </div>
+  </div>
+
+
+  <!-- Back nav -->
+<!-- ══════════════ HERO ══════════════ -->
+  <section class="cb-hero">
+    <div class="container">
+      <div class="cb-hero-tag">
+        <span class="tag-label"><i class="ri-robot-2-line"></i> Nouveau service</span>
+      </div>
+      <h1>Votre site répond<br><span>24h/24, 7j/7.</span></h1>
+      <p class="cb-hero-sub">
+        J'intègre un chatbot intelligent sur votre site web — conçu sur-mesure à vos couleurs, entraîné sur votre activité. Vos visiteurs obtiennent des réponses instantanées. Vous ne manquez plus aucun lead.
+      </p>
+      <div class="cb-hero-actions">
+        <a href="#inclus" class="btn-primary"><i class="ri-price-tag-3-line"></i> Voir les formules</a>
+        <a href="contact.html" class="btn-outline"><i class="ri-mail-send-line"></i> Devis gratuit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ STATS ══════════════ -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div>
+        <span class="stat-num">67%</span>
+        <span class="stat-label">des visiteurs préfèrent le chat au téléphone</span>
+      </div>
+      <div>
+        <span class="stat-num">3×</span>
+        <span class="stat-label">plus de leads qualifiés capturés la nuit et le week-end</span>
+      </div>
+      <div>
+        <span class="stat-num">< 1s</span>
+        <span class="stat-label">temps de réponse moyen du chatbot</span>
+      </div>
+      <div>
+        <span class="stat-num">+38%</span>
+        <span class="stat-label">de taux de conversion sur les sites avec chatbot</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PROBLÈME ══════════════ -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="problem-text">
+          <span class="tag-label"><i class="ri-error-warning-line"></i> Le problème</span>
+          <h2>Vos visiteurs partent sans avoir eu de réponse.</h2>
+          <p>
+            80 % du trafic arrive en dehors de vos heures de bureau. Ces visiteurs ont des questions, ils veulent avancer — et s'ils ne trouvent pas de réponse immédiate, ils cliquent sur le site de votre concurrent.
+          </p>
+          <p>
+            Un formulaire de contact ne suffit plus. Les délais de réponse par email font fuir les prospects impatients. Sans présence active 24h/24, vous perdez des opportunités chaque nuit.
+          </p>
+          <ul class="pain-list">
+            <li><i class="ri-close-circle-line"></i> Des leads qui repartent sans laisser leurs coordonnées</li>
+            <li><i class="ri-close-circle-line"></i> Des questions répétitives qui mobilisent votre temps</li>
+            <li><i class="ri-close-circle-line"></i> Aucune présence active le soir, la nuit, le week-end</li>
+            <li><i class="ri-close-circle-line"></i> Un visiteur hésitant qui repart sans convertir</li>
+          </ul>
+        </div>
+        <div class="problem-visual">
+          <div class="chat-demo-header">
+            <div class="chat-demo-avatar">FK</div>
+            <div>
+              <div class="chat-demo-name">Assistant Franck Kanza</div>
+              <div class="chat-demo-status">En ligne maintenant</div>
+            </div>
+          </div>
+          <div class="chat-demo">
+            <div class="chat-demo-msg bot">Bonjour ! 👋 Je suis l'assistant de <strong>Votre Entreprise</strong>. Comment puis-je vous aider ?</div>
+            <div class="chat-qr">
+              <span>Nos services</span>
+              <span>Nos tarifs</span>
+              <span>Prendre RDV</span>
+            </div>
+            <div class="chat-demo-msg user">Vous intervenez sur Lyon ?</div>
+            <div class="chat-demo-msg bot">Oui, nous intervenons sur toute la région lyonnaise ! Souhaitez-vous qu'on planifie un rendez-vous pour vous ?</div>
+            <div class="chat-demo-msg user">Parfait, je prends contact ✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ BÉNÉFICES ══════════════ -->
+  <section class="benefits-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag-label"><i class="ri-sparkling-line"></i> Pourquoi un chatbot ?</span>
+        <h2>Ce que ça change, concrètement.</h2>
+        <p>Un chatbot bien conçu n'est pas un gadget — c'est un commercial qui ne dort jamais, ne prend pas de congés et répond en moins d'une seconde.</p>
+      </div>
+      <div class="benefits-grid">
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-time-line"></i></div>
+          <h3>Disponible 24h/24, 7j/7</h3>
+          <p>Votre chatbot répond à 2h du matin comme à 14h. Aucun prospect ne repart sans réponse, peu importe l'heure ou le jour.</p>
+          <div class="benefit-metric"><i class="ri-arrow-up-line"></i> +3× de leads capturés hors heures ouvrées</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-user-follow-line"></i></div>
+          <h3>Qualification automatique des leads</h3>
+          <p>Le chatbot pose les bonnes questions, collecte les infos utiles (budget, projet, coordonnées) et vous envoie uniquement des leads qualifiés.</p>
+          <div class="benefit-metric"><i class="ri-arrow-up-line"></i> Moins de temps perdu sur des prospects non sérieux</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-flashlight-line"></i></div>
+          <h3>Réponses instantanées</h3>
+          <p>Le délai de réponse moyen par email est de 12h. Votre chatbot répond en moins d'une seconde. Les visiteurs convertissent quand ils sont chauds.</p>
+          <div class="benefit-metric"><i class="ri-arrow-up-line"></i> +38% de taux de conversion</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-customer-service-2-line"></i></div>
+          <h3>Moins de questions répétitives</h3>
+          <p>Prix, délais, zone d'intervention, process… le chatbot répond automatiquement aux 80 % de questions récurrentes, libérant votre temps pour l'essentiel.</p>
+          <div class="benefit-metric"><i class="ri-arrow-down-line"></i> Réduction du volume de mails entrants</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-bar-chart-line"></i></div>
+          <h3>ROI mesurable</h3>
+          <p>Chaque conversation est tracée. Vous savez quelles questions posent vos visiteurs, ce qui les bloque, et comment optimiser votre offre en conséquence.</p>
+          <div class="benefit-metric"><i class="ri-arrow-up-line"></i> Données exploitables pour améliorer votre site</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-palette-line"></i></div>
+          <h3>100 % à vos couleurs</h3>
+          <p>Le chatbot est intégré dans le design de votre site — couleurs, ton, logo. Pas un widget générique collé en bas à droite, mais une expérience cohérente avec votre marque.</p>
+          <div class="benefit-metric"><i class="ri-arrow-up-line"></i> Image professionnelle et soignée</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FORMULES ══════════════ -->
+  <section class="formules-section" id="inclus">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag-label"><i class="ri-price-tag-3-line"></i> Tarifs</span>
+        <h2>Choisissez votre version.</h2>
+        <p>Chaque version intègre toutes les fonctionnalités de la précédente. Personnalisation sur-mesure disponible sur demande.</p>
+      </div>
+
+      <div class="formules-grid">
+
+        <!-- ── V1 Essentiel ── -->
+        <div class="formule-card">
+          <div class="formule-version">Version 1</div>
+          <h3>Essentiel</h3>
+          <p class="formule-tagline">Répondez automatiquement aux questions de vos visiteurs et orientez-les sur votre site.</p>
+          <div class="formule-price">
+            <div class="price-main"><sup>€</sup>100<span style="font-size:1rem;font-weight:600;color:var(--cb-muted);">/mois</span></div>
+            <div class="price-period">ou <strong style="color:#fff;">1 100 €</strong> / an</div>
+            <div class="price-annual"><i class="ri-gift-line"></i> 2 mois offerts avec l'abonnement annuel</div>
+          </div>
+          <ul class="formule-features">
+            <li><i class="ri-checkbox-circle-fill yes"></i> Analyse des questions en langage naturel</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Adaptation contextuelle des réponses</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Base de connaissances personnalisée</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Réponses aux FAQ</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Orientation des visiteurs sur votre site</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Automatisation des demandes simples</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Design 100 % à vos couleurs</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Responsive mobile & desktop</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> 30 jours de support inclus</li>
+          </ul>
+          <a href="contact.html" class="btn-outline formule-cta"><i class="ri-mail-send-line"></i> Démarrer</a>
+          <p class="formule-note">Devis gratuit · Sans engagement</p>
+        </div>
+
+        <!-- ── V2 Pro ── -->
+        <div class="formule-card popular">
+          <div class="formule-popular-badge"><i class="ri-star-fill"></i> Plus populaire</div>
+          <div class="formule-version">Version 2</div>
+          <h3>Pro</h3>
+          <p class="formule-tagline">Qualifiez vos prospects et générez des devis automatiquement, 24h/24.</p>
+          <div class="formule-price">
+            <div class="price-main"><sup>€</sup>200<span style="font-size:1rem;font-weight:600;color:var(--cb-muted);">/mois</span></div>
+            <div class="price-period">ou <strong style="color:#fff;">2 200 €</strong> / an</div>
+            <div class="price-annual"><i class="ri-gift-line"></i> 2 mois offerts avec l'abonnement annuel</div>
+          </div>
+          <ul class="formule-features">
+            <li><i class="ri-checkbox-circle-fill carry"></i> Tout V1 inclus</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Qualification automatique des prospects</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Collecte structurée des besoins clients</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Création de devis automatisée</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Leads qualifiés envoyés par notification</li>
+          </ul>
+          <a href="contact.html" class="btn-primary formule-cta"><i class="ri-mail-send-line"></i> Démarrer</a>
+          <p class="formule-note">Devis gratuit · Sans engagement</p>
+        </div>
+
+        <!-- ── V3 Premium ── -->
+        <div class="formule-card">
+          <div class="formule-version">Version 3</div>
+          <h3>Premium</h3>
+          <p class="formule-tagline">La version complète avec prise de RDV automatisée et Google Meet intégré.</p>
+          <div class="formule-price">
+            <div class="price-main"><sup>€</sup>300<span style="font-size:1rem;font-weight:600;color:var(--cb-muted);">/mois</span></div>
+            <div class="price-period">ou <strong style="color:#fff;">3 300 €</strong> / an</div>
+            <div class="price-annual"><i class="ri-gift-line"></i> 2 mois offerts avec l'abonnement annuel</div>
+          </div>
+          <ul class="formule-features">
+            <li><i class="ri-checkbox-circle-fill carry"></i> Tout V1 + V2 inclus</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Planification de RDV automatisée</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Connexion à votre Google Calendar</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Proposition de créneaux selon disponibilités</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Respect de vos tranches horaires</li>
+            <li><i class="ri-checkbox-circle-fill yes"></i> Création automatique du Google Meet</li>
+          </ul>
+          <a href="contact.html" class="btn-outline formule-cta"><i class="ri-mail-send-line"></i> Démarrer</a>
+          <p class="formule-note">Devis gratuit · Sans engagement</p>
+        </div>
+
+      </div>
+
+      <!-- Personnalisé -->
+      <div class="custom-box">
+        <i class="ri-settings-4-line" style="font-size:26px;color:var(--cb-purple);display:block;margin-bottom:12px;"></i>
+        <p style="color:#fff;font-weight:700;font-size:15px;margin:0 0 8px;">Besoin d'un chatbot sur-mesure ?</p>
+        <p style="color:var(--cb-muted);font-size:13.5px;margin:0 0 20px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.65;">La tarification varie selon le volume de conversations et la taille de votre catalogue. Il est également possible de créer votre chatbot en combinant uniquement les options dont vous avez besoin.</p>
+        <a href="contact.html" class="btn-primary" style="display:inline-flex;"><i class="ri-mail-send-line"></i> Demander un devis personnalisé</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════ PROCESSUS ══════════════ -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag-label"><i class="ri-map-pin-time-line"></i> Déroulement</span>
+        <h2>De la commande à la mise en ligne.</h2>
+        <p>Un processus simple et transparent en 4 étapes. Livraison en 1 à 2 semaines.</p>
+      </div>
+      <div class="cb-steps">
+        <div class="cb-step">
+          <div class="cb-step-num">01</div>
+          <h3>Brief</h3>
+          <p>On échange sur votre activité, vos clients types et les questions fréquentes. Je collecte tout ce dont j'ai besoin.</p>
+        </div>
+        <div class="cb-step">
+          <div class="cb-step-num">02</div>
+          <h3>Conception</h3>
+          <p>Je conçois l'interface aux couleurs de votre site et rédige les réponses adaptées à votre ton et votre offre.</p>
+        </div>
+        <div class="cb-step">
+          <div class="cb-step-num">03</div>
+          <h3>Intégration</h3>
+          <p>J'intègre le chatbot sur votre site — une seule ligne de script, compatible avec tout type de site web.</p>
+        </div>
+        <div class="cb-step">
+          <div class="cb-step-num">04</div>
+          <h3>Livraison</h3>
+          <p>Validation ensemble, tests sur tous les appareils, formation. Votre chatbot est en ligne et prêt à convertir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FAQ ══════════════ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag-label"><i class="ri-question-answer-line"></i> FAQ</span>
+        <h2>Questions fréquentes.</h2>
+      </div>
+      <div class="faq-grid">
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Mon site est-il compatible ? <i class="ri-add-line"></i>
+          </button>
+          <div class="faq-a">
+            <p>Oui. Le chatbot s'intègre avec un simple fichier JavaScript sur n'importe quel site : HTML statique, WordPress, Webflow, Shopify, Wix, ou tout site développé sur-mesure. Aucune contrainte technique.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Quelle est la différence entre mensuel et annuel ? <i class="ri-add-line"></i>
+          </button>
+          <div class="faq-a">
+            <p>L'abonnement mensuel vous engage mois par mois avec une résiliation possible à tout moment. L'abonnement annuel inclut 2 mois offerts — vous payez 10 mois pour 12. Pour la V1 : 1 100 €/an au lieu de 1 200 €, pour la V2 : 2 200 €/an au lieu de 2 400 €, pour la V3 : 3 300 €/an au lieu de 3 600 €.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Le chatbot peut-il prendre des rendez-vous ? <i class="ri-add-line"></i>
+          </button>
+          <div class="faq-a">
+            <p>Oui, c'est l'une des fonctionnalités clés de la Version 3 (Premium). Le chatbot se connecte à votre Google Calendar, consulte vos disponibilités en temps réel, propose des créneaux qui respectent vos tranches horaires et crée automatiquement le Google Meet.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Puis-je passer d'une version à une autre ? <i class="ri-add-line"></i>
+          </button>
+          <div class="faq-a">
+            <p>Oui. Vous pouvez monter en version à tout moment — par exemple passer de V1 à V2 si vous souhaitez activer la qualification de prospects. La différence de prix s'applique à partir du mois suivant. Il est également possible de descendre en version si vos besoins évoluent.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Le chatbot fonctionne-t-il sur mobile ? <i class="ri-add-line"></i>
+          </button>
+          <div class="faq-a">
+            <p>Parfaitement. L'interface est entièrement responsive et testée sur iOS et Android. La fenêtre de chat s'adapte à tous les formats d'écran sans aucune dégradation de l'expérience.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Comment fonctionne la tarification sur le volume ? <i class="ri-add-line"></i>
+          </button>
+          <div class="faq-a">
+            <p>Les tarifs affichés correspondent à un usage standard. Pour les volumes importants de conversations ou les catalogues produits étendus, la tarification est adaptée. Contactez-moi pour recevoir un devis personnalisé selon votre contexte précis.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CTA FINAL ══════════════ -->
+  <div class="cb-cta-banner">
+    <div class="container">
+      <span class="tag-label"><i class="ri-rocket-line"></i> Prêt à démarrer ?</span>
+      <h2>Votre premier lead de nuit,<br><span>dès la semaine prochaine.</span></h2>
+      <p>Devis gratuit et personnalisé sous 24h. Je vous réponds aujourd'hui.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary" style="font-size:16px;padding:15px 32px;">
+          <i class="ri-mail-send-line"></i> Demander mon chatbot
+        </a>
+        <a href="https://wa.me/33644396284?text=Bonjour%20Franck%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20service%20chatbot." target="_blank" rel="noopener" class="btn-outline" style="font-size:16px;padding:15px 32px;">
+          <i class="ri-whatsapp-line"></i> WhatsApp direct
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="sue-footer">
+    <div class="sue-container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;max-width:1100px;margin:0 auto;">
+      <div>
+        <a href="../index.html"><img loading="lazy" src="../assets/images/favicon.png" alt="Franck Kanza" style="height:36px;"></a>
+        <p class="copy-right">Développeur Web Freelance Normandie & Paris</p>
+      </div>
+      <div class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="formules.html">Formules</a>
+        <a href="projets.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+        <a href="../index.html">Accueil</a>
+      </div>
+      <div>
+        <p class="copy-right" style="text-align:right;">© Franck Kanza 2026</p>
+        <p class="copy-right" style="text-align:right;"><a href="mailto:franck.kanza@outlook.fr" style="color:inherit;">franck.kanza@outlook.fr</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FAQ accordion -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+  <script src="../assets/js/chatbot.js"></script>
+</body>
+</html>

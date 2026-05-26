@@ -1,8 +1,44 @@
 (function () {
   'use strict';
 
-  // ── CSS ─────────────────────────────────────────────────────────────────────
-  const css = `
+  // ── CONFIGURATION ────────────────────────────────────────────────────────────
+  // ⚠️  Ne jamais exposer cette clé côté client en production.
+  //     Utilisez un backend proxy (Vercel Edge, Node.js, etc.) qui détient la clé.
+  
+
+  // Persona — modifiez ce prompt pour personnaliser le comportement de l'assistant
+  const SYSTEM_PROMPT = `Tu es l'assistant virtuel de Franck Kanza, développeur web freelance basé en Normandie (Caen) et Paris.
+
+Ton rôle : répondre aux visiteurs du site de Franck de façon chaleureuse, concise et professionnelle.
+
+Informations clés sur Franck :
+- 6 ans d'expérience, ex-Lead Dev chez Effiscience
+- Travail en remote pour toute la France
+- Contact : franck.kanza@outlook.fr | +33 6 44 39 62 84 | https://wa.me/33644396284
+- Profil Malt : https://www.malt.fr/profile/franckkanza
+- Disponible pour de nouvelles missions
+
+Services proposés :
+1. Site vitrine — dès 1 000 €, livré en 2–4 semaines (React / Next.js, SEO intégré)
+2. E-commerce — dès 6 000 €, livré en 6–10 semaines (Next.js + Stripe / PayPal)
+3. Application mobile — dès 4 000 €, livré en 8–16 semaines (React Native, iOS & Android)
+4. Chatbot sur-mesure — abonnement mensuel, 3 versions :
+   - V1 Essentiel : 100 €/mois ou 1 100 €/an — FAQ, orientation visiteurs, base de connaissances, automatisation simple, design responsive, 30 j support
+   - V2 Pro : 200 €/mois ou 2 200 €/an — tout V1 + qualification prospects, collecte de besoins, devis automatisés, notifications leads
+   - V3 Premium : 300 €/mois ou 3 300 €/an — tout V1+V2 + prise de RDV automatisée, accès Google Calendar, créneaux horaires, création Google Meet automatique
+   - Tarification sur-mesure possible pour gros volumes ou catalogues étendus
+5. Plateforme LMS (e-learning) — sur devis personnalisé (Next.js + Stripe, espace apprenant, back-office admin, emails automatisés, 30 j support)
+
+Stack technique : React, Next.js, TypeScript, Tailwind CSS, Node.js, MongoDB, React Native, Expo, Docker, AWS, Vercel
+
+Règles :
+- Réponds toujours en français, de façon courte (3–6 lignes max)
+- Tu peux utiliser du HTML simple : <strong>, <a href="...">
+- Ne mentionne jamais que tu es une IA ou Claude — tu es "l'assistant de Franck"
+- Si tu ne sais pas, propose de contacter Franck directement`;
+
+  // ── CSS ──────────────────────────────────────────────────────────────────────
+ const css = `
     #fk-chat-wrapper {
       position: fixed;
       bottom: 28px;
@@ -59,7 +95,6 @@
       align-items: center;
       justify-content: center;
     }
-
     #fk-chat-window {
       position: fixed;
       bottom: 96px;
@@ -87,8 +122,6 @@
       opacity: 1;
       pointer-events: all;
     }
-
-    /* ── Header ── */
     .fk-header {
       background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%);
       padding: 14px 16px;
@@ -149,8 +182,6 @@
       transition: color 0.15s, background 0.15s;
     }
     .fk-close-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
-
-    /* ── Messages ── */
     .fk-messages {
       flex: 1;
       overflow-y: auto;
@@ -163,7 +194,6 @@
     }
     .fk-messages::-webkit-scrollbar { width: 4px; }
     .fk-messages::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
-
     .fk-msg {
       max-width: 85%;
       padding: 10px 13px;
@@ -191,8 +221,6 @@
       align-self: flex-end;
       border-bottom-right-radius: 4px;
     }
-
-    /* ── Typing ── */
     .fk-typing {
       display: flex;
       gap: 4px;
@@ -216,8 +244,6 @@
       0%,60%,100% { opacity:0.25; transform:scale(0.8); }
       30%          { opacity:1;    transform:scale(1); }
     }
-
-    /* ── Quick replies ── */
     .fk-qr-zone {
       display: flex;
       flex-wrap: wrap;
@@ -242,8 +268,6 @@
       color: #c7d2fe;
       border-color: rgba(99,102,241,0.7);
     }
-
-    /* ── Input row ── */
     .fk-input-row {
       padding: 10px 14px 12px;
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -280,14 +304,12 @@
       flex-shrink: 0;
       transition: opacity 0.2s;
     }
-    .fk-send:hover { opacity: 0.82; }
-
+    .fk-send:disabled { opacity: 0.4; cursor: not-allowed; }
+    .fk-send:not(:disabled):hover { opacity: 0.82; }
     @media (max-width: 400px) {
       #fk-chat-window  { right: 8px; bottom: 80px; }
       #fk-chat-wrapper { right: 16px; bottom: 20px; }
     }
-
-    /* ── Bouton nav ── */
     .fk-nav-btn {
       display: flex;
       align-items: center;
@@ -322,6 +344,132 @@
       background: #22c55e;
       flex-shrink: 0;
     }
+    .fk-error {
+      font-size: 12px;
+      color: #f87171;
+      padding: 6px 10px;
+      background: rgba(239,68,68,0.1);
+      border-radius: 8px;
+      align-self: flex-start;
+      font-family: system-ui, sans-serif;
+    }
+
+    /* ── Lead form ── */
+    .fk-lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      padding: 16px 14px;
+      background: #151c2c;
+      border: 1px solid rgba(99,102,241,0.22);
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+      width: 100%;
+      box-sizing: border-box;
+      animation: fkIn 0.22s ease;
+    }
+    .fk-lead-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #c7d2fe;
+      letter-spacing: 0.3px;
+      margin-bottom: 2px;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .fk-lead-title::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#6366f1,#8b5cf6);
+      flex-shrink: 0;
+    }
+    .fk-lead-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .fk-lead-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .fk-lead-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-family: system-ui, sans-serif;
+    }
+    .fk-lead-form input,
+    .fk-lead-form textarea {
+      background: rgba(15,17,24,0.8);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 9px;
+      padding: 9px 11px;
+      color: #e2e8f0;
+      font-size: 13px;
+      font-family: system-ui, sans-serif;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .fk-lead-form input:focus,
+    .fk-lead-form textarea:focus {
+      border-color: rgba(99,102,241,0.7);
+      background: rgba(99,102,241,0.05);
+    }
+    .fk-lead-form input::placeholder,
+    .fk-lead-form textarea::placeholder { color: #334155; }
+    .fk-lead-form textarea {
+      resize: none;
+      height: 68px;
+      line-height: 1.5;
+    }
+    .fk-lead-submit {
+      margin-top: 2px;
+      background: linear-gradient(135deg,#6366f1,#8b5cf6);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 11px 16px;
+      font-size: 13.5px;
+      font-weight: 700;
+      font-family: system-ui, sans-serif;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      width: 100%;
+      letter-spacing: 0.2px;
+    }
+    .fk-lead-submit:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+    .fk-lead-submit:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+    .fk-lead-error-msg {
+      font-size: 11.5px;
+      color: #f87171;
+      min-height: 14px;
+      font-family: system-ui, sans-serif;
+      padding: 0 2px;
+    }
+    .fk-lead-success {
+      font-size: 13.5px;
+      color: #86efac;
+      background: rgba(34,197,94,0.07);
+      border: 1px solid rgba(34,197,94,0.18);
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      padding: 14px 16px;
+      line-height: 1.65;
+      align-self: flex-start;
+      animation: fkIn 0.22s ease;
+      font-family: system-ui, sans-serif;
+    }
   `;
 
   const styleEl = document.createElement('style');
@@ -353,7 +501,7 @@
       <div class="fk-messages" id="fk-messages"></div>
       <div class="fk-qr-zone" id="fk-qr-zone"></div>
       <div class="fk-input-row">
-        <input class="fk-input" id="fk-input" type="text" placeholder="Posez votre question…" autocomplete="off" maxlength="200" aria-label="Message">
+        <input class="fk-input" id="fk-input" type="text" placeholder="Posez votre question…" autocomplete="off" maxlength="300" aria-label="Message">
         <button class="fk-send" id="fk-send" aria-label="Envoyer">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
@@ -361,7 +509,65 @@
     </div>
   `);
 
-  // ── Base de connaissances ────────────────────────────────────────────────────
+  // ── State ────────────────────────────────────────────────────────────────────
+  const chatBtn  = document.getElementById('fk-chat-btn');
+  const chatWin  = document.getElementById('fk-chat-window');
+  const msgBox   = document.getElementById('fk-messages');
+  const qrZone   = document.getElementById('fk-qr-zone');
+  const inputEl  = document.getElementById('fk-input');
+  const sendBtn  = document.getElementById('fk-send');
+  const notifEl  = document.getElementById('fk-chat-notif');
+  const closeBtn = chatWin.querySelector('.fk-close-btn');
+  const iconEl   = document.getElementById('fk-chat-icon');
+
+  let isOpen    = false;
+  let isLoading = false;
+
+  // Conversation history sent to the API (role: user | assistant)
+  const history = [];
+
+  // Initial quick replies shown before any message
+  const INITIAL_QR = ['Voir les services', 'Connaître les tarifs', 'Voir le portfolio', 'Prendre contact'];
+
+  // ── Helpers ──────────────────────────────────────────────────────────────────
+  function addMsg(html, role) {
+    const el = document.createElement('div');
+    el.className = `fk-msg fk-${role}`;
+    el.innerHTML = html.replace(/\n/g, '<br>');
+    msgBox.appendChild(el);
+    msgBox.scrollTop = msgBox.scrollHeight;
+    return el;
+  }
+
+  function showTyping() {
+    const el = document.createElement('div');
+    el.className = 'fk-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    msgBox.appendChild(el);
+    msgBox.scrollTop = msgBox.scrollHeight;
+    return el;
+  }
+
+  function clearQR() { qrZone.innerHTML = ''; }
+
+  function setQR(labels) {
+    clearQR();
+    labels.forEach(label => {
+      const btn = document.createElement('button');
+      btn.className = 'fk-qr';
+      btn.textContent = label;
+      btn.addEventListener('click', () => handleSend(label));
+      qrZone.appendChild(btn);
+    });
+  }
+
+  function setLoading(val) {
+    isLoading = val;
+    sendBtn.disabled = val;
+    inputEl.disabled = val;
+  }
+
+  // ── Base de connaissances (fallback hors-ligne) ──────────────────────────────
   const KB = [
     {
       id: 'hello',
@@ -413,7 +619,7 @@
     },
     {
       id: 'portfolio',
-      patterns: ['portfolio','projet','réalisation','travail','exemple','référence','work','kanap','barber','horizon','fioul','uwalls'],
+      patterns: ['portfolio','projet','réalisation','travail','exemple','référence','work'],
       response: 'Franck a réalisé <strong>plus de 20 projets</strong> : sites vitrine, e-commerce, apps mobiles.\n\nParmi ses réalisations : <strong>Horizon Transports</strong>, <strong>Barber Shop</strong>, <strong>O\'Délice Burger</strong>, <strong>Kanap</strong>, <strong>U-Walls</strong>, <strong>ID-Formation</strong>…\n\n🔗 Consultez le portfolio complet ci-dessous.',
       qr: ['Voir le portfolio complet','Prendre contact','Obtenir un devis']
     },
@@ -424,36 +630,6 @@
       qr: ['Obtenir un devis','Voir les formules détaillées']
     },
     {
-      id: 'malt',
-      patterns: ['malt','plateforme','avis','profil','note','freelance'],
-      response: 'Franck est présent sur <strong>Malt</strong>, la plateforme freelance de référence.\n\n⭐ Vous pouvez y consulter son profil, ses avis clients et ses disponibilités.\n\n🔗 <a href="https://www.malt.fr/profile/franckkanza" target="_blank" rel="noopener">Voir son profil Malt</a>',
-      qr: ['Prendre contact','Voir les services']
-    },
-    {
-      id: 'dispo',
-      patterns: ['disponible','disponibilité','libre','occupé','agenda','planning','mission','embauche','recrut'],
-      response: 'Franck est actuellement <strong>disponible</strong> pour de nouvelles missions freelance.\n\nPour connaître ses disponibilités exactes et planifier votre projet, contactez-le directement.',
-      qr: ['Prendre contact','Obtenir un devis']
-    },
-    {
-      id: 'lieu',
-      patterns: ['normandie','caen','rouen','paris','région','localisation','où','lieu','déplacement','remote','télétravail'],
-      response: 'Franck est basé à <strong>Caen, Normandie</strong> et intervient également sur <strong>Paris & Île-de-France</strong>.\n\n🌍 Il travaille en <strong>remote</strong> pour des clients partout en France.',
-      qr: ['Prendre contact','Obtenir un devis']
-    },
-    {
-      id: 'seo',
-      patterns: ['seo','référencement','google','indexation','visibilité','classement','positionnement','lighthouse'],
-      response: 'Franck intègre le <strong>SEO technique</strong> dès la conception :\n\n✅ Rendu SSR Next.js — pages indexables par Google\n✅ Balises meta, Open Graph, schema.org\n✅ Core Web Vitals optimisés\n✅ Score Lighthouse 90+\n✅ Sitemap & robots.txt inclus',
-      qr: ['Voir les services','Prendre contact']
-    },
-    {
-      id: 'experience',
-      patterns: ['expérience','experience','année','depuis','senior','junior','parcours','cv','formation'],
-      response: 'Franck développe depuis <strong>6 ans</strong>.\n\nIl a été <strong>Lead Développeur chez Effiscience</strong>, consultant chez Horizon Transport Formation, et exerce en <strong>freelance</strong> depuis plusieurs années sur des projets variés en France.',
-      qr: ['Voir le portfolio','Prendre contact']
-    },
-    {
       id: 'merci',
       patterns: ['merci','super','parfait','nickel','cool','ok','bien','génial','top'],
       response: 'Avec plaisir ! 😊\n\nN\'hésitez pas à revenir si vous avez d\'autres questions. Franck sera ravi d\'échanger avec vous sur votre projet.',
@@ -461,124 +637,189 @@
     },
   ];
 
-  const DEFAULT = {
+  const KB_DEFAULT = {
     response: 'Je n\'ai pas bien saisi, mais je peux vous aider sur ces sujets :',
     qr: ['Voir les services','Connaître les tarifs','Voir le portfolio','Prendre contact']
   };
 
-  // Quick-reply actions
-  const QR_NAV = {
-    'Voir le portfolio complet':      '/page/projets.html',
-    'Voir les formules détaillées':   '/page/formules.html',
-  };
-  const QR_BOT = {
-    'Voir les services':          'service',
-    'Connaître les tarifs':       'prix',
-    'Tarifs & formules':          'prix',
-    'Voir le portfolio':          'portfolio',
-    'Prendre contact':            'contact',
-    'Obtenir un devis':           'contact',
-    'Obtenir un devis gratuit':   'contact',
-    'Délais de livraison':        'delai',
-    'Prix du site vitrine':       'prix',
-    'Prix e-commerce':            'prix',
-    'Prix application mobile':    'prix',
-  };
-
-  // ── Refs ─────────────────────────────────────────────────────────────────────
-  const chatBtn  = document.getElementById('fk-chat-btn');
-  const chatWin  = document.getElementById('fk-chat-window');
-  const msgBox   = document.getElementById('fk-messages');
-  const qrZone   = document.getElementById('fk-qr-zone');
-  const inputEl  = document.getElementById('fk-input');
-  const sendBtn  = document.getElementById('fk-send');
-  const notifEl  = document.getElementById('fk-chat-notif');
-  const closeBtn = chatWin.querySelector('.fk-close-btn');
-
-  let isOpen = false;
-
-  // ── Logic ────────────────────────────────────────────────────────────────────
-  function findResponse(text) {
-    const lower = text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  function kbFind(text) {
+    const lower = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     for (const item of KB) {
-      if (item.patterns.some(p => lower.includes(p.normalize('NFD').replace(/[̀-ͯ]/g, '')))) {
+      if (item.patterns.some(p => lower.includes(p.normalize('NFD').replace(/[\u0300-\u036f]/g, '')))) {
         return item;
       }
     }
-    return DEFAULT;
+    return KB_DEFAULT;
   }
 
-  function addMsg(html, role) {
-    const el = document.createElement('div');
-    el.className = `fk-msg fk-${role}`;
-    el.innerHTML = html.replace(/\n/g, '<br>');
-    msgBox.appendChild(el);
-    msgBox.scrollTop = msgBox.scrollHeight;
-    return el;
+  function kbReply(text) {
+    const item = kbFind(text);
+    addMsg(item.response, 'bot');
+    setQR(item.qr || []);
   }
 
-  function clearQR() { qrZone.innerHTML = ''; }
-
-  function setQR(labels) {
-    clearQR();
-    if (!labels || !labels.length) return;
-    labels.forEach(label => {
-      const btn = document.createElement('button');
-      btn.className = 'fk-qr';
-      btn.textContent = label;
-      btn.addEventListener('click', () => {
-        clearQR();
-        if (QR_NAV[label]) {
-          window.open(QR_NAV[label], '_blank');
-        } else if (QR_BOT[label]) {
-          addMsg(label, 'user');
-          botReply(findResponseById(QR_BOT[label]));
-        } else {
-          addMsg(label, 'user');
-          botReply(findResponse(label));
-        }
-      });
-      qrZone.appendChild(btn);
+  // ── EmailJS loader (injecté une seule fois) ───────────────────────────────────
+  function loadEmailJS() {
+    return new Promise((resolve, reject) => {
+      if (window.emailjs) { resolve(); return; }
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+      s.onload = () => { window.emailjs.init({ publicKey: EJS_PUBLIC_KEY }); resolve(); };
+      s.onerror = reject;
+      document.head.appendChild(s);
     });
   }
 
-  function findResponseById(id) {
-    return KB.find(k => k.id === id) || DEFAULT;
-  }
-
-  function showTyping() {
-    const el = document.createElement('div');
-    el.className = 'fk-typing';
-    el.innerHTML = '<span></span><span></span><span></span>';
-    msgBox.appendChild(el);
+  // ── Affiche le formulaire lead dans le fil de messages ────────────────────────
+  function showLeadForm() {
+    clearQR();
+    const wrapper = document.createElement('div');
+    wrapper.className = 'fk-lead-form';
+    wrapper.innerHTML = `
+      <div class="fk-lead-title">Laissez vos coordonnées</div>
+      <div class="fk-lead-row">
+        <div class="fk-lead-field">
+          <span class="fk-lead-label">Prénom *</span>
+          <input id="fk-lf-prenom" type="text" placeholder="Marie" maxlength="50" autocomplete="given-name">
+        </div>
+        <div class="fk-lead-field">
+          <span class="fk-lead-label">Nom *</span>
+          <input id="fk-lf-nom" type="text" placeholder="Dupont" maxlength="50" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="fk-lead-field">
+        <span class="fk-lead-label">Téléphone *</span>
+        <input id="fk-lf-tel" type="tel" placeholder="+33 6 00 00 00 00" maxlength="20" autocomplete="tel">
+      </div>
+      <div class="fk-lead-field">
+          <span class="fk-lead-label">Email *</span>
+          <input id="fk-lf-email" type="text" placeholder="marie-dupont@..." maxlength="50" autocomplete="mail">
+        </div>
+      <div class="fk-lead-field">
+        <span class="fk-lead-label">Votre projet</span>
+        <textarea id="fk-lf-msg" placeholder="Décrivez brièvement votre besoin…"></textarea>
+      </div>
+      <button class="fk-lead-submit" id="fk-lf-btn">Envoyer ma demande →</button>
+      <div class="fk-lead-error-msg" id="fk-lf-err"></div>
+    `;
+    msgBox.appendChild(wrapper);
     msgBox.scrollTop = msgBox.scrollHeight;
-    return el;
+
+    document.getElementById('fk-lf-btn').addEventListener('click', async () => {
+      const prenom = document.getElementById('fk-lf-prenom').value.trim();
+      const nom    = document.getElementById('fk-lf-nom').value.trim();
+      const mail    = document.getElementById('fk-lf-email').value.trim();
+      const tel    = document.getElementById('fk-lf-tel').value.trim();
+      const msg    = document.getElementById('fk-lf-msg').value.trim();
+      const errEl  = document.getElementById('fk-lf-err');
+      const btn    = document.getElementById('fk-lf-btn');
+
+      if (!prenom || !nom || !tel) {
+        errEl.textContent = '⚠️ Prénom, nom et téléphone sont obligatoires.';
+        return;
+      }
+      errEl.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours…';
+
+      try {
+        await loadEmailJS();
+        await window.emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
+         name: prenom, lead_name: nom, lead_phone: tel, lead_mail: mail,  message: msg || '(aucun message)',
+          date: new Date().toLocaleString('fr-FR'),
+        });
+
+        // Remplace le formulaire par un message de succès
+        wrapper.remove();
+        const ok = document.createElement('div');
+        ok.className = 'fk-lead-success';
+        ok.innerHTML = '✅ <strong>Demande envoyée !</strong><br>Franck vous recontactera sous 24h. Merci ' + prenom + ' !';
+        msgBox.appendChild(ok);
+        msgBox.scrollTop = msgBox.scrollHeight;
+        setQR(['Voir les services', 'Voir le portfolio']);
+
+      } catch (e) {
+        btn.disabled = false;
+        btn.textContent = 'Envoyer ma demande 🚀';
+        errEl.textContent = "❌ Échec de l'envoi. Réessayez ou contactez Franck directement.";
+      }
+    });
   }
 
-  function botReply(item) {
+  // ── Claude API call (avec fallback KB) ───────────────────────────────────────
+  async function askClaude(userText) {
+    history.push({ role: 'user', content: userText });
+
     const typing = showTyping();
-    const delay = 600 + Math.random() * 500;
-    setTimeout(() => {
+    setLoading(true);
+    clearQR();
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true',
+        },
+        body: JSON.stringify({
+          model: MODEL,
+          max_tokens: 400,
+          system: SYSTEM_PROMPT,
+          messages: history,
+        }),
+      });
+
       typing.remove();
-      addMsg(item.response, 'bot');
-      setQR(item.qr || []);
-    }, delay);
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error?.message || `Erreur API (${res.status})`);
+      }
+
+      const data  = await res.json();
+      const reply = data.content?.[0]?.text || 'Désolé, je n\'ai pas pu répondre.';
+
+      history.push({ role: 'assistant', content: reply });
+      addMsg(reply, 'bot');
+      setQR(['Voir les services', 'Connaître les tarifs', 'Prendre contact']);
+
+    } catch (_err) {
+      // ── Fallback KB silencieux ───────────────────────────────────────────────
+      typing.remove();
+      history.pop(); // retire le message user non confirmé par l'API
+      kbReply(userText);
+    } finally {
+      setLoading(false);
+    }
   }
 
-  function handleSend() {
-    const text = inputEl.value.trim();
-    if (!text) return;
+  // ── Send ─────────────────────────────────────────────────────────────────────
+  // Labels de QR qui déclenchent directement le formulaire lead
+  const LEAD_TRIGGERS = ['Obtenir un devis', 'Obtenir un devis gratuit', 'Prendre contact'];
+
+  async function handleSend(overrideText) {
+    const text = (overrideText || inputEl.value).trim();
+    if (!text || isLoading) return;
     clearQR();
     addMsg(text, 'user');
     inputEl.value = '';
-    botReply(findResponse(text));
+
+    // Déclenchement direct du formulaire si QR lead
+    if (LEAD_TRIGGERS.includes(text)) {
+      addMsg('Parfait ! 🎯 Laissez-moi vos coordonnées et Franck vous recontacte sous 24h.', 'bot');
+      showLeadForm();
+      return;
+    }
+
+    await askClaude(text);
   }
 
+  // ── Open / Close ─────────────────────────────────────────────────────────────
   const iconChat  = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
   const iconClose = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>`;
-  const iconEl    = document.getElementById('fk-chat-icon');
 
-  // ── Nav button injection ──────────────────────────────────────────────────────
   let navBtn = null;
   const headerBtns = document.querySelector('.header-btns');
   if (headerBtns) {
@@ -609,13 +850,9 @@
   chatBtn.addEventListener('click', () => { isOpen ? closeChat() : openChat(); });
   if (navBtn) navBtn.addEventListener('click', () => { isOpen ? closeChat() : openChat(); });
   closeBtn.addEventListener('click', closeChat);
-  sendBtn.addEventListener('click', handleSend);
+  sendBtn.addEventListener('click', () => handleSend());
   inputEl.addEventListener('keydown', e => { if (e.key === 'Enter') handleSend(); });
-
-  // Empêche les clics dans la fenêtre de remonter jusqu'au document
   chatWin.addEventListener('click', e => e.stopPropagation());
-
-  // Close on outside click
   document.addEventListener('click', e => {
     if (!isOpen) return;
     const outside = !chatWin.contains(e.target)
@@ -624,10 +861,10 @@
     if (outside) closeChat();
   });
 
-  // ── Welcome message ───────────────────────────────────────────────────────────
+  // ── Welcome ──────────────────────────────────────────────────────────────────
   setTimeout(() => {
     addMsg('Bonjour ! 👋 Je suis l\'assistant de <strong>Franck Kanza</strong>.<br>Comment puis-je vous aider ?', 'bot');
-    setQR(['Voir les services','Connaître les tarifs','Voir le portfolio','Prendre contact']);
+    setQR(INITIAL_QR);
   }, 500);
 
 })();

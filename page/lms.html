@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intégration Plateforme LMS sur-mesure | Franck Kanza Développeur Web</title>
+  <meta name="author" content="Franck Kanza">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Franck Kanza crée votre plateforme e-learning sur-mesure : vente de formations en ligne, suivi des apprenants, paiements automatisés. Lancez votre LMS clé en main.">
+  <link rel="canonical" href="https://www.franck-kanza.fr/page/lms.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Intégration Plateforme LMS sur-mesure | Franck Kanza">
+  <meta property="og:description" content="Plateforme e-learning clé en main : vente de formations, suivi apprenants, paiements automatisés. Développement sur-mesure React & Next.js.">
+  <meta property="og:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+  <meta property="og:url" content="https://www.franck-kanza.fr/page/lms.html">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Intégration Plateforme LMS sur-mesure | Franck Kanza">
+  <meta name="twitter:description" content="Plateforme e-learning sur-mesure : formations en ligne, suivi apprenants, paiements intégrés.">
+  <meta name="twitter:image" content="https://www.franck-kanza.fr/assets/images/preview.webp">
+
+  <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --cb-purple: #6366f1;
+      --cb-violet: #8b5cf6;
+      --cb-teal:   #14b8a6;
+      --cb-bg:     #f8fafc;
+      --cb-bg2:    #f1f5f9;
+      --cb-card:   #ffffff;
+      --cb-border: rgba(0,0,0,0.08);
+      --cb-text:   #0f172a;
+      --cb-muted:  #64748b;
+      --cb-green:  #16a34a;
+    }
+
+    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: var(--cb-bg); color: var(--cb-text); }
+
+    .back-nav { padding: 18px 24px; border-bottom: 1px solid var(--cb-border); background: var(--cb-card); }
+    .back-nav a { color: var(--cb-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 7px; font-size: 14px; transition: color 0.2s; }
+    .back-nav a:hover { color: var(--cb-purple); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .tag-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(20,184,166,0.1); color: #0d9488;
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(20,184,166,0.25);
+    }
+    .tag-label i { font-size: 13px; }
+
+    .section-title { text-align: center; margin-bottom: 56px; }
+    .section-title h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 800; color: var(--cb-text); margin: 12px 0 16px; }
+    .section-title p { color: var(--cb-muted); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    /* ── Hero ── */
+    .cb-hero {
+      position: relative; padding: 90px 24px 80px; text-align: center; overflow: hidden;
+      background: linear-gradient(160deg, #f0fdfa 0%, #f8fafc 50%, #eff6ff 100%);
+    }
+    .cb-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(20,184,166,0.12) 0%, rgba(99,102,241,0.07) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .cb-hero-tag { margin-bottom: 22px; }
+    .cb-hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 900; line-height: 1.1;
+      letter-spacing: -1px; margin: 0 0 22px; color: var(--cb-text);
+    }
+    .cb-hero h1 span {
+      background: linear-gradient(135deg, var(--cb-teal), var(--cb-purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cb-hero-sub { font-size: clamp(1rem, 2.5vw, 1.18rem); color: var(--cb-muted); max-width: 640px; margin: 0 auto 38px; line-height: 1.75; }
+    .cb-hero-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      background: linear-gradient(135deg, var(--cb-teal), var(--cb-purple));
+      color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 700;
+      text-decoration: none; cursor: pointer; transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 4px 20px rgba(20,184,166,0.35);
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+      background: #fff; color: var(--cb-teal); border: 1.5px solid rgba(20,184,166,0.4);
+      border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(20,184,166,0.06); border-color: var(--cb-teal); }
+
+    /* ── Stats ── */
+    .stats-bar { border-top: 1px solid var(--cb-border); border-bottom: 1px solid var(--cb-border); padding: 36px 24px; background: var(--cb-card); }
+    .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; text-align: center; }
+    .stat-num {
+      font-size: 2.4rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--cb-teal), var(--cb-purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      display: block; line-height: 1;
+    }
+    .stat-label { font-size: 13px; color: var(--cb-muted); margin-top: 6px; display: block; }
+
+    /* ── Problem ── */
+    .problem-section { padding: 88px 24px; background: var(--cb-bg); }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .problem-text h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; margin: 12px 0 20px; color: var(--cb-text); }
+    .problem-text p { color: var(--cb-muted); line-height: 1.8; margin-bottom: 16px; font-size: 15px; }
+    .pain-list { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 13px; }
+    .pain-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.15);
+      border-radius: 10px; padding: 12px 16px; font-size: 14px; color: #b91c1c; line-height: 1.5;
+    }
+    .pain-list li i { color: #ef4444; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── LMS UI mockup ── */
+    .lms-mockup {
+      background: var(--cb-card); border: 1px solid var(--cb-border); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    .lms-mockup-bar {
+      background: #f1f5f9; padding: 12px 16px; display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid var(--cb-border);
+    }
+    .lms-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .lms-sidebar { display: flex; gap: 0; }
+    .lms-side {
+      width: 130px; flex-shrink: 0; background: #f8fafc; padding: 16px 12px;
+      border-right: 1px solid var(--cb-border); display: flex; flex-direction: column; gap: 4px;
+    }
+    .lms-side-item {
+      padding: 8px 10px; border-radius: 8px; font-size: 11px; color: var(--cb-muted);
+      display: flex; align-items: center; gap: 6px; cursor: default;
+    }
+    .lms-side-item.active { background: rgba(20,184,166,0.12); color: #0d9488; font-weight: 600; }
+    .lms-side-item i { font-size: 13px; }
+    .lms-main { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+    .lms-course-card {
+      background: #f8fafc; border: 1px solid var(--cb-border); border-radius: 10px; padding: 12px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .lms-course-thumb { width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .lms-course-info h5 { font-size: 12px; font-weight: 700; color: var(--cb-text); margin: 0 0 3px; }
+    .lms-progress-bar { height: 4px; background: #e2e8f0; border-radius: 2px; overflow: hidden; margin-top: 6px; }
+    .lms-progress-fill { height: 100%; border-radius: 2px; }
+    .lms-progress-label { font-size: 10px; color: var(--cb-muted); margin-top: 2px; }
+    .lms-stat-row { display: flex; gap: 8px; }
+    .lms-stat-box { flex: 1; background: #f1f5f9; border: 1px solid var(--cb-border); border-radius: 8px; padding: 10px; text-align: center; }
+    .lms-stat-box .n { font-size: 16px; font-weight: 800; color: var(--cb-text); display: block; }
+    .lms-stat-box .l { font-size: 10px; color: var(--cb-muted); }
+
+    /* ── Aperçu template SLOT ── */
+    .template-slot-section {
+      padding: 88px 24px;
+      background: var(--cb-bg2);
+      border-top: 1px solid var(--cb-border);
+      border-bottom: 1px solid var(--cb-border);
+    }
+
+    /* ┌─────────────────────────────────────────┐
+       │  SLOT — Aperçu du template LMS          │
+       │  Remplacez le contenu de .template-slot │
+       │  par votre image, iframe ou composant   │
+       └─────────────────────────────────────────┘ */
+    .template-slot {
+      position: relative;
+      min-height: 480px;
+      border: 2px dashed rgba(20,184,166,0.35);
+      border-radius: 20px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(20,184,166,0.07);
+    }
+    .template-slot-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      padding: 40px 24px; text-align: center;
+    }
+    .template-slot-placeholder i { font-size: 48px; color: rgba(20,184,166,0.35); }
+    .template-slot-placeholder h4 { font-size: 16px; font-weight: 700; color: #94a3b8; margin: 0; }
+    .template-slot-placeholder p { font-size: 13px; color: #cbd5e1; margin: 0; max-width: 320px; line-height: 1.6; }
+    .template-slot-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: rgba(20,184,166,0.1); color: #0d9488;
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(20,184,166,0.25);
+    }
+
+    /* ── Benefits ── */
+    .benefits-section { padding: 88px 24px; background: var(--cb-bg); }
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .benefit-card {
+      background: var(--cb-card); border: 1px solid var(--cb-border);
+      border-radius: 16px; padding: 28px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .benefit-card:hover { border-color: rgba(20,184,166,0.4); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(20,184,166,0.1); }
+    .benefit-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(20,184,166,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .benefit-icon i { font-size: 22px; color: var(--cb-teal); }
+    .benefit-card h3 { font-size: 16px; font-weight: 700; color: var(--cb-text); margin: 0 0 10px; }
+    .benefit-card p { font-size: 14px; color: var(--cb-muted); line-height: 1.7; margin: 0; }
+    .benefit-metric { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--cb-border); font-size: 12px; color: var(--cb-teal); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+
+    /* ── Inclus ── */
+    .inclus-section { padding: 88px 24px; background: var(--cb-bg2); border-top: 1px solid var(--cb-border); }
+    .inclus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .inclus-list { display: flex; flex-direction: column; gap: 16px; }
+    .inclus-item { display: flex; align-items: flex-start; gap: 14px; background: var(--cb-card); border: 1px solid var(--cb-border); border-radius: 12px; padding: 18px 20px; transition: border-color 0.2s, box-shadow 0.2s; box-shadow: 0 1px 6px rgba(0,0,0,0.04); }
+    .inclus-item:hover { border-color: rgba(20,184,166,0.35); box-shadow: 0 4px 14px rgba(20,184,166,0.08); }
+    .inclus-item-icon { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; background: rgba(20,184,166,0.1); display: flex; align-items: center; justify-content: center; }
+    .inclus-item-icon i { font-size: 18px; color: var(--cb-teal); }
+    .inclus-item h4 { font-size: 14.5px; font-weight: 700; color: var(--cb-text); margin: 0 0 5px; }
+    .inclus-item p { font-size: 13px; color: var(--cb-muted); margin: 0; line-height: 1.6; }
+
+    /* ── Pricing ── */
+    .pricing-card {
+      background: linear-gradient(145deg, #f0fdfa, #eff6ff);
+      border: 1.5px solid rgba(20,184,166,0.3);
+      border-radius: 24px; padding: 40px 36px; position: relative; overflow: hidden;
+      box-shadow: 0 8px 40px rgba(20,184,166,0.1);
+    }
+    .pricing-card::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(20,184,166,0.1); pointer-events: none;
+    }
+    .pricing-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(20,184,166,0.12); color: #0d9488; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(20,184,166,0.25); margin-bottom: 20px; }
+    .pricing-card h3 { font-size: 1.3rem; font-weight: 800; color: var(--cb-text); margin: 0 0 8px; }
+    .pricing-card .pricing-desc { font-size: 13.5px; color: var(--cb-muted); margin-bottom: 28px; line-height: 1.6; }
+    .price-display { margin-bottom: 28px; }
+    .price-amount { font-size: 3.6rem; font-weight: 900; color: var(--cb-text); line-height: 1; }
+    .price-amount span { font-size: 1.4rem; font-weight: 600; vertical-align: super; }
+    .price-ht { font-size: 13px; color: var(--cb-muted); margin-top: 4px; }
+    .price-sur-devis { font-size: 2rem; font-weight: 900; color: var(--cb-text); line-height: 1.2; }
+    .pricing-features { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 11px; }
+    .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--cb-text); }
+    .pricing-features li i { color: var(--cb-green); font-size: 16px; flex-shrink: 0; }
+    .pricing-cta { width: 100%; text-align: center; justify-content: center; font-size: 16px; background: linear-gradient(135deg, var(--cb-teal), var(--cb-purple)); box-shadow: 0 4px 20px rgba(20,184,166,0.3); }
+    .pricing-note { text-align: center; margin-top: 14px; font-size: 12px; color: var(--cb-muted); }
+
+    /* ── Process ── */
+    .process-section { padding: 88px 24px; border-top: 1px solid var(--cb-border); background: var(--cb-bg); }
+    .cb-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0; }
+    .cb-step { padding: 32px 24px; text-align: center; }
+    .cb-step-num { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--cb-teal), var(--cb-purple)); color: #fff; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 4px 16px rgba(20,184,166,0.3); }
+    .cb-step h3 { font-size: 14px; font-weight: 700; color: var(--cb-text); margin: 0 0 8px; }
+    .cb-step p { font-size: 13px; color: var(--cb-muted); line-height: 1.6; margin: 0; }
+
+    /* ── FAQ ── */
+    .faq-section { padding: 88px 24px; background: var(--cb-bg2); border-top: 1px solid var(--cb-border); }
+    .faq-grid { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+    .faq-item { background: var(--cb-card); border: 1px solid var(--cb-border); border-radius: 14px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .faq-q { width: 100%; background: none; border: none; color: var(--cb-text); padding: 20px 24px; text-align: left; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: inherit; transition: background 0.15s; }
+    .faq-q:hover { background: rgba(20,184,166,0.04); }
+    .faq-q i { font-size: 18px; color: var(--cb-teal); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-a { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+    .faq-a p { color: var(--cb-muted); font-size: 14px; line-height: 1.75; margin: 0 0 20px; }
+    .faq-item.open .faq-a { max-height: 300px; padding-top: 4px; }
+    .faq-item.open .faq-q i { transform: rotate(45deg); }
+
+    /* ── CTA ── */
+    .cb-cta-banner { padding: 80px 24px; background: linear-gradient(135deg, #f0fdfa, #eff6ff); border-top: 1px solid var(--cb-border); text-align: center; }
+    .cb-cta-banner h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: var(--cb-text); margin: 16px 0 14px; }
+    .cb-cta-banner h2 span { color: var(--cb-teal); }
+    .cb-cta-banner p { color: var(--cb-muted); margin-bottom: 36px; font-size: 15px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* ── Footer ── */
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--cb-muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cb-teal); }
+
+    @media (max-width: 768px) {
+      .problem-grid, .inclus-grid { grid-template-columns: 1fr; gap: 36px; }
+      .lms-side { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="sue-header">
+    <div class="sue-container">
+      <div class="inner">
+        <div class="sue-logo">
+          <a href="../index.html"><img src="../assets/images/favicon.png" alt="Franck Kanza — Développeur Web Freelance"></a>
+        </div>
+        <div class="header-btns">
+          <a href="contact.html" class="sue-btn-link">
+            <div class="sue-main-btn border-btn lets-talk-btn">Discutons</div>
+          </a>
+          <a href="contact.html" class="lets-talk-icon"><i class="ri-chat-1-fill"></i></a>
+          <div class="theme-btn">
+            <i class="ri-sun-fill sun-icon"></i>
+            <i class="ri-moon-fill moon-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="bottom-nav-container">
+    <div class="bottom-nav active">
+      <div class="bottom-nav-inner">
+        <i class="ri-arrow-left-down-line menu-hide-btn"></i>
+        <ul class="menu">
+          <li class="menu-item"><a href="../index.html"><i class="ri-home-4-line"></i><span>Accueil</span></a></li>
+          <li class="menu-item"><a href="services.html"><i class="ri-service-line"></i><span>Services</span></a></li>
+          <li class="menu-item"><a href="projets.html"><i class="ri-briefcase-line"></i><span>Projets</span></a></li>
+          <li class="menu-item"><a href="contact.html"><i class="ri-chat-1-line"></i><span>Contact</span></a></li>
+          <li class="menu-item"><a href="formules.html"><i class="ri-function-add-fill"></i><span>Formules</span></a></li>
+          <li class="menu-item"><a href="blog.html"><i class="ri-article-line"></i><span>Blog</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="menu-show-btn">
+      <div class="bar-01"></div>
+      <div class="bar-02"></div>
+    </div>
+  </div>
+
+
+  <!-- Back nav -->
+<!-- ══════════════ HERO ══════════════ -->
+  <section class="cb-hero">
+    <div class="container">
+      <div class="cb-hero-tag">
+        <span class="tag-label"><i class="ri-graduation-cap-line"></i> Service e-learning</span>
+      </div>
+      <h1>Vendez vos formations<br><span>en ligne, en automatique.</span></h1>
+      <p class="cb-hero-sub">
+        Je conçois et intègre votre plateforme LMS sur-mesure : catalogue de cours, espace apprenant, paiements automatisés, suivi de progression. Votre école en ligne, clé en main.
+      </p>
+      <div class="cb-hero-actions">
+        <a href="contact.html" class="btn-primary"><i class="ri-mail-send-line"></i> Demander un devis gratuit</a>
+        <a href="#apercu" class="btn-outline"><i class="ri-eye-line"></i> Voir un aperçu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ STATS ══════════════ -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div>
+        <span class="stat-num">279 Md€</span>
+        <span class="stat-label">marché mondial du e-learning en 2026</span>
+      </div>
+      <div>
+        <span class="stat-num">+21%</span>
+        <span class="stat-label">de croissance annuelle du marché des formations en ligne</span>
+      </div>
+      <div>
+        <span class="stat-num">100%</span>
+        <span class="stat-label">automatisé — zéro intervention manuelle après la vente</span>
+      </div>
+      <div>
+        <span class="stat-num">×∞</span>
+        <span class="stat-label">scalabilité — 1 ou 10 000 apprenants, même effort</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PROBLÈME ══════════════ -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="problem-text">
+          <span class="tag-label"><i class="ri-error-warning-line"></i> Le problème</span>
+          <h2>Vous avez une expertise. Elle ne devrait pas rester dans votre tête.</h2>
+          <p>Vous transmettez votre savoir en présentiel, au téléphone, dans des PDF envoyés manuellement. C'est chronophage, non scalable, et vous laissez de l'argent sur la table chaque jour.</p>
+          <p>Les plateformes génériques (Teachable, Thinkific) vous enferment dans leurs templates, prennent des commissions sur vos ventes et ne s'intègrent jamais parfaitement à votre image de marque.</p>
+          <ul class="pain-list">
+            <li><i class="ri-close-circle-line"></i> Livraison manuelle des accès et contenus à chaque vente</li>
+            <li><i class="ri-close-circle-line"></i> Aucune visibilité sur la progression de vos apprenants</li>
+            <li><i class="ri-close-circle-line"></i> Commissions prélevées par les plateformes tierces</li>
+            <li><i class="ri-close-circle-line"></i> Image générique qui ne reflète pas votre marque</li>
+            <li><i class="ri-close-circle-line"></i> Impossible de personnaliser l'expérience apprenant</li>
+          </ul>
+        </div>
+        <div>
+          <!-- Mini mockup LMS -->
+          <div class="lms-mockup">
+            <div class="lms-mockup-bar">
+              <div class="lms-dot" style="background:#ef4444;"></div>
+              <div class="lms-dot" style="background:#f59e0b;"></div>
+              <div class="lms-dot" style="background:#22c55e;"></div>
+              <span style="margin-left:8px;font-size:11px;color:#64748b;">Espace apprenant</span>
+            </div>
+            <div class="lms-sidebar">
+              <div class="lms-side">
+                <div class="lms-side-item active"><i class="ri-home-4-line"></i> Tableau de bord</div>
+                <div class="lms-side-item"><i class="ri-book-open-line"></i> Mes cours</div>
+                <div class="lms-side-item"><i class="ri-bar-chart-2-line"></i> Progression</div>
+                <div class="lms-side-item"><i class="ri-settings-3-line"></i> Profil</div>
+              </div>
+              <div class="lms-main">
+                <div style="font-size:12px;font-weight:700;color:var(--cb-muted);margin-bottom:4px;">En cours</div>
+                <div class="lms-course-card">
+                  <div class="lms-course-thumb" style="background:rgba(99,102,241,0.2);"><i class="ri-code-s-slash-line" style="color:#818cf8;font-size:16px;"></i></div>
+                  <div style="flex:1;min-width:0;">
+                    <div class="lms-course-info">
+                      <h5>React & Next.js — Maîtrisez le développement web moderne</h5>
+                    </div>
+                    <div class="lms-progress-bar"><div class="lms-progress-fill" style="width:68%;background:linear-gradient(90deg,#6366f1,#8b5cf6);"></div></div>
+                    <div class="lms-progress-label">Module 7 / 12 — 68 %</div>
+                  </div>
+                </div>
+                <div class="lms-course-card">
+                  <div class="lms-course-thumb" style="background:rgba(20,184,166,0.15);"><i class="ri-smartphone-line" style="color:#14b8a6;font-size:16px;"></i></div>
+                  <div style="flex:1;min-width:0;">
+                    <div class="lms-course-info">
+                      <h5>React Native — Créez votre première app mobile</h5>
+                    </div>
+                    <div class="lms-progress-bar"><div class="lms-progress-fill" style="width:24%;background:linear-gradient(90deg,#14b8a6,#6366f1);"></div></div>
+                    <div class="lms-progress-label">Module 3 / 10 — 24 %</div>
+                  </div>
+                </div>
+                <div class="lms-stat-row">
+                  <div class="lms-stat-box"><span class="n">12</span><span class="l">Cours suivis</span></div>
+                  <div class="lms-stat-box"><span class="n" style="color:#f59e0b;">89%</span><span class="l">Taux complétion</span></div>
+                  <div class="lms-stat-box"><span class="n" style="color:#22c55e;">48h</span><span class="l">Temps total</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ APERÇU TEMPLATE — SLOT ══════════════ -->
+  <section class="template-slot-section" id="apercu">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag-label"><i class="ri-layout-line"></i> Aperçu du template</span>
+        <h2>À quoi ressemble votre plateforme ?</h2>
+        <p>Voici un exemple de rendu pour vous donner une idée du niveau de qualité et du design de la plateforme intégrée.</p>
+      </div>
+
+      <!-- ╔══════════════════════════════════════════════════════════════╗
+           ║  SLOT — APERÇU TEMPLATE LMS                                ║
+           ║  Insérez ici votre contenu (image, iframe, screenshot…)     ║
+           ║  Exemple : <img src="..." alt="Aperçu LMS">                ║
+           ║             ou <iframe src="..." ...></iframe>              ║
+           ╚══════════════════════════════════════════════════════════════╝ -->
+      <div class="template-slot">
+        <div class="template-slot-badge">Aperçu à venir</div>
+
+        <!-- ↓↓↓  REMPLACEZ CE BLOC PAR VOTRE TEMPLATE  ↓↓↓ -->
+        <div class="template-slot-placeholder">
+          <i class="ri-layout-5-line"></i>
+          <h4>Template LMS — Aperçu en cours de préparation</h4>
+          <p>Un aperçu interactif de la plateforme sera disponible ici prochainement.</p>
+        </div>
+        <!-- ↑↑↑  FIN DU BLOC À REMPLACER  ↑↑↑ -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ BÉNÉFICES ══════════════ -->
+  <section class="benefits-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag-label"><i class="ri-sparkling-line"></i> Pourquoi une plateforme LMS ?</span>
+        <h2>Votre savoir devient un actif qui génère des revenus.</h2>
+        <p>Créez une fois, vendez à l'infini. Votre expertise mérite une vitrine à la hauteur.</p>
+      </div>
+      <div class="benefits-grid">
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-repeat-line"></i></div>
+          <h3>Revenus passifs & récurrents</h3>
+          <p>Une formation créée une fois peut se vendre 1 000 fois sans effort supplémentaire. Activez les abonnements mensuels pour une source de revenus récurrente et prévisible.</p>
+          <div class="benefit-metric"><i class="ri-arrow-up-line"></i> Revenu qui continue de travailler pendant que vous dormez</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-scales-line"></i></div>
+          <h3>Scalabilité infinie</h3>
+          <p>Qu'il s'inscrive 10 ou 10 000 apprenants ce mois-ci, votre plateforme gère tout sans intervention manuelle. Pas de charge supplémentaire pour vous.</p>
+          <div class="benefit-metric"><i class="ri-arrow-up-line"></i> Croissance sans friction opérationnelle</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-robot-2-line"></i></div>
+          <h3>100 % automatisé</h3>
+          <p>Paiement, création de compte, accès aux contenus, emails de suivi — tout est automatique. Vous encaissez pendant que la plateforme délivre.</p>
+          <div class="benefit-metric"><i class="ri-arrow-down-line"></i> Zéro tâche manuelle après la mise en ligne</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-bar-chart-grouped-line"></i></div>
+          <h3>Suivi de progression détaillé</h3>
+          <p>Visualisez en temps réel l'avancement de chaque apprenant : modules vus, quiz passés, taux de complétion. Repérez ceux qui décrochent pour les relancer.</p>
+          <div class="benefit-metric"><i class="ri-arrow-up-line"></i> Taux de complétion amélioré = meilleurs avis clients</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="ri-palette-line"></i></div>
+          <h3>Votre marque, 100 %</h3>
+          <p>Contrairement à Teachable ou Thinkific, la plateforme est aux couleurs de votre identité. Vos apprenants restent dans votre univers, pas dans celui d'un outil tiers.</p>
+          <div class="benefit-metric"><i class="ri-arrow-up-line"></i> Image professionnelle et confiance client renforcée</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CE QUI EST INCLUS ══════════════ -->
+  <section class="inclus-section" id="inclus">
+    <div class="container">
+      <div class="inclus-grid">
+
+        <div>
+          <span class="tag-label"><i class="ri-checkbox-circle-line"></i> Tout compris</span>
+          <h2 style="font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:var(--cb-text);margin:14px 0 20px;">Une plateforme complète.<br>Aucun compromis.</h2>
+          <p style="color:var(--cb-muted);line-height:1.8;font-size:15px;margin-bottom:32px;">
+            De la conception de l'interface à la mise en ligne, je livre une plateforme LMS opérationnelle, intégrée à votre domaine et prête à accueillir vos premiers apprenants.
+          </p>
+          <div class="inclus-list">
+            <div class="inclus-item">
+              <div class="inclus-item-icon"><i class="ri-layout-5-line"></i></div>
+              <div>
+                <h4>Design sur-mesure à votre charte</h4>
+                <p>Interface complète aux couleurs de votre marque — page d'accueil, catalogue, espace apprenant, tableau de bord. Aucun template imposé.</p>
+              </div>
+            </div>
+            <div class="inclus-item">
+              <div class="inclus-item-icon"><i class="ri-book-open-line"></i></div>
+              <div>
+                <h4>Catalogue de formations</h4>
+                <p>Présentation de vos formations avec descriptions, programmes détaillés, niveaux, durées et aperçus. Filtres et recherche intégrés.</p>
+              </div>
+            </div>
+            <div class="inclus-item">
+              <div class="inclus-item-icon"><i class="ri-secure-payment-line"></i></div>
+              <div>
+                <h4>Paiements intégrés (Stripe)</h4>
+                <p>Achat à l'unité, abonnements mensuels ou annuels, codes promo — tout est géré automatiquement via Stripe. Vous recevez vos fonds directement.</p>
+              </div>
+            </div>
+            <div class="inclus-item">
+              <div class="inclus-item-icon"><i class="ri-user-settings-line"></i></div>
+              <div>
+                <h4>Espace apprenant & tableau de bord</h4>
+                <p>Chaque apprenant dispose d'un espace personnel : progression, modules suivis, quiz, téléchargements et ressources pédagogiques.</p>
+              </div>
+            </div>
+            <div class="inclus-item">
+              <div class="inclus-item-icon"><i class="ri-dashboard-line"></i></div>
+              <div>
+                <h4>Back-office administrateur</h4>
+                <p>Gérez vos formations, apprenants et ventes depuis une interface simple et claire. Ajoutez du contenu, créez des promos, exportez vos données.</p>
+              </div>
+            </div>
+            <div class="inclus-item">
+              <div class="inclus-item-icon"><i class="ri-mail-send-line"></i></div>
+              <div>
+                <h4>Emails automatisés</h4>
+                <p>Bienvenue, confirmation d'achat, rappels de progression, fin de formation — chaque étape apprenant est accompagnée d'un email automatique à votre marque.</p>
+              </div>
+            </div>
+            <div class="inclus-item">
+              <div class="inclus-item-icon"><i class="ri-customer-service-2-line"></i></div>
+              <div>
+                <h4>30 jours de support inclus</h4>
+                <p>Correction de bugs, ajustements d'interface, ajout de contenu, questions techniques — je reste disponible pendant 30 jours après la livraison.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing card -->
+        <div>
+          <div class="pricing-card">
+            <div class="pricing-badge"><i class="ri-graduation-cap-line"></i> Plateforme LMS</div>
+            <h3>E-learning sur-mesure</h3>
+            <p class="pricing-desc">Tarif ajusté selon la complexité du projet. Devis gratuit sous 24h, sans engagement.</p>
+            <div class="price-display">
+              <div class="price-sur-devis">Sur devis personnalisé</div>
+              <div class="price-ht" style="margin-top:8px;">Paiement en 2 ou 3 fois disponible · Devis gratuit sous 24h</div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="ri-checkbox-circle-fill"></i> Design à votre charte graphique</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Catalogue de formations illimité</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Paiements Stripe (achat & abonnement)</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Espace apprenant avec progression</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Back-office administrateur</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Emails automatisés</li>
+              <li><i class="ri-checkbox-circle-fill"></i> SEO intégré — Next.js SSR</li>
+              <li><i class="ri-checkbox-circle-fill"></i> 100 % responsive</li>
+              <li><i class="ri-checkbox-circle-fill"></i> 30 jours de support inclus</li>
+            </ul>
+            <a href="contact.html" class="btn-primary pricing-cta">
+              <i class="ri-mail-send-line"></i> Obtenir mon devis gratuit
+            </a>
+            <p class="pricing-note">Réponse sous 24h · Paiement échelonné possible</p>
+          </div>
+          <div style="margin-top:20px;background:var(--cb-card);border:1px solid var(--cb-border);border-radius:14px;padding:20px 22px;display:flex;align-items:flex-start;gap:13px;">
+            <i class="ri-shield-check-line" style="color:var(--cb-green);font-size:20px;flex-shrink:0;margin-top:2px;"></i>
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--cb-text);margin-bottom:4px;">Livraison validée ensemble</div>
+              <div style="font-size:13px;color:var(--cb-muted);line-height:1.6;">La plateforme est livrée par étapes et validée avec vous à chaque jalon. Aucune mauvaise surprise à la livraison finale.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ PROCESSUS ══════════════ -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag-label"><i class="ri-map-pin-time-line"></i> Déroulement</span>
+        <h2>De l'idée à la mise en ligne.</h2>
+        <p>Un projet structuré en 5 étapes claires, avec votre validation à chaque jalon.</p>
+      </div>
+      <div class="cb-steps">
+        <div class="cb-step">
+          <div class="cb-step-num">01</div>
+          <h3>Brief & cadrage</h3>
+          <p>On définit ensemble vos formations, vos cibles, votre modèle de vente et les fonctionnalités prioritaires.</p>
+        </div>
+        <div class="cb-step">
+          <div class="cb-step-num">02</div>
+          <h3>Maquettes Figma</h3>
+          <p>Je conçois les maquettes de chaque écran. Vous validez le design avant le moindre développement.</p>
+        </div>
+        <div class="cb-step">
+          <div class="cb-step-num">03</div>
+          <h3>Développement</h3>
+          <p>Développement complet en React & Next.js avec un accès en temps réel pour suivre l'avancement.</p>
+        </div>
+        <div class="cb-step">
+          <div class="cb-step-num">04</div>
+          <h3>Tests & recette</h3>
+          <p>Tests complets sur tous les appareils, parcours d'achat, paiements, accès apprenant et emails.</p>
+        </div>
+        <div class="cb-step">
+          <div class="cb-step-num">05</div>
+          <h3>Mise en ligne</h3>
+          <p>Déploiement sur votre domaine, formation à l'administration et 30 jours de support inclus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FAQ ══════════════ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag-label"><i class="ri-question-answer-line"></i> FAQ</span>
+        <h2>Questions fréquentes.</h2>
+      </div>
+      <div class="faq-grid">
+
+        <div class="faq-item">
+          <button class="faq-q">Quels types de contenus puis-je proposer ? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Vidéos (hébergées sur Vimeo, YouTube ou directement), PDFs, présentations, quiz, exercices pratiques, textes et liens externes. La plateforme s'adapte à votre format de contenu.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Puis-je proposer des abonnements mensuels ? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Oui. La plateforme supporte les achats à l'unité, les abonnements mensuels ou annuels, et les bundles. Stripe gère tout automatiquement — y compris les relances en cas d'échec de paiement.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Combien de formations puis-je créer ? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Illimité. Votre back-office vous permet d'ajouter autant de formations, modules et leçons que vous le souhaitez, sans intervention technique de ma part.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Ma plateforme sera-t-elle bien référencée sur Google ? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Oui. La plateforme est développée avec Next.js en rendu SSR — chaque page de formation est indexable par Google. Les balises meta, le sitemap et les données structurées sont intégrés dès le développement.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Quelle est la durée du projet ? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Entre 4 et 10 semaines selon la complexité. Un projet LMS standard (5 à 15 formations, paiements, espace apprenant) est livré en environ 6 semaines. Un calendrier précis est établi après le brief.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Puis-je gérer la plateforme moi-même après la livraison ? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Absolument. Le back-office est conçu pour être utilisé sans compétences techniques. Ajout de formations, gestion des apprenants, création de codes promo — tout est accessible depuis une interface simple. Je vous forme à la prise en main lors de la livraison.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CTA FINAL ══════════════ -->
+  <div class="cb-cta-banner">
+    <div class="container">
+      <span class="tag-label"><i class="ri-rocket-line"></i> Prêt à démarrer ?</span>
+      <h2>Votre expertise mérite<br><span>une vitrine à sa hauteur.</span></h2>
+      <p>Devis gratuit et personnalisé sous 24h. Discutons de votre projet e-learning.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary" style="font-size:16px;padding:15px 32px;background:linear-gradient(135deg,#14b8a6,#6366f1);box-shadow:0 4px 20px rgba(20,184,166,0.35);">
+          <i class="ri-mail-send-line"></i> Demander mon devis
+        </a>
+        <a href="https://wa.me/33644396284?text=Bonjour%20Franck%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20votre%20service%20LMS." target="_blank" rel="noopener" class="btn-outline" style="font-size:16px;padding:15px 32px;">
+          <i class="ri-whatsapp-line"></i> WhatsApp direct
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="sue-footer" style="background:#f1f5f9;border-top:1px solid var(--cb-border);padding:40px 24px;">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+      <div>
+        <a href="../index.html"><img loading="lazy" src="../assets/images/favicon.png" alt="Franck Kanza" style="height:36px;"></a>
+        <p style="color:var(--cb-muted);font-size:13px;margin:4px 0 0;">Développeur Web Freelance Normandie & Paris</p>
+      </div>
+      <div class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="formules.html">Formules</a>
+        <a href="projets.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <p style="color:var(--cb-muted);font-size:13px;text-align:right;margin:0;">© Franck Kanza 2026</p>
+        <p style="margin:4px 0 0;text-align:right;"><a href="mailto:franck.kanza@outlook.fr" style="color:var(--cb-muted);font-size:13px;">franck.kanza@outlook.fr</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FAQ accordion -->
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+  <script src="../assets/js/chatbot.js"></script>
+</body>
+</html>

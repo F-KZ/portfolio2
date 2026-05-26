@@ -1,0 +1,31 @@
+* instructions pour la page chatbot.html
+
+le chatbot se presente sous 3 versions
+
+Chatbot v1 :
+- analyser les questions formulées librement 
+- adapter leurs réponses en fonction du contexte 
+- exploiter des bases de connaissances internes 
+- répondre aux FAQ
+- orienter les visiteurs sur un site
+- automatiser des demandes simples
+
+coût à partir de 100€/ mois, 1100€/ année
+
+Chatbot v2 :
+
+- qualifier des prospects
+- création de devis
+
+coût à partir de 200€/ mois, 2200€/ année
+
+Chatbot v3
+
+- Plannification de rdv, le chatbot a accés au google calendar, propose des rdv en fonction de la disponibilité de celui-ci en respectant mes tranches horaires puis crée le google meet
+
+coût à partir de 300€/ mois, 3300€/ année
+
+
+
+tarification variée sur le volume de conversations et la taille du catalogue produits me contacter pour un devis personnalisé
+les chatbots reprennent les abilités de la version précedente, cependant il est possible de crée son chatbot personnalisé selon les options me contacter pour un devis personnalisé
