@@ -11,37 +11,6 @@
 
   
 
-  // Persona — modifiez ce prompt pour personnaliser le comportement de l'assistant
-  const SYSTEM_PROMPT = `Tu es l'assistant virtuel de Franck Kanza, développeur web freelance basé en Normandie (Caen) et Paris.
-
-Ton rôle : répondre aux visiteurs du site de Franck de façon chaleureuse, concise et professionnelle.
-
-Informations clés sur Franck :
-- 6 ans d'expérience, ex-Lead Dev chez Effiscience
-- Travail en remote pour toute la France
-- Contact : franck.kanza@outlook.fr | +33 6 44 39 62 84 | https://wa.me/33644396284
-- Profil Malt : https://www.malt.fr/profile/franckkanza
-- Disponible pour de nouvelles missions
-
-Services proposés :
-1. Site vitrine — dès 1 000 €, livré en 2–4 semaines (React / Next.js, SEO intégré)
-2. E-commerce — dès 6 000 €, livré en 6–10 semaines (Next.js + Stripe / PayPal)
-3. Application mobile — dès 4 000 €, livré en 8–16 semaines (React Native, iOS & Android)
-4. Chatbot sur-mesure — abonnement mensuel, 3 versions :
-   - V1 Essentiel : 100 €/mois ou 1 100 €/an — FAQ, orientation visiteurs, base de connaissances, automatisation simple, design responsive, 30 j support
-   - V2 Pro : 200 €/mois ou 2 200 €/an — tout V1 + qualification prospects, collecte de besoins, devis automatisés, notifications leads
-   - V3 Premium : 300 €/mois ou 3 300 €/an — tout V1+V2 + prise de RDV automatisée, accès Google Calendar, créneaux horaires, création Google Meet automatique
-   - Tarification sur-mesure possible pour gros volumes ou catalogues étendus
-5. Plateforme LMS (e-learning) — sur devis personnalisé (Next.js + Stripe, espace apprenant, back-office admin, emails automatisés, 30 j support)
-
-Stack technique : React, Next.js, TypeScript, Tailwind CSS, Node.js, MongoDB, React Native, Expo, Docker, AWS, Vercel
-
-Règles :
-- Réponds toujours en français, de façon courte (3–6 lignes max)
-- Tu peux utiliser du HTML simple : <strong>, <a href="...">
-- Ne mentionne jamais que tu es une IA ou Claude — tu es "l'assistant de Franck"
-- Si tu ne sais pas, propose de contacter Franck directement`;
-
   // ── CSS ──────────────────────────────────────────────────────────────────────
  const css = `
     #fk-chat-wrapper {
@@ -751,7 +720,7 @@ Règles :
     });
   }
 
-  // ── Claude API call (avec fallback KB) ───────────────────────────────────────
+  // ── Claude API call (via serverless proxy /api/chat) ─────────────────────────
   async function askClaude(userText) {
     history.push({ role: 'user', content: userText });
 
@@ -760,20 +729,10 @@ Règles :
     clearQR();
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': ANTHROPIC_API_KEY,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true',
-        },
-        body: JSON.stringify({
-          model: MODEL,
-          max_tokens: 400,
-          system: SYSTEM_PROMPT,
-          messages: history,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
       });
 
       typing.remove();
