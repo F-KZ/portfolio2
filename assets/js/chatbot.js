@@ -4,6 +4,11 @@
   // ── CONFIGURATION ────────────────────────────────────────────────────────────
   // ⚠️  Ne jamais exposer cette clé côté client en production.
   //     Utilisez un backend proxy (Vercel Edge, Node.js, etc.) qui détient la clé.
+  const EMAILJS_PUBLIC_KEY='v_uAluIeQUUcMHhqP'
+  const EMAILJS_TEMPLATE_ID='template_aabjjb3'
+  const EMAILJS_SERVICE_ID='service_twkldo4'
+ 
+
   
 
   // Persona — modifiez ce prompt pour personnaliser le comportement de l'assistant
@@ -664,7 +669,7 @@ Règles :
       if (window.emailjs) { resolve(); return; }
       const s = document.createElement('script');
       s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-      s.onload = () => { window.emailjs.init({ publicKey: EJS_PUBLIC_KEY }); resolve(); };
+      s.onload = () => { window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); resolve(); };
       s.onerror = reject;
       document.head.appendChild(s);
     });
@@ -724,7 +729,7 @@ Règles :
 
       try {
         await loadEmailJS();
-        await window.emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
+        await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
          name: prenom, lead_name: nom, lead_phone: tel, lead_mail: mail,  message: msg || '(aucun message)',
           date: new Date().toLocaleString('fr-FR'),
         });
