@@ -574,9 +574,15 @@
       qr: ['Prix application mobile','Prendre contact']
     },
     {
+      id: 'lms',
+      patterns: ['lms','e-learning','elearning','formation en ligne','plateforme formation','apprenant','cours en ligne','moodle','teachable'],
+      response: 'La <strong>plateforme LMS</strong> (e-learning) est faite pour vendre ou diffuser vos formations en ligne :\n\n✅ Espace apprenant personnalisé\n✅ Back-office admin complet\n✅ Paiements Stripe intégrés\n✅ Emails automatisés\n✅ 30 jours de support inclus\n\n💰 À partir de <strong>300 €/mois</strong> pour moins de 50 apprenants — tarif sur-mesure au-delà.',
+      qr: ['Prendre contact','Obtenir un devis']
+    },
+    {
       id: 'prix',
       patterns: ['prix','tarif','coût','combien','budget','coûte','cher','formule','forfait','tarification','payer'],
-      response: 'Voici les fourchettes indicatives :\n\n🌐 <strong>Site vitrine</strong> — à partir de <strong>1 000 €</strong>\n🛒 <strong>E-commerce</strong> — à partir de <strong>6 000 €</strong>\n📱 <strong>Application mobile</strong> — à partir de <strong>4 000 €</strong>\n\n💡 Chaque devis est personnalisé et <strong>gratuit</strong>, établi sous 24h.',
+      response: 'Voici les fourchettes indicatives :\n\n🌐 <strong>Site vitrine</strong> — à partir de <strong>1 000 €</strong>\n🛒 <strong>E-commerce</strong> — à partir de <strong>6 000 €</strong>\n📱 <strong>Application mobile</strong> — à partir de <strong>4 000 €</strong>\n🎓 <strong>LMS / Formation</strong> — à partir de <strong>300 €/mois</strong>\n\n💡 Chaque devis est personnalisé et <strong>gratuit</strong>, établi sous 24h.',
       qr: ['Obtenir un devis gratuit','Voir les formules détaillées']
     },
     {

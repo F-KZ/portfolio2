@@ -24,7 +24,7 @@ Services proposés :
    - V2 Pro : 200 €/mois ou 2 200 €/an — tout V1 + qualification prospects, collecte de besoins, devis automatisés, notifications leads
    - V3 Premium : 300 €/mois ou 3 300 €/an — tout V1+V2 + prise de RDV automatisée, accès Google Calendar, créneaux horaires, création Google Meet automatique
    - Tarification sur-mesure possible pour gros volumes ou catalogues étendus
-5. Plateforme LMS (e-learning) — sur devis personnalisé (Next.js + Stripe, espace apprenant, back-office admin, emails automatisés, 30 j support)
+5. Plateforme LMS (e-learning) — à partir de 300 €/mois pour moins de 50 apprenants (Next.js + Stripe, espace apprenant, back-office admin, emails automatisés, 30 j support) — tarif sur-mesure au-delà
 
 Stack technique : React, Next.js, TypeScript, Tailwind CSS, Node.js, MongoDB, React Native, Expo, Docker, AWS, Vercel
 
