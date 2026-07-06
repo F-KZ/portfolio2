@@ -149,51 +149,157 @@
 /* =========================================
    Home Hero Text
 ========================================= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .home-hero-text {
+    align-items: center;
     text-align: center;
+    max-width: 560px;
     padding-bottom: 2rem;
   }
-  
+
+  .hero-ctas,
+  .hero-trust {
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 500px) {
 
-  .home-hero-text h2 {
-    font-size: 1rem;
-  }
   .home-hero-text h1 {
-    font-size: 1rem;
+    font-size: 1.7rem;
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 993px) {
   .home-hero-text {
+    order: -1;
+    max-width: 520px;
     padding-right: 2rem;
   }
 }
 
 .home-hero-text {
-  max-width: 320px;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 1.25rem;
 }
 
-.home-hero-text h2 {
-  font-size: 2rem;
+.home-hero-text h1 {
+  font-size: clamp(1.9rem, 3.5vw, 2.7rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
+  color: var(--color-02);
 }
 
-.home-hero-text h2 span {
-  color: #6effa0; /* reprend votre couleur verte */
+.home-hero-text h1 span {
+  color: var(--primary-color);
+  display: block;
+}
+
+.light-theme .home-hero-text h1 span {
+  color: hsl(var(--hue) var(--sat) 45%);
 }
 
 .home-hero-text p {
   font-size: 1rem;
   opacity: 0.75;
   line-height: 1.6;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--primary-color);
+  border: 1px solid hsl(var(--hue) var(--sat) var(--light) / 0.35);
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+
+.hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary-color);
+}
+
+.light-theme .hero-badge {
+  color: hsl(var(--hue) var(--sat) 42%);
+  border-color: hsl(var(--hue) var(--sat) 45% / 0.4);
+}
+
+.light-theme .hero-badge-dot {
+  background: hsl(var(--hue) var(--sat) 45%);
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 17px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.hero-btn i {
+  font-size: 1.1rem;
+}
+
+.hero-btn--primary {
+  background: var(--primary-color);
+  color: var(--dark-color);
+}
+
+.hero-btn--primary:hover {
+  background: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+.hero-btn--outline {
+  border: 1px solid var(--color-04);
+  color: var(--color-02);
+}
+
+.hero-btn--outline:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.light-theme .hero-btn--outline:hover {
+  border-color: hsl(var(--hue) var(--sat) 45%);
+  color: hsl(var(--hue) var(--sat) 42%);
+}
+
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-04);
+}
+
+.hero-trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .home-main-title {
@@ -6972,4 +7078,59 @@ body{
 .sp-btn:hover { opacity: 0.85; }
 @media (max-width: 768px) {
   .sp-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   Hero accueil — ajustements option A
+========================================= */
+@media screen and (min-width: 993px) {
+   .avatar-container.espace-header {
+      padding-left: 60px;
+   }
+
+   .home-hero-text {
+      flex: 1 1 auto;
+      max-width: 580px;
+      padding-right: 1rem;
+   }
+
+   /* le laptop (620px de layout) est réduit à 434px visibles :
+      les marges négatives rendent la différence à la colonne texte */
+   .avatar-container .laptop {
+      transform: scale(0.7);
+      margin-left: -93px;
+      margin-right: -93px;
+   }
+}
+
+@media screen and (max-width: 992px) {
+   .home-container {
+      height: auto;
+      min-height: 100vh;
+   }
+
+   .home-container .sue-wrapper {
+      flex-direction: column-reverse;
+      padding-top: 7rem;
+   }
+
+   .home-social {
+      position: relative;
+      padding-top: 0;
+   }
+
+   .home-social span,
+   .home-social .social-line {
+      display: none;
+   }
+
+   .home-social .social-icons {
+      flex-direction: row;
+      gap: 30px;
+      margin-top: 35px;
+   }
+
+   .home-scroll-btn {
+      display: none;
+   }
 }
