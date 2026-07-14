@@ -183,6 +183,11 @@ sueContactForm.addEventListener('submit', function(event) {
 
    emailjs.sendForm(serviceID, templateID, sueContactForm)
       .then(() => {
+         window.dataLayer = window.dataLayer || [];
+         window.dataLayer.push({
+            event: 'lead_submitted',
+            lead_subject: sueContactForm.elements['subject'].value,
+         });
          sueContactFormAlert.innerHTML = "<span> Message envoyé avec succés!</span> <i class='ri-checkbox-circle-fill'></i>";
          sueContactForm.reset();
          setTimeout(() => {
