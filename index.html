@@ -111,24 +111,16 @@
      }
      </script>
 
-     <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  <!-- Meta Pixel (stub) : les événements sont mis en file d'attente,
+       rien n'est envoyé avant le consentement (voir main.js) -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document,'script');
   fbq('init', '1209154054236503');
   fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1209154054236503&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-    
+  <!-- End Meta Pixel (stub) -->
   </head>
   
 <body class="light-theme">
@@ -1619,43 +1611,6 @@
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEQ67ZqoZVqbe8iQw_g0nzf2Wjxke8lIQ&callback=initMap">
 </script>
 
-  <!-- ========== Bandeau RGPD ========== -->
-  <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a2e;color:#e2e8f0;padding:16px 24px;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 -4px 20px rgba(0,0,0,0.4);font-size:14px;">
-    <p style="margin:0;flex:1;min-width:200px;">Ce site utilise des cookies pour mesurer l'audience et améliorer votre expérience. <a href="https://www.facebook.com/policy/cookies/" target="_blank" rel="noopener" style="color:#818cf8;text-decoration:underline;">En savoir plus</a></p>
-    <div style="display:flex;gap:10px;flex-shrink:0;">
-      <button id="cookie-refuse" style="padding:8px 18px;border:1px solid #475569;background:transparent;color:#94a3b8;border-radius:6px;cursor:pointer;font-size:14px;">Refuser</button>
-      <button id="cookie-accept" style="padding:8px 18px;border:none;background:#6366f1;color:#fff;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;">Accepter</button>
-    </div>
-  </div>
-  <script>
-    (function() {
-      var consent = localStorage.getItem('fk_cookie_consent');
-      if (consent === 'accepted') { loadFbPixel(); return; }
-      if (consent === 'refused') { return; }
-      var banner = document.getElementById('cookie-banner');
-      if (banner) banner.style.display = 'flex';
-      document.getElementById('cookie-accept').addEventListener('click', function() {
-        localStorage.setItem('fk_cookie_consent', 'accepted');
-        banner.style.display = 'none';
-        loadFbPixel();
-      });
-      document.getElementById('cookie-refuse').addEventListener('click', function() {
-        localStorage.setItem('fk_cookie_consent', 'refused');
-        banner.style.display = 'none';
-      });
-      function loadFbPixel() {
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window,document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init','1209154054236503');
-        fbq('track','PageView');
-      }
-    })();
-  </script>
 
   <!--========== ScrollReveal JS ==========-->
   <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>

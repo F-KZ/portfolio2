@@ -444,3 +444,47 @@ visible = getVisible();
 buildDots();
 goTo(0);
 } // end if (track)
+
+/* =====================================================
+   Consentement cookies (RGPD) + chargement du Pixel Meta
+   Le stub fbq est posé dans le <head> de chaque page ;
+   fbevents.js n'est chargé qu'après consentement, la file
+   d'attente (PageView, ViewContent, Lead...) part à ce moment-là.
+===================================================== */
+(function () {
+   var PIXEL_SRC = 'https://connect.facebook.net/en_US/fbevents.js';
+
+   function loadFbPixel() {
+      if (document.querySelector('script[src="' + PIXEL_SRC + '"]')) return;
+      var t = document.createElement('script');
+      t.async = true;
+      t.src = PIXEL_SRC;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+   }
+
+   var consent = localStorage.getItem('fk_cookie_consent');
+   if (consent === 'accepted') { loadFbPixel(); return; }
+   if (consent === 'refused') { return; }
+
+   var banner = document.createElement('div');
+   banner.id = 'cookie-banner';
+   banner.style.cssText = 'display:flex;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a2e;color:#e2e8f0;padding:16px 24px;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 -4px 20px rgba(0,0,0,0.4);font-size:14px;';
+   banner.innerHTML =
+      '<p style="margin:0;flex:1;min-width:200px;">Ce site utilise des cookies pour mesurer l\'audience et améliorer votre expérience. <a href="https://www.facebook.com/policy/cookies/" target="_blank" rel="noopener" style="color:#818cf8;text-decoration:underline;">En savoir plus</a></p>' +
+      '<div style="display:flex;gap:10px;flex-shrink:0;">' +
+      '<button id="cookie-refuse" style="padding:8px 18px;border:1px solid #475569;background:transparent;color:#94a3b8;border-radius:6px;cursor:pointer;font-size:14px;">Refuser</button>' +
+      '<button id="cookie-accept" style="padding:8px 18px;border:none;background:#6366f1;color:#fff;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;">Accepter</button>' +
+      '</div>';
+   document.body.appendChild(banner);
+
+   document.getElementById('cookie-accept').addEventListener('click', function () {
+      localStorage.setItem('fk_cookie_consent', 'accepted');
+      banner.remove();
+      loadFbPixel();
+   });
+   document.getElementById('cookie-refuse').addEventListener('click', function () {
+      localStorage.setItem('fk_cookie_consent', 'refused');
+      banner.remove();
+   });
+})();
