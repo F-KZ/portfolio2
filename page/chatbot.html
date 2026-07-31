@@ -44,9 +44,9 @@
     },
     "areaServed": "FR",
     "offers": [
-      {"@type": "Offer", "name": "Essentiel — FAQ automatisée", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 100, "priceCurrency": "EUR", "unitText": "mois"}},
-      {"@type": "Offer", "name": "Pro — FAQ + qualification de prospects", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 200, "priceCurrency": "EUR", "unitText": "mois"}},
-      {"@type": "Offer", "name": "Premium — FAQ + prospects + prise de RDV Google Calendar", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 300, "priceCurrency": "EUR", "unitText": "mois"}}
+      {"@type": "Offer", "name": "Essentiel — FAQ automatisée", "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": 100, "priceCurrency": "EUR", "unitText": "mois"}},
+      {"@type": "Offer", "name": "Pro — FAQ + qualification de prospects", "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": 200, "priceCurrency": "EUR", "unitText": "mois"}},
+      {"@type": "Offer", "name": "Premium — FAQ + prospects + prise de RDV Google Calendar", "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": 300, "priceCurrency": "EUR", "unitText": "mois"}}
     ]
   }
   </script>
@@ -56,11 +56,11 @@
     "@type": "FAQPage",
     "mainEntity": [
       {"@type": "Question", "name": "Mon site est-il compatible ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Le chatbot s'intègre avec un simple fichier JavaScript sur n'importe quel site : HTML statique, WordPress, Webflow, Shopify, Wix, ou tout site développé sur-mesure. Aucune contrainte technique."}},
-      {"@type": "Question", "name": "Quelle est la différence entre mensuel et annuel ?", "acceptedAnswer": {"@type": "Answer", "text": "L'abonnement mensuel vous engage mois par mois avec une résiliation possible à tout moment. L'abonnement annuel inclut 2 mois offerts — vous payez 10 mois pour 12. Pour la V1 : 1 100 €/an au lieu de 1 200 €, pour la V2 : 2 200 €/an au lieu de 2 400 €, pour la V3 : 3 300 €/an au lieu de 3 600 €."}},
+      {"@type": "Question", "name": "Quelle est la différence entre mensuel et annuel ?", "acceptedAnswer": {"@type": "Answer", "text": "L'abonnement mensuel vous engage mois par mois avec une résiliation possible à tout moment. L'abonnement annuel inclut 2 mois offerts — vous payez 10 mois pour 12. Sur la base des tarifs de départ : pour la V1, à partir de 1 100 €/an au lieu de 1 200 €, pour la V2, à partir de 2 200 €/an au lieu de 2 400 €, pour la V3, à partir de 3 300 €/an au lieu de 3 600 €. Ces montants évoluent ensuite selon la taille de votre organisation."}},
       {"@type": "Question", "name": "Le chatbot peut-il prendre des rendez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, c'est l'une des fonctionnalités clés de la Version 3 (Premium). Le chatbot se connecte à votre Google Calendar, consulte vos disponibilités en temps réel, propose des créneaux qui respectent vos tranches horaires et crée automatiquement le Google Meet."}},
       {"@type": "Question", "name": "Puis-je passer d'une version à une autre ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Vous pouvez monter en version à tout moment — par exemple passer de V1 à V2 si vous souhaitez activer la qualification de prospects. La différence de prix s'applique à partir du mois suivant. Il est également possible de descendre en version si vos besoins évoluent."}},
       {"@type": "Question", "name": "Le chatbot fonctionne-t-il sur mobile ?", "acceptedAnswer": {"@type": "Answer", "text": "Parfaitement. L'interface est entièrement responsive et testée sur iOS et Android. La fenêtre de chat s'adapte à tous les formats d'écran sans aucune dégradation de l'expérience."}},
-      {"@type": "Question", "name": "Comment fonctionne la tarification sur le volume ?", "acceptedAnswer": {"@type": "Answer", "text": "Les tarifs affichés correspondent à un usage standard. Pour les volumes importants de conversations ou les catalogues produits étendus, la tarification est adaptée. Contactez-moi pour recevoir un devis personnalisé selon votre contexte précis."}}
+      {"@type": "Question", "name": "Comment le tarif final est-il fixé ?", "acceptedAnswer": {"@type": "Answer", "text": "Les tarifs affichés sont des tarifs de départ, calculés pour une petite structure et un usage standard. Le montant final dépend de la taille de votre organisation : nombre d'utilisateurs, volume de conversations et étendue de votre catalogue. Contactez-moi pour recevoir un devis personnalisé selon votre contexte précis."}}
     ]
   }
   </script>
@@ -415,6 +415,7 @@
     .formule-card h3 { font-size: 1.25rem; font-weight: 800; color: #fff; margin: 0 0 8px; }
     .formule-tagline { font-size: 13px; color: var(--cb-muted); margin-bottom: 24px; line-height: 1.55; }
     .formule-price { margin-bottom: 24px; }
+    .formule-price .price-from { font-size: 12px; font-weight: 700; color: var(--cb-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
     .formule-price .price-main { font-size: 2.6rem; font-weight: 900; color: #fff; line-height: 1; }
     .formule-price .price-main sup { font-size: 1.1rem; font-weight: 600; vertical-align: super; }
     .formule-price .price-period { font-size: 12px; color: var(--cb-muted); margin-top: 6px; }
@@ -646,7 +647,7 @@
       <div class="section-title">
         <span class="tag-label"><i class="ri-price-tag-3-line"></i> Tarifs</span>
         <h2>Choisissez votre version.</h2>
-        <p>Chaque version intègre toutes les fonctionnalités de la précédente. Personnalisation sur-mesure disponible sur demande.</p>
+        <p>Chaque version intègre toutes les fonctionnalités de la précédente. Les tarifs affichés sont des tarifs de départ : le montant final est ajusté selon la taille de votre organisation (nombre d'utilisateurs, volume de conversations, étendue de votre catalogue).</p>
       </div>
 
       <div class="formules-grid">
@@ -657,6 +658,7 @@
           <h3>Essentiel</h3>
           <p class="formule-tagline">Répondez automatiquement aux questions de vos visiteurs et orientez-les sur votre site.</p>
           <div class="formule-price">
+            <div class="price-from">À partir de</div>
             <div class="price-main"><sup>€</sup>100<span style="font-size:1rem;font-weight:600;color:var(--cb-muted);">/mois</span></div>
             <div class="price-period">ou <strong style="color:#fff;">1 100 €</strong> / an</div>
             <div class="price-annual"><i class="ri-gift-line"></i> 2 mois offerts avec l'abonnement annuel</div>
@@ -673,7 +675,7 @@
             <li><i class="ri-checkbox-circle-fill yes"></i> 30 jours de support inclus</li>
           </ul>
           <a href="contact.html" class="btn-outline formule-cta"><i class="ri-mail-send-line"></i> Démarrer</a>
-          <p class="formule-note">Devis gratuit · Sans engagement</p>
+          <p class="formule-note">Devis gratuit · Sans engagement · Tarif ajusté à la taille de votre organisation</p>
         </div>
 
         <!-- ── V2 Pro ── -->
@@ -683,6 +685,7 @@
           <h3>Pro</h3>
           <p class="formule-tagline">Qualifiez vos prospects et générez des devis automatiquement, 24h/24.</p>
           <div class="formule-price">
+            <div class="price-from">À partir de</div>
             <div class="price-main"><sup>€</sup>200<span style="font-size:1rem;font-weight:600;color:var(--cb-muted);">/mois</span></div>
             <div class="price-period">ou <strong style="color:#fff;">2 200 €</strong> / an</div>
             <div class="price-annual"><i class="ri-gift-line"></i> 2 mois offerts avec l'abonnement annuel</div>
@@ -695,7 +698,7 @@
             <li><i class="ri-checkbox-circle-fill yes"></i> Leads qualifiés envoyés par notification</li>
           </ul>
           <a href="contact.html" class="btn-primary formule-cta"><i class="ri-mail-send-line"></i> Démarrer</a>
-          <p class="formule-note">Devis gratuit · Sans engagement</p>
+          <p class="formule-note">Devis gratuit · Sans engagement · Tarif ajusté à la taille de votre organisation</p>
         </div>
 
         <!-- ── V3 Premium ── -->
@@ -704,6 +707,7 @@
           <h3>Premium</h3>
           <p class="formule-tagline">La version complète avec prise de RDV automatisée et Google Meet intégré.</p>
           <div class="formule-price">
+            <div class="price-from">À partir de</div>
             <div class="price-main"><sup>€</sup>300<span style="font-size:1rem;font-weight:600;color:var(--cb-muted);">/mois</span></div>
             <div class="price-period">ou <strong style="color:#fff;">3 300 €</strong> / an</div>
             <div class="price-annual"><i class="ri-gift-line"></i> 2 mois offerts avec l'abonnement annuel</div>
@@ -717,7 +721,7 @@
             <li><i class="ri-checkbox-circle-fill yes"></i> Création automatique du Google Meet</li>
           </ul>
           <a href="contact.html" class="btn-outline formule-cta"><i class="ri-mail-send-line"></i> Démarrer</a>
-          <p class="formule-note">Devis gratuit · Sans engagement</p>
+          <p class="formule-note">Devis gratuit · Sans engagement · Tarif ajusté à la taille de votre organisation</p>
         </div>
 
       </div>
@@ -726,7 +730,7 @@
       <div class="custom-box">
         <i class="ri-settings-4-line" style="font-size:26px;color:var(--cb-purple);display:block;margin-bottom:12px;"></i>
         <p style="color:#fff;font-weight:700;font-size:15px;margin:0 0 8px;">Besoin d'un chatbot sur-mesure ?</p>
-        <p style="color:var(--cb-muted);font-size:13.5px;margin:0 0 20px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.65;">La tarification varie selon le volume de conversations et la taille de votre catalogue. Il est également possible de créer votre chatbot en combinant uniquement les options dont vous avez besoin.</p>
+        <p style="color:var(--cb-muted);font-size:13.5px;margin:0 0 20px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.65;">La tarification varie selon la taille de votre organisation : nombre d'utilisateurs, volume de conversations et étendue de votre catalogue. Il est également possible de créer votre chatbot en combinant uniquement les options dont vous avez besoin.</p>
         <a href="contact.html" class="btn-primary" style="display:inline-flex;"><i class="ri-mail-send-line"></i> Demander un devis personnalisé</a>
       </div>
 
@@ -789,7 +793,7 @@
             Quelle est la différence entre mensuel et annuel ? <i class="ri-add-line"></i>
           </button>
           <div class="faq-a">
-            <p>L'abonnement mensuel vous engage mois par mois avec une résiliation possible à tout moment. L'abonnement annuel inclut 2 mois offerts — vous payez 10 mois pour 12. Pour la V1 : 1 100 €/an au lieu de 1 200 €, pour la V2 : 2 200 €/an au lieu de 2 400 €, pour la V3 : 3 300 €/an au lieu de 3 600 €.</p>
+            <p>L'abonnement mensuel vous engage mois par mois avec une résiliation possible à tout moment. L'abonnement annuel inclut 2 mois offerts — vous payez 10 mois pour 12. Sur la base des tarifs de départ : pour la V1, à partir de 1 100 €/an au lieu de 1 200 €, pour la V2, à partir de 2 200 €/an au lieu de 2 400 €, pour la V3, à partir de 3 300 €/an au lieu de 3 600 €. Ces montants évoluent ensuite selon la taille de votre organisation.</p>
           </div>
         </div>
 
@@ -822,10 +826,10 @@
 
         <div class="faq-item">
           <button class="faq-q">
-            Comment fonctionne la tarification sur le volume ? <i class="ri-add-line"></i>
+            Comment le tarif final est-il fixé ? <i class="ri-add-line"></i>
           </button>
           <div class="faq-a">
-            <p>Les tarifs affichés correspondent à un usage standard. Pour les volumes importants de conversations ou les catalogues produits étendus, la tarification est adaptée. Contactez-moi pour recevoir un devis personnalisé selon votre contexte précis.</p>
+            <p>Les tarifs affichés sont des tarifs de départ, calculés pour une petite structure et un usage standard. Le montant final dépend de la taille de votre organisation : nombre d'utilisateurs, volume de conversations et étendue de votre catalogue. Contactez-moi pour recevoir un devis personnalisé selon votre contexte précis.</p>
           </div>
         </div>
 
